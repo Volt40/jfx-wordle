@@ -1,0 +1,9 @@
+.word-grid {
+	-fx-background-color: #121213;
+}
+
+.word-grid .empty-cells {
+	-fx-border-color: #3A3A3C;
+	-fx-border-width: 1.7;
+	-fx-border-insets: 1.4;
+}
