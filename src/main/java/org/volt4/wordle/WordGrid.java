@@ -10,6 +10,10 @@ import java.io.IOException;
 
 public class WordGrid extends GridPane {
 
+    // Keeps track of where you are typing.
+    private int currentRow;
+    private int currentColumn;
+
     /*
      * Listed here are all the AnchorPane objects containing the letters.
      */
@@ -83,6 +87,14 @@ public class WordGrid extends GridPane {
      */
     private Cell[][] grid;
 
+    public void reset() {
+        currentRow = 0;
+        currentColumn = 0;
+        for (int i = 0; i < grid.length; i++)
+            for (int j = 0; j < grid[i].length; j++)
+                grid[i][j].clear();
+    }
+
     /**
      * Constructs a WordGrid object. Loads WordGrid.fxml.
      */
@@ -104,10 +116,29 @@ public class WordGrid extends GridPane {
                 {new Cell(wordleGrid04, wordleGridLetter04), new Cell(wordleGrid14, wordleGridLetter14), new Cell(wordleGrid24, wordleGridLetter24), new Cell(wordleGrid34, wordleGridLetter34), new Cell(wordleGrid44, wordleGridLetter44)},
                 {new Cell(wordleGrid05, wordleGridLetter05), new Cell(wordleGrid15, wordleGridLetter15), new Cell(wordleGrid25, wordleGridLetter25), new Cell(wordleGrid35, wordleGridLetter35), new Cell(wordleGrid45, wordleGridLetter45)},
         };
+        currentRow = 0;
+        currentColumn = 0;
     }
 
-    public void f(String letter) {
-        grid[0][0].flip(FlipAnimation.Colors.GREEN);
+    /**
+     * Inputs the given letter into the grid.
+     * @param letter Letter to be inputted.
+     */
+    public void inputLetter(String letter) {
+        if (currentColumn > 4)
+            return;
+        grid[currentRow][currentColumn].setLetter(letter);
+        currentColumn++;
+    }
+
+    /**
+     * Deletes the last letter.
+     */
+    public void deleteLetter() {
+        if (currentColumn <= 0)
+            return;
+        currentColumn--;
+        grid[currentRow][currentColumn].clear();
     }
 
     /**
