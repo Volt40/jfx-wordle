@@ -2,17 +2,16 @@ package org.volt4.wordle;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
-import java.util.Locale;
 
 public class WordleApplication extends Application {
 
+    // Wordle grid.
     private WordGrid grid;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        WordLists.load();
         Scene scene = new Scene(grid = new WordGrid());
         scene.getStylesheets().add("wordlestyle.css");
         scene.setOnKeyPressed(e -> handleKeyPress(e.getCode().getName().toLowerCase()));
@@ -29,7 +28,7 @@ public class WordleApplication extends Application {
             grid.deleteLetter();
             System.out.println("backspace");
         }else if (key.equals("enter"))
-            grid.reset();
+            grid.enterWord();
         else if ("abcdefghijklmnopqrstuvwxyz".indexOf(key) != -1)
             grid.inputLetter(key);
     }

@@ -66,4 +66,12 @@ public enum Letters {
         return letterImg;
     }
 
+    /**
+     * Returns the letter;
+     * @return The letter;
+     */
+    public String getLetter() {
+        return letter;
+    }
+
 }

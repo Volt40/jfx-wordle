@@ -1,6 +1,7 @@
-package org.volt4.wordle;
+package org.volt4.wordle.animations;
 
 import javafx.animation.AnimationTimer;
+import org.volt4.wordle.WordGrid;
 
 import java.util.concurrent.TimeUnit;
 

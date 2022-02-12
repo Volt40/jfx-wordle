@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import org.volt4.wordle.animations.FlipAnimation;
+import org.volt4.wordle.animations.PopulateAnimation;
 
 import java.io.IOException;
 
@@ -13,6 +15,12 @@ public class WordGrid extends GridPane {
     // Keeps track of where you are typing.
     private int currentRow;
     private int currentColumn;
+
+    // Wordle solution.
+    private String answer;
+
+    // True if this game is over with the solution not found.
+    private boolean hasLost;
 
     /*
      * Listed here are all the AnchorPane objects containing the letters.
@@ -90,6 +98,8 @@ public class WordGrid extends GridPane {
     public void reset() {
         currentRow = 0;
         currentColumn = 0;
+        answer = WordLists.pickRandomAnswer();
+        hasLost = false;
         for (int i = 0; i < grid.length; i++)
             for (int j = 0; j < grid[i].length; j++)
                 grid[i][j].clear();
@@ -118,6 +128,9 @@ public class WordGrid extends GridPane {
         };
         currentRow = 0;
         currentColumn = 0;
+        answer = WordLists.pickRandomAnswer();
+        hasLost = false;
+        System.out.println(answer);
     }
 
     /**
@@ -142,6 +155,44 @@ public class WordGrid extends GridPane {
     }
 
     /**
+     * Attempts to submit the entered word as a guess.
+     * @return If the guess is correct.
+     */
+    public boolean enterWord() {
+        String word = "";
+        for (int i = 0; i < 5; i++)
+            word += grid[currentRow][i].letterStr;
+        if (WordLists.guessIsValid(word)) {
+            // Flip the tiles.
+            for (int i = 0; i < 5; i++)
+                if (word.charAt(i) == answer.charAt(i))
+                    grid[currentRow][i].flip(FlipAnimation.Colors.GREEN);
+                else {
+                    boolean letterFound = false;
+                    for (int j = 0; j < 5; j++)
+                        if (word.charAt(i) == answer.charAt(j)) {
+                            grid[currentRow][i].flip(FlipAnimation.Colors.YELLOW);
+                            letterFound = true;
+                            break;
+                        }
+                    if (!letterFound)
+                        grid[currentRow][i].flip(FlipAnimation.Colors.GREY);
+                }
+        } else {
+            // Invalid guess.
+            System.out.println("Bad guess");
+            return false;
+        }
+        currentRow++;
+        if (currentRow == 6) {
+            hasLost = true;
+            return false;
+        }
+        currentColumn = 0;
+        return word.equals(answer);
+    }
+
+    /**
      * Represents a cell in the WordGrid.
      */
     public static class Cell {
@@ -152,6 +203,9 @@ public class WordGrid extends GridPane {
         // ImageView displaying the letter.
         private ImageView letter;
 
+        // String representation of the letter.
+        private String letterStr;
+
         // Animations
         private PopulateAnimation populateCell;
         private FlipAnimation flip;
@@ -161,6 +215,7 @@ public class WordGrid extends GridPane {
             this.letter = letter;
             // Set the letter to blank.
             letter.setImage(Letters.EMPTY.getImage());
+            letterStr = "";
             // Create animations.
             populateCell = new PopulateAnimation(this);
             flip = new FlipAnimation(this);
@@ -173,6 +228,7 @@ public class WordGrid extends GridPane {
             gridCell.getStyleClass().clear();
             gridCell.getStyleClass().add("empty-cells");
             letter.setImage(Letters.EMPTY.getImage());
+            letterStr = "";
         }
 
         /**
@@ -205,6 +261,7 @@ public class WordGrid extends GridPane {
          */
         public void setLetterInternal(Letters letter) {
             this.letter.setImage(letter.getImage());
+            letterStr = letter.getLetter();
         }
 
     }
