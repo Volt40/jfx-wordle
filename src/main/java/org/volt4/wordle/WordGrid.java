@@ -78,6 +78,11 @@ public class WordGrid extends GridPane {
     @FXML private ImageView wordleGridLetter35;
     @FXML private ImageView wordleGridLetter45;
 
+    /*
+     * Grid containing all the cells.
+     */
+    private Cell[][] grid;
+
     /**
      * Constructs a WordGrid object. Loads WordGrid.fxml.
      */
@@ -90,12 +95,25 @@ public class WordGrid extends GridPane {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        // Construct the grid.
+        grid = new Cell[][] {
+                {new Cell(wordleGrid00, wordleGridLetter00), new Cell(wordleGrid10, wordleGridLetter10), new Cell(wordleGrid20, wordleGridLetter20), new Cell(wordleGrid30, wordleGridLetter30), new Cell(wordleGrid40, wordleGridLetter40)},
+                {new Cell(wordleGrid01, wordleGridLetter01), new Cell(wordleGrid11, wordleGridLetter11), new Cell(wordleGrid21, wordleGridLetter21), new Cell(wordleGrid31, wordleGridLetter31), new Cell(wordleGrid41, wordleGridLetter41)},
+                {new Cell(wordleGrid02, wordleGridLetter02), new Cell(wordleGrid12, wordleGridLetter12), new Cell(wordleGrid22, wordleGridLetter22), new Cell(wordleGrid32, wordleGridLetter32), new Cell(wordleGrid42, wordleGridLetter42)},
+                {new Cell(wordleGrid03, wordleGridLetter03), new Cell(wordleGrid13, wordleGridLetter13), new Cell(wordleGrid23, wordleGridLetter23), new Cell(wordleGrid33, wordleGridLetter33), new Cell(wordleGrid43, wordleGridLetter43)},
+                {new Cell(wordleGrid04, wordleGridLetter04), new Cell(wordleGrid14, wordleGridLetter14), new Cell(wordleGrid24, wordleGridLetter24), new Cell(wordleGrid34, wordleGridLetter34), new Cell(wordleGrid44, wordleGridLetter44)},
+                {new Cell(wordleGrid05, wordleGridLetter05), new Cell(wordleGrid15, wordleGridLetter15), new Cell(wordleGrid25, wordleGridLetter25), new Cell(wordleGrid35, wordleGridLetter35), new Cell(wordleGrid45, wordleGridLetter45)},
+        };
+    }
+
+    public void f(String letter) {
+        grid[0][0].flip(FlipAnimation.Colors.GREEN);
     }
 
     /**
      * Represents a cell in the WordGrid.
      */
-    private static class Cell {
+    public static class Cell {
 
         // AnchorPane containing the letter.
         private AnchorPane gridCell;
@@ -103,11 +121,59 @@ public class WordGrid extends GridPane {
         // ImageView displaying the letter.
         private ImageView letter;
 
+        // Animations
+        private PopulateAnimation populateCell;
+        private FlipAnimation flip;
+
         public Cell(AnchorPane gridCell, ImageView letter) {
             this.gridCell = gridCell;
             this.letter = letter;
             // Set the letter to blank.
             letter.setImage(Letters.EMPTY.getImage());
+            // Create animations.
+            populateCell = new PopulateAnimation(this);
+            flip = new FlipAnimation(this);
+        }
+
+        /**
+         * Clears the cell.
+         */
+        public void clear() {
+            gridCell.getStyleClass().clear();
+            gridCell.getStyleClass().add("empty-cells");
+            letter.setImage(Letters.EMPTY.getImage());
+        }
+
+        /**
+         * Returns the root of this object.
+         * @return The root of this object.
+         */
+        public AnchorPane getRoot() {
+            return gridCell;
+        }
+
+        /**
+         * Runs the animation that populates this cell.
+         * @param letter Letter to populate.
+         */
+        public void setLetter(String letter) {
+            populateCell.runAnimation(Letters.getMatch(letter));
+        }
+
+        /**
+         * Flips the cell to the given color.
+         * @param color Color to flip to.
+         */
+        public void flip(FlipAnimation.Colors color) {
+            flip.runAnimation(color);
+        }
+
+        /**
+         * Sets the letter image of this cell.
+         * @param letter Letter to set.
+         */
+        public void setLetterInternal(Letters letter) {
+            this.letter.setImage(letter.getImage());
         }
 
     }

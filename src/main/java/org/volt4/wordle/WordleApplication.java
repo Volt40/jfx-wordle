@@ -7,11 +7,23 @@ import javafx.stage.Stage;
 
 public class WordleApplication extends Application {
 
+    private WordGrid grid;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Scene s = new Scene(new AnchorPane(), 200, 200);
-        primaryStage.setScene(s);
+        Scene scene = new Scene(grid = new WordGrid());
+        scene.getStylesheets().add("wordlestyle.css");
+        scene.setOnKeyPressed(e -> handleKeyPress(e.getText()));
+        primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    /**
+     * Handles when a key is pressed.
+     * @param key Key that is pressed.
+     */
+    public void handleKeyPress(String key) {
+        grid.f(key);
     }
 
     public static void main(String[] args) {
