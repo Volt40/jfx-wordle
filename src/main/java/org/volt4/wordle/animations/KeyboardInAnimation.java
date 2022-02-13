@@ -33,7 +33,7 @@ public class KeyboardInAnimation extends AnimationTimer {
             startTime = TimeUnit.MILLISECONDS.convert(now, TimeUnit.NANOSECONDS);
         long millisElapsed = TimeUnit.MILLISECONDS.convert(now, TimeUnit.NANOSECONDS) - startTime;
         if (millisElapsed >= ANIMATION_DURATION) {
-            WordleApplication.primaryStage.setHeight(450);
+            Platform.runLater(() -> WordleApplication.primaryStage.setHeight(450));
             stop();
             return;
         }

@@ -13,7 +13,7 @@ import java.util.TimerTask;
 public class WordleApplication extends Application {
 
     // Wordle controller.
-    private WordleUIController controller;
+    private static WordleUIController controller;
 
     // The state this is on.
     public static Stage primaryStage;
@@ -32,13 +32,21 @@ public class WordleApplication extends Application {
     }
 
     /**
+     * Returns the controller.
+     * @return The controller.
+     */
+    public static WordleUIController getController() {
+        return controller;
+    }
+
+    /**
      * Handles when a key is pressed.
      * @param key Key that is pressed.
      */
     public void handleKeyPress(String key) {
-        if (key.equals("backspace")) {
+        if (key.equals("backspace"))
             controller.embeddedGrid().deleteLetter();
-        }else if (key.equals("enter"))
+        else if (key.equals("enter"))
             controller.embeddedGrid().enterWord();
         else if ("abcdefghijklmnopqrstuvwxyz".indexOf(key) != -1)
             controller.embeddedGrid().inputLetter(key);

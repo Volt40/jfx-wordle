@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import org.volt4.wordle.animations.FlipTileAnimation;
+import org.volt4.wordle.animations.FlipKeyAnimation;
 
 import java.io.IOException;
 
@@ -14,6 +16,41 @@ public class KeyboardUIController extends AnchorPane {
 
     // WordGrid this keyboard is submitting letters to.
     private WordGrid grid;
+
+    // Letters
+    @FXML private AnchorPane a;
+    @FXML private AnchorPane b;
+    @FXML private AnchorPane c;
+    @FXML private AnchorPane d;
+    @FXML private AnchorPane e;
+    @FXML private AnchorPane f;
+    @FXML private AnchorPane g;
+    @FXML private AnchorPane h;
+    @FXML private AnchorPane i;
+    @FXML private AnchorPane j;
+    @FXML private AnchorPane k;
+    @FXML private AnchorPane l;
+    @FXML private AnchorPane m;
+    @FXML private AnchorPane n;
+    @FXML private AnchorPane o;
+    @FXML private AnchorPane p;
+    @FXML private AnchorPane q;
+    @FXML private AnchorPane r;
+    @FXML private AnchorPane s;
+    @FXML private AnchorPane t;
+    @FXML private AnchorPane u;
+    @FXML private AnchorPane v;
+    @FXML private AnchorPane w;
+    @FXML private AnchorPane x;
+    @FXML private AnchorPane y;
+    @FXML private AnchorPane z;
+
+    // Array containing letters above.
+    private AnchorPane[] letters;
+
+    // Animations to flip the letters.
+    private FlipKeyAnimation[] flipKeyAnimations;
+    private boolean[] flipped;
 
     /**
      * Constructs and loads the keybaord.
@@ -29,6 +66,40 @@ public class KeyboardUIController extends AnchorPane {
             e.printStackTrace();
         }
         this.grid = grid;
+        letters = new AnchorPane[] {a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z};
+        flipKeyAnimations = new FlipKeyAnimation[26];
+        flipped = new boolean[26];
+        for (int i = 0; i < flipKeyAnimations.length; i++) {
+            flipKeyAnimations[i] = new FlipKeyAnimation(letters[i]);
+            flipped[i] = false;
+        }
+    }
+
+    /**
+     * Resets the keyboard.
+     */
+    public void reset() {
+        for (int i = 0; i < letters.length; i++) {
+            flipped[i] = false;
+            letters[i].getStyleClass().clear();
+            letters[i].getStyleClass().add("keyboard-tile-lightgrey");
+        }
+    }
+
+    /**
+     * Flips this keyboard letter.
+     * @param letter Letter to flip.
+     * @param color Color to flip to.
+     */
+    public void flipLetter(String letter, FlipTileAnimation.Colors color) {
+        int letterIndex = "abcdefghijklmnopqrstuv".indexOf(letter);
+        if (!flipped[letterIndex])
+            flipped[letterIndex] = true;
+        else
+            return;
+        FlipKeyAnimation animation = flipKeyAnimations[letterIndex];
+        animation.setColor(color);
+        animation.runAnimation();
     }
 
     /*
@@ -54,8 +125,8 @@ public class KeyboardUIController extends AnchorPane {
     @FXML void onG(MouseEvent event) { grid.inputLetter("g"); }
     @FXML void onH(MouseEvent event) { grid.inputLetter("h"); }
     @FXML void onI(MouseEvent event) { grid.inputLetter("i"); }
-    @FXML void onK(MouseEvent event) { grid.inputLetter("j"); }
-    @FXML void onJ(MouseEvent event) { grid.inputLetter("k"); }
+    @FXML void onK(MouseEvent event) { grid.inputLetter("k"); }
+    @FXML void onJ(MouseEvent event) { grid.inputLetter("j"); }
     @FXML void onL(MouseEvent event) { grid.inputLetter("l"); }
     @FXML void onM(MouseEvent event) { grid.inputLetter("m"); }
     @FXML void onN(MouseEvent event) { grid.inputLetter("n"); }

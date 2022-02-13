@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import org.volt4.wordle.animations.FlipAnimation;
+import org.volt4.wordle.animations.FlipTileAnimation;
 import org.volt4.wordle.animations.PopulateAnimation;
 import org.volt4.wordle.animations.RevealAnimation;
 import org.volt4.wordle.animations.ShakeAnimation;
@@ -172,20 +172,20 @@ public class WordGrid extends GridPane {
             word += grid[currentRow][i].letterStr;
         if (WordLists.guessIsValid(word)) {
             // Flip the tiles.
-            FlipAnimation.Colors[] flipColors = new FlipAnimation.Colors[5];
+            FlipTileAnimation.Colors[] flipColors = new FlipTileAnimation.Colors[5];
             for (int i = 0; i < 5; i++)
                 if (word.charAt(i) == answer.charAt(i))
-                    flipColors[i] = FlipAnimation.Colors.GREEN;
+                    flipColors[i] = FlipTileAnimation.Colors.GREEN;
                 else {
                     boolean letterFound = false;
                     for (int j = 0; j < 5; j++)
                         if (word.charAt(i) == answer.charAt(j)) {
-                            flipColors[i] = FlipAnimation.Colors.YELLOW;
+                            flipColors[i] = FlipTileAnimation.Colors.YELLOW;
                             letterFound = true;
                             break;
                         }
                     if (!letterFound)
-                        flipColors[i] = FlipAnimation.Colors.GREY;
+                        flipColors[i] = FlipTileAnimation.Colors.GREY;
                 }
             revealAnimations[currentRow].playAnimation(flipColors);
         } else {
@@ -228,7 +228,7 @@ public class WordGrid extends GridPane {
 
         // Animations
         private PopulateAnimation populateCell;
-        private FlipAnimation flip;
+        private FlipTileAnimation flip;
 
         public Cell(AnchorPane gridCell, ImageView letter) {
             this.gridCell = gridCell;
@@ -238,7 +238,7 @@ public class WordGrid extends GridPane {
             letterStr = "";
             // Create animations.
             populateCell = new PopulateAnimation(this);
-            flip = new FlipAnimation(this);
+            flip = new FlipTileAnimation(this);
         }
 
         /**
@@ -249,6 +249,14 @@ public class WordGrid extends GridPane {
             gridCell.getStyleClass().add("empty-cells");
             letter.setImage(Letters.EMPTY.getImage());
             letterStr = "";
+        }
+
+        /**
+         * Returns this letter as a string.
+         * @return This letter as a string.
+         */
+        public String getLetterStr() {
+            return letterStr;
         }
 
         /**
@@ -271,7 +279,7 @@ public class WordGrid extends GridPane {
          * Flips the cell to the given color.
          * @param color Color to flip to.
          */
-        public void flip(FlipAnimation.Colors color) {
+        public void flip(FlipTileAnimation.Colors color) {
             flip.runAnimation(color);
         }
 

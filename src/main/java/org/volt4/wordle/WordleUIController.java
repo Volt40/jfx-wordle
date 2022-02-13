@@ -73,6 +73,14 @@ public class WordleUIController extends AnchorPane {
         return wordGrid;
     }
 
+    /**
+     * Returns the keyboard.
+     * @return The Keyboard.
+     */
+    public KeyboardUIController getKeyboard() {
+        return keyboard;
+    }
+
     @FXML
     void onClose(MouseEvent event) {
         Platform.exit();
@@ -81,6 +89,7 @@ public class WordleUIController extends AnchorPane {
     @FXML
     void onReset(MouseEvent event) {
         wordGrid.reset();
+        keyboard.reset();
     }
 
     @FXML

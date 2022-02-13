@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Animation for flipping the cells.
  */
-public class FlipAnimation extends AnimationTimer {
+public class FlipTileAnimation extends AnimationTimer {
 
     // How long the animation takes to complete.
     public static final long ANIMATION_DURATION = 500;
@@ -28,7 +28,7 @@ public class FlipAnimation extends AnimationTimer {
     /**
      * Constructs a FlipAnimation object.
      */
-    public FlipAnimation(WordGrid.Cell cell) {
+    public FlipTileAnimation(WordGrid.Cell cell) {
         this.cell = cell;
     }
 
