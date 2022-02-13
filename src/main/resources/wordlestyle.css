@@ -28,3 +28,31 @@
 	-fx-background-color: #538D4E;
 	-fx-background-insets: 1.4;
 }
+
+.drag-bar {
+	-fx-background-color: #28282b;
+}
+
+.title-tiles {
+	-fx-background-color: #538D4E;
+	-fx-background-insets: 3;
+	-fx-background-radius: 5;
+}
+
+.drag-bar-buttons {
+	-fx-background-color: #28282b;
+	-fx-background-insets: 0;
+	-fx-background-radius: 0;
+}
+
+.drag-bar-buttons:hover {
+	-fx-background-color: #3A3A3C;
+	-fx-background-insets: 1.5;
+	-fx-background-radius: 5;
+}
+
+.drag-bar-buttons:pressed {
+	-fx-background-color: #515154;
+	-fx-background-insets: 1.5;
+	-fx-background-radius: 5;
+}

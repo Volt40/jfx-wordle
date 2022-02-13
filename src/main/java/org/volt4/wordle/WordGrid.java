@@ -138,8 +138,8 @@ public class WordGrid extends GridPane {
         hasLost = false;
         System.out.println(answer);
         // Setup animations.
-        shakeAnimations = new ShakeAnimation[] {new ShakeAnimation(grid[0]), new ShakeAnimation(grid[1]), new ShakeAnimation(grid[2]), new ShakeAnimation(grid[3]), new ShakeAnimation(grid[4])};
-        revealAnimations = new RevealAnimation[] {new RevealAnimation(grid[0]), new RevealAnimation(grid[1]),new RevealAnimation(grid[2]),new RevealAnimation(grid[3]),new RevealAnimation(grid[4])};
+        shakeAnimations = new ShakeAnimation[] {new ShakeAnimation(grid[0]), new ShakeAnimation(grid[1]), new ShakeAnimation(grid[2]), new ShakeAnimation(grid[3]), new ShakeAnimation(grid[4]), new ShakeAnimation(grid[5])};
+        revealAnimations = new RevealAnimation[] {new RevealAnimation(grid[0]), new RevealAnimation(grid[1]),new RevealAnimation(grid[2]),new RevealAnimation(grid[3]), new RevealAnimation(grid[4]), new RevealAnimation(grid[5])};
     }
 
     /**
