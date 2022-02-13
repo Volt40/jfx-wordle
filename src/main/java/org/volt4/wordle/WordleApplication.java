@@ -3,20 +3,26 @@ package org.volt4.wordle;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class WordleApplication extends Application {
 
-    // Wordle grid.
-    private WordGrid grid;
+    // Wordle controller.
+    private WordleUIController controller;
+
+    // The state this is on.
+    public static Stage primaryStage;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         WordLists.load();
-        Scene scene = new Scene(grid = new WordGrid());
+        Scene scene = new Scene(controller = new WordleUIController());
         scene.getStylesheets().add("wordlestyle.css");
         scene.setOnKeyPressed(e -> handleKeyPress(e.getCode().getName().toLowerCase()));
         primaryStage.setScene(scene);
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
+        WordleApplication.primaryStage = primaryStage;
     }
 
     /**
@@ -25,11 +31,11 @@ public class WordleApplication extends Application {
      */
     public void handleKeyPress(String key) {
         if (key.equals("backspace")) {
-            grid.deleteLetter();
+            controller.embeddedGrid().deleteLetter();
         }else if (key.equals("enter"))
-            grid.enterWord();
+            controller.embeddedGrid().enterWord();
         else if ("abcdefghijklmnopqrstuvwxyz".indexOf(key) != -1)
-            grid.inputLetter(key);
+            controller.embeddedGrid().inputLetter(key);
     }
 
     public static void main(String[] args) {

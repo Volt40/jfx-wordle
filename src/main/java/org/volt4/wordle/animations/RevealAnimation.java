@@ -10,7 +10,7 @@ public class RevealAnimation extends AnimationTimer {
     // How long the animation takes to complete.
     public static final long ANIMATION_DURATION = 1000;
 
-    // Row of cells that shake.
+    // Row of cells that reveal.
     private WordGrid.Cell[] cellRow;
 
     // Colors to flip to.
