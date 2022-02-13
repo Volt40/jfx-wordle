@@ -92,7 +92,7 @@ public class KeyboardUIController extends AnchorPane {
      * @param color Color to flip to.
      */
     public void flipLetter(String letter, FlipTileAnimation.Colors color) {
-        int letterIndex = "abcdefghijklmnopqrstuv".indexOf(letter);
+        int letterIndex = "abcdefghijklmnopqrstuvwxyz".indexOf(letter);
         if (!flipped[letterIndex])
             flipped[letterIndex] = true;
         else

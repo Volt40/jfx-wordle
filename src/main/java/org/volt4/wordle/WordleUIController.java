@@ -8,6 +8,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.volt4.wordle.animations.KeyboardInAnimation;
 import org.volt4.wordle.animations.KeyboardOutAnimation;
+import org.volt4.wordle.animations.ResetAnimation;
 
 import java.io.IOException;
 
@@ -25,6 +26,9 @@ public class WordleUIController extends AnchorPane {
     // Animations for the keyboard.
     private KeyboardInAnimation inAnimation;
     private KeyboardOutAnimation outAnimation;
+
+    // Animation for the reset.
+    private ResetAnimation resetAnimation;
 
     // True if the keyboard is visible.
     private boolean keyboardOut;
@@ -61,6 +65,7 @@ public class WordleUIController extends AnchorPane {
         // Contruct animations.
         inAnimation = new KeyboardInAnimation();
         outAnimation = new KeyboardOutAnimation();
+        resetAnimation = new ResetAnimation(resetImage);
         // Setup drag
         offset = new double[] {0, 0};
     }
@@ -90,6 +95,7 @@ public class WordleUIController extends AnchorPane {
     void onReset(MouseEvent event) {
         wordGrid.reset();
         keyboard.reset();
+        resetAnimation.runAnimation();
     }
 
     @FXML
