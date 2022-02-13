@@ -59,6 +59,7 @@ public class PopulateAnimation extends AnimationTimer {
             cell.getRoot().setScaleX(1);
             cell.getRoot().setScaleY(1);
             stop();
+            return;
         }
         if (millisElapsed <= ANIMATION_DURATION / 2) {
             cell.getRoot().setScaleX(1 + (CELL_GROWTH * millisElapsed / (ANIMATION_DURATION / 2)));

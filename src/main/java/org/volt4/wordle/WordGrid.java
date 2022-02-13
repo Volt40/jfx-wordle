@@ -7,6 +7,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import org.volt4.wordle.animations.FlipAnimation;
 import org.volt4.wordle.animations.PopulateAnimation;
+import org.volt4.wordle.animations.RevealAnimation;
+import org.volt4.wordle.animations.ShakeAnimation;
 
 import java.io.IOException;
 
@@ -95,6 +97,10 @@ public class WordGrid extends GridPane {
      */
     private Cell[][] grid;
 
+    // Row animations
+    private ShakeAnimation[] shakeAnimations;
+    private RevealAnimation[] revealAnimations;
+
     public void reset() {
         currentRow = 0;
         currentColumn = 0;
@@ -131,6 +137,9 @@ public class WordGrid extends GridPane {
         answer = WordLists.pickRandomAnswer();
         hasLost = false;
         System.out.println(answer);
+        // Setup animations.
+        shakeAnimations = new ShakeAnimation[] {new ShakeAnimation(grid[0]), new ShakeAnimation(grid[1]), new ShakeAnimation(grid[2]), new ShakeAnimation(grid[3]), new ShakeAnimation(grid[4])};
+        revealAnimations = new RevealAnimation[] {new RevealAnimation(grid[0]), new RevealAnimation(grid[1]),new RevealAnimation(grid[2]),new RevealAnimation(grid[3]),new RevealAnimation(grid[4])};
     }
 
     /**
@@ -164,23 +173,25 @@ public class WordGrid extends GridPane {
             word += grid[currentRow][i].letterStr;
         if (WordLists.guessIsValid(word)) {
             // Flip the tiles.
+            FlipAnimation.Colors[] flipColors = new FlipAnimation.Colors[5];
             for (int i = 0; i < 5; i++)
                 if (word.charAt(i) == answer.charAt(i))
-                    grid[currentRow][i].flip(FlipAnimation.Colors.GREEN);
+                    flipColors[i] = FlipAnimation.Colors.GREEN;
                 else {
                     boolean letterFound = false;
                     for (int j = 0; j < 5; j++)
                         if (word.charAt(i) == answer.charAt(j)) {
-                            grid[currentRow][i].flip(FlipAnimation.Colors.YELLOW);
+                            flipColors[i] = FlipAnimation.Colors.YELLOW;
                             letterFound = true;
                             break;
                         }
                     if (!letterFound)
-                        grid[currentRow][i].flip(FlipAnimation.Colors.GREY);
+                        flipColors[i] = FlipAnimation.Colors.GREY;
                 }
+            revealAnimations[currentRow].playAnimation(flipColors);
         } else {
             // Invalid guess.
-            System.out.println("Bad guess");
+            shakeAnimations[currentRow].playAnimation();
             return false;
         }
         currentRow++;

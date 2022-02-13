@@ -51,6 +51,7 @@ public class FlipAnimation extends AnimationTimer {
         if (millisElapsed >= ANIMATION_DURATION) {
             cell.getRoot().setRotate(0);
             stop();
+            return;
         }
         if (millisElapsed <= ANIMATION_DURATION / 2) {
             cell.getRoot().setRotate(1 + (90 * millisElapsed / (ANIMATION_DURATION / 2)));
