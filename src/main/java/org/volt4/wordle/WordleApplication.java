@@ -26,7 +26,6 @@ public class WordleApplication extends Application {
     public void handleKeyPress(String key) {
         if (key.equals("backspace")) {
             grid.deleteLetter();
-            System.out.println("backspace");
         }else if (key.equals("enter"))
             grid.enterWord();
         else if ("abcdefghijklmnopqrstuvwxyz".indexOf(key) != -1)

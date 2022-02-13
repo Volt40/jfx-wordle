@@ -104,7 +104,7 @@ public class WordGrid extends GridPane {
     public void reset() {
         currentRow = 0;
         currentColumn = 0;
-        answer = WordLists.pickRandomAnswer();
+        chooseNewAnswer();
         hasLost = false;
         for (int i = 0; i < grid.length; i++)
             for (int j = 0; j < grid[i].length; j++)
@@ -134,7 +134,7 @@ public class WordGrid extends GridPane {
         };
         currentRow = 0;
         currentColumn = 0;
-        answer = WordLists.pickRandomAnswer();
+        chooseNewAnswer();
         hasLost = false;
         System.out.println(answer);
         // Setup animations.
@@ -201,6 +201,14 @@ public class WordGrid extends GridPane {
         }
         currentColumn = 0;
         return word.equals(answer);
+    }
+
+    /**
+     * Chooses a new answer.
+     */
+    private void chooseNewAnswer() {
+        while(!WordLists.guessIsValid(answer))
+            answer = WordLists.pickRandomAnswer();
     }
 
     /**
