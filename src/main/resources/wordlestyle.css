@@ -56,3 +56,67 @@
 	-fx-background-insets: 1.5;
 	-fx-background-radius: 5;
 }
+
+.keyboard-tile-lightgrey {
+	-fx-background-color: #3A3A3C;
+	-fx-background-insets: 2.5;
+	-fx-background-radius: 4;
+}
+
+.keyboard-tile-darkgrey {
+	-fx-background-color: #121213;
+	-fx-background-insets: 3;
+	-fx-background-radius: 4;
+}
+
+.keyboard-tile-green {
+	-fx-background-color: #538D4E;
+	-fx-background-insets: 3;
+	-fx-background-radius: 4;
+}
+
+.keyboard-tile-yellow {
+	-fx-background-color: #B49F3A;
+	-fx-background-insets: 3;
+	-fx-background-radius: 4;
+}
+
+.keyboard-tile-lightgrey:hover {
+	-fx-scale-x: 1.1;
+	-fx-scale-y: 1.1;
+}
+
+.keyboard-tile-lightgrey:pressed {
+	-fx-scale-x: 1;
+	-fx-scale-y: 1;
+}
+
+.keyboard-tile-darkgrey:hover {
+	-fx-scale-x: 1.1;
+	-fx-scale-y: 1.1;
+}
+
+.keyboard-tile-darkgrey:pressed {
+	-fx-scale-x: 1;
+	-fx-scale-y: 1;
+}
+
+.keyboard-tile-green:hover {
+	-fx-scale-x: 1.1;
+	-fx-scale-y: 1.1;
+}
+
+.keyboard-tile-green:pressed {
+	-fx-scale-x: 1;
+	-fx-scale-y: 1;
+}
+
+.keyboard-tile-yellow:hover {
+	-fx-scale-x: 1.1;
+	-fx-scale-y: 1.1;
+}
+
+.keyboard-tile-yellow:pressed {
+	-fx-scale-x: 1;
+	-fx-scale-y: 1;
+}

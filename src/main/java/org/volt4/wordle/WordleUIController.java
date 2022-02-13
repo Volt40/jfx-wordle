@@ -17,6 +17,9 @@ public class WordleUIController extends AnchorPane {
     // WordGrid contained in this controller.
     private WordGrid wordGrid;
 
+    // Keyboard contained in this controller.
+    private KeyboardUIController keyboard;
+
     @FXML
     private ImageView resetImage;
 
@@ -39,7 +42,12 @@ public class WordleUIController extends AnchorPane {
         wordGrid = new WordGrid();
         wordGrid.setLayoutX(0);
         wordGrid.setLayoutY(30);
-        getChildren().add(wordGrid);
+        // Create the keyboard.
+        keyboard = new KeyboardUIController(wordGrid);
+        keyboard.setLayoutX(0);
+        keyboard.setLayoutY(450);
+        // Add the grid and keyboard to the layout.
+        getChildren().addAll(wordGrid, keyboard);
         // Setup drag
         offset = new double[] {0, 0};
     }
