@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import org.volt4.wordle.animations.KeyboardInAnimation;
+import org.volt4.wordle.animations.KeyboardOutAnimation;
 
 import java.io.IOException;
 
@@ -19,6 +21,13 @@ public class WordleUIController extends AnchorPane {
 
     // Keyboard contained in this controller.
     private KeyboardUIController keyboard;
+
+    // Animations for the keyboard.
+    private KeyboardInAnimation inAnimation;
+    private KeyboardOutAnimation outAnimation;
+
+    // True if the keyboard is visible.
+    private boolean keyboardOut;
 
     @FXML
     private ImageView resetImage;
@@ -38,6 +47,7 @@ public class WordleUIController extends AnchorPane {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        keyboardOut = false;
         // Create the WordGrid.
         wordGrid = new WordGrid();
         wordGrid.setLayoutX(0);
@@ -48,6 +58,9 @@ public class WordleUIController extends AnchorPane {
         keyboard.setLayoutY(450);
         // Add the grid and keyboard to the layout.
         getChildren().addAll(wordGrid, keyboard);
+        // Contruct animations.
+        inAnimation = new KeyboardInAnimation();
+        outAnimation = new KeyboardOutAnimation();
         // Setup drag
         offset = new double[] {0, 0};
     }
@@ -68,6 +81,15 @@ public class WordleUIController extends AnchorPane {
     @FXML
     void onReset(MouseEvent event) {
         wordGrid.reset();
+    }
+
+    @FXML
+    void onKeyboard(MouseEvent event) {
+        if (keyboardOut)
+            inAnimation.runAnimation();
+        else
+            outAnimation.runAnimation();
+        keyboardOut = !keyboardOut;
     }
 
     @FXML

@@ -1,9 +1,14 @@
 package org.volt4.wordle;
 
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.beans.value.WritableValue;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class WordleApplication extends Application {
 
@@ -21,6 +26,7 @@ public class WordleApplication extends Application {
         scene.setOnKeyPressed(e -> handleKeyPress(e.getCode().getName().toLowerCase()));
         primaryStage.setScene(scene);
         primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.setResizable(false);
         primaryStage.show();
         WordleApplication.primaryStage = primaryStage;
     }
