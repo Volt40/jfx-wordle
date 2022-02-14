@@ -1,4 +1,4 @@
-package org.volt4.wordle.animations;
+package org.volt4.wordle.animation;
 
 import javafx.scene.layout.AnchorPane;
 import org.volt4.wordle.TileColor;

@@ -1,4 +1,4 @@
-package org.volt4.wordle;
+package org.volt4.wordle.controller;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -6,9 +6,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import org.volt4.wordle.animations.KeyboardInAnimation;
-import org.volt4.wordle.animations.KeyboardOutAnimation;
-import org.volt4.wordle.animations.ResetAnimation;
+import org.volt4.wordle.WordleApplication;
+import org.volt4.wordle.animation.KeyboardInAnimation;
+import org.volt4.wordle.animation.KeyboardOutAnimation;
+import org.volt4.wordle.animation.ResetAnimation;
+import org.volt4.wordle.controller.KeyboardUIController;
+import org.volt4.wordle.controller.WordGridUIController;
 
 import java.io.IOException;
 
@@ -18,7 +21,7 @@ import java.io.IOException;
 public class WordleUIController extends AnchorPane {
 
     // WordGrid contained in this controller.
-    private WordGrid wordGrid;
+    private WordGridUIController wordGridUIController;
 
     // Keyboard contained in this controller.
     private KeyboardUIController keyboard;
@@ -53,15 +56,15 @@ public class WordleUIController extends AnchorPane {
         }
         keyboardOut = false;
         // Create the WordGrid.
-        wordGrid = new WordGrid();
-        wordGrid.setLayoutX(0);
-        wordGrid.setLayoutY(30);
+        wordGridUIController = new WordGridUIController();
+        wordGridUIController.setLayoutX(0);
+        wordGridUIController.setLayoutY(30);
         // Create the keyboard.
-        keyboard = new KeyboardUIController(wordGrid);
+        keyboard = new KeyboardUIController(wordGridUIController);
         keyboard.setLayoutX(0);
         keyboard.setLayoutY(450);
         // Add the grid and keyboard to the layout.
-        getChildren().addAll(wordGrid, keyboard);
+        getChildren().addAll(wordGridUIController, keyboard);
         // Contruct animations.
         inAnimation = new KeyboardInAnimation();
         outAnimation = new KeyboardOutAnimation();
@@ -74,8 +77,8 @@ public class WordleUIController extends AnchorPane {
      * Returns the WordGrid embedded in this controller.
      * @return The WordGrid embedded in this controller.
      */
-    public WordGrid embeddedGrid() {
-        return wordGrid;
+    public WordGridUIController embeddedGrid() {
+        return wordGridUIController;
     }
 
     /**
@@ -93,7 +96,7 @@ public class WordleUIController extends AnchorPane {
 
     @FXML
     void onReset(MouseEvent event) {
-        wordGrid.reset();
+        wordGridUIController.reset();
         keyboard.reset();
         resetAnimation.runAnimation();
     }

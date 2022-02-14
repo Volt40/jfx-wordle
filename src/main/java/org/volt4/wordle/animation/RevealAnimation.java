@@ -1,19 +1,23 @@
-package org.volt4.wordle.animations;
+package org.volt4.wordle.animation;
 
 import javafx.animation.AnimationTimer;
 import org.volt4.wordle.TileColor;
-import org.volt4.wordle.WordGrid;
+import org.volt4.wordle.controller.WordGridUIController;
 import org.volt4.wordle.WordleApplication;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Animation for revealing a row of tiles.
+ */
+@Deprecated
 public class RevealAnimation extends AnimationTimer {
 
     // How long the animation takes to complete.
     public static final long ANIMATION_DURATION = 1000;
 
     // Row of cells that reveal.
-    private WordGrid.Cell[] cellRow;
+    private WordGridUIController.Cell[] cellRow;
 
     // Colors to flip to.
     private TileColor[] flipColors;
@@ -28,7 +32,7 @@ public class RevealAnimation extends AnimationTimer {
      * Constructs the animation to work with the row of cells.
      * @param cellRow Row of cells to animate.
      */
-    public RevealAnimation(WordGrid.Cell[] cellRow) {
+    public RevealAnimation(WordGridUIController.Cell[] cellRow) {
         this.cellRow = cellRow;
     }
 

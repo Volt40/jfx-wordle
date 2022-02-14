@@ -1,14 +1,10 @@
 package org.volt4.wordle;
 
-import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.beans.value.WritableValue;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
-import java.util.Timer;
-import java.util.TimerTask;
+import org.volt4.wordle.controller.WordleUIController;
 
 public class WordleApplication extends Application {
 

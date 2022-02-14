@@ -1,10 +1,11 @@
-package org.volt4.wordle;
+package org.volt4.wordle.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import org.volt4.wordle.animations.FlipKeyAnimation;
+import org.volt4.wordle.TileColor;
+import org.volt4.wordle.animation.FlipKeyAnimation;
 
 import java.io.IOException;
 
@@ -14,7 +15,7 @@ import java.io.IOException;
 public class KeyboardUIController extends AnchorPane {
 
     // WordGrid this keyboard is submitting letters to.
-    private WordGrid grid;
+    private WordGridUIController grid;
 
     // Letters
     @FXML private AnchorPane a;
@@ -55,7 +56,7 @@ public class KeyboardUIController extends AnchorPane {
      * Constructs and loads the keybaord.
      * @param grid WordGrid this keyboard is submitting letters to.
      */
-    public KeyboardUIController(WordGrid grid) {
+    public KeyboardUIController(WordGridUIController grid) {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("layouts/Keyboard.fxml"));
         loader.setRoot(this);
         loader.setController(this);

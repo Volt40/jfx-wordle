@@ -1,14 +1,15 @@
-package org.volt4.wordle.animations;
+package org.volt4.wordle.animation;
 
 import javafx.animation.AnimationTimer;
 import org.volt4.wordle.Letters;
-import org.volt4.wordle.WordGrid;
+import org.volt4.wordle.controller.WordGridUIController;
 
 import java.util.concurrent.TimeUnit;
 
 /**
  * Small animation that plays when a cell in populated.
  */
+@Deprecated
 public class PopulateAnimation extends AnimationTimer {
 
     // How long the animation takes to complete.
@@ -18,7 +19,7 @@ public class PopulateAnimation extends AnimationTimer {
     public static final double CELL_GROWTH = .07;
 
     // Cell this animates.
-    private WordGrid.Cell cell;
+    private WordGridUIController.Cell cell;
 
     // Letter that gets populated.
     private Letters letter;
@@ -33,7 +34,7 @@ public class PopulateAnimation extends AnimationTimer {
      * Constructs a PopulateAnimation object that animates the given cell.
      * @param cell Cell to animate.
      */
-    public PopulateAnimation(WordGrid.Cell cell) {
+    public PopulateAnimation(WordGridUIController.Cell cell) {
         this.cell = cell;
     }
 

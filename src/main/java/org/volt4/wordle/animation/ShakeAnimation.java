@@ -1,13 +1,14 @@
-package org.volt4.wordle.animations;
+package org.volt4.wordle.animation;
 
 import javafx.animation.AnimationTimer;
-import org.volt4.wordle.WordGrid;
+import org.volt4.wordle.controller.WordGridUIController;
 
 import java.util.concurrent.TimeUnit;
 
 /**
  * Animation of a row of cells shaking.
  */
+@Deprecated
 public class ShakeAnimation extends AnimationTimer {
 
     // How long the animation takes to complete.
@@ -18,7 +19,7 @@ public class ShakeAnimation extends AnimationTimer {
     public static final double N_SHAKES = 3;
 
     // Row of cells that shake.
-    private WordGrid.Cell[] cellRow;
+    private WordGridUIController.Cell[] cellRow;
 
     // Time the animation starts.
     private long startTime;
@@ -27,7 +28,7 @@ public class ShakeAnimation extends AnimationTimer {
      * Constructs the animation to work with the row of cells.
      * @param cellRow Row of cells to animate.
      */
-    public ShakeAnimation(WordGrid.Cell[] cellRow) {
+    public ShakeAnimation(WordGridUIController.Cell[] cellRow) {
         this.cellRow = cellRow;
     }
 
@@ -59,7 +60,7 @@ public class ShakeAnimation extends AnimationTimer {
      * @param offset Offset to be set.
      */
     private void setOffset(double offset) {
-        for (WordGrid.Cell cell : cellRow)
+        for (WordGridUIController.Cell cell : cellRow)
             cell.getRoot().translateXProperty().set(offset);
     }
 }

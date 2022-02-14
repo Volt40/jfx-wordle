@@ -1,18 +1,21 @@
-package org.volt4.wordle;
+package org.volt4.wordle.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import org.volt4.wordle.animations.FlipTileAnimation;
-import org.volt4.wordle.animations.PopulateAnimation;
-import org.volt4.wordle.animations.RevealAnimation;
-import org.volt4.wordle.animations.ShakeAnimation;
+import org.volt4.wordle.Letters;
+import org.volt4.wordle.TileColor;
+import org.volt4.wordle.WordLists;
+import org.volt4.wordle.animation.FlipTileAnimation;
+import org.volt4.wordle.animation.PopulateAnimation;
+import org.volt4.wordle.animation.RevealAnimation;
+import org.volt4.wordle.animation.ShakeAnimation;
 
 import java.io.IOException;
 
-public class WordGrid extends GridPane {
+public class WordGridUIController extends GridPane {
 
     // Keeps track of where you are typing.
     private int currentRow;
@@ -114,7 +117,7 @@ public class WordGrid extends GridPane {
     /**
      * Constructs a WordGrid object. Loads WordGrid.fxml.
      */
-    public WordGrid() {
+    public WordGridUIController() {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("layouts/WordGrid.fxml"));
         loader.setRoot(this);
         loader.setController(this);

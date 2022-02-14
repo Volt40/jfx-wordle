@@ -1,17 +1,16 @@
-package org.volt4.wordle.animations;
+package org.volt4.wordle.animation;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import org.volt4.wordle.WordleApplication;
 
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 /**
  * Animation of the keyboard comming out.
  */
-public class KeyboardInAnimation extends AnimationTimer {
+@Deprecated
+public class KeyboardOutAnimation extends AnimationTimer {
 
     // Time is takes for this animation to complete.
     public static final long ANIMATION_DURATION = 80;
@@ -33,14 +32,14 @@ public class KeyboardInAnimation extends AnimationTimer {
             startTime = TimeUnit.MILLISECONDS.convert(now, TimeUnit.NANOSECONDS);
         long millisElapsed = TimeUnit.MILLISECONDS.convert(now, TimeUnit.NANOSECONDS) - startTime;
         if (millisElapsed >= ANIMATION_DURATION) {
-            Platform.runLater(() -> WordleApplication.primaryStage.setHeight(450));
+            Platform.runLater(() -> WordleApplication.primaryStage.setHeight(570));
             stop();
             return;
         }
         double position = ((double) millisElapsed / (double) ANIMATION_DURATION);
-        double newHeight = 570 - (position * 120);
+        double newHeight = 450 + (position * 120);
         Platform.runLater(() -> {
-            if (newHeight < WordleApplication.primaryStage.getHeight())
+            if (newHeight > WordleApplication.primaryStage.getHeight())
                 WordleApplication.primaryStage.setHeight(newHeight);
         });
     }

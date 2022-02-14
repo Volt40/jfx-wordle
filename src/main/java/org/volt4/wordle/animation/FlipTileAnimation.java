@@ -1,23 +1,24 @@
-package org.volt4.wordle.animations;
+package org.volt4.wordle.animation;
 
 import javafx.animation.AnimationTimer;
 import javafx.scene.image.ImageView;
 import org.volt4.wordle.Letters;
 import org.volt4.wordle.TileColor;
-import org.volt4.wordle.WordGrid;
+import org.volt4.wordle.controller.WordGridUIController;
 
 import java.util.concurrent.TimeUnit;
 
 /**
  * Animation for flipping the cells.
  */
+@Deprecated
 public class FlipTileAnimation extends AnimationTimer {
 
     // How long the animation takes to complete.
     public static final long ANIMATION_DURATION = 500;
 
     // Cell this animates.
-    private WordGrid.Cell cell;
+    private WordGridUIController.Cell cell;
 
     // Color this flips to.
     private TileColor color;
@@ -34,7 +35,7 @@ public class FlipTileAnimation extends AnimationTimer {
     /**
      * Constructs a FlipAnimation object.
      */
-    public FlipTileAnimation(WordGrid.Cell cell) {
+    public FlipTileAnimation(WordGridUIController.Cell cell) {
         this.cell = cell;
     }
 
