@@ -108,7 +108,7 @@ public class WordGrid extends GridPane {
         hasLost = false;
         for (int i = 0; i < grid.length; i++)
             for (int j = 0; j < grid[i].length; j++)
-                grid[i][j].clear();
+                grid[i][j].clearAnimate();
     }
 
     /**
@@ -172,20 +172,20 @@ public class WordGrid extends GridPane {
             word += grid[currentRow][i].letterStr;
         if (WordLists.guessIsValid(word)) {
             // Flip the tiles.
-            FlipTileAnimation.Colors[] flipColors = new FlipTileAnimation.Colors[5];
+            TileColor[] flipColors = new TileColor[5];
             for (int i = 0; i < 5; i++)
                 if (word.charAt(i) == answer.charAt(i))
-                    flipColors[i] = FlipTileAnimation.Colors.GREEN;
+                    flipColors[i] = TileColor.GREEN;
                 else {
                     boolean letterFound = false;
                     for (int j = 0; j < 5; j++)
                         if (word.charAt(i) == answer.charAt(j)) {
-                            flipColors[i] = FlipTileAnimation.Colors.YELLOW;
+                            flipColors[i] = TileColor.YELLOW;
                             letterFound = true;
                             break;
                         }
                     if (!letterFound)
-                        flipColors[i] = FlipTileAnimation.Colors.GREY;
+                        flipColors[i] = TileColor.LIGHT_GREY;
                 }
             revealAnimations[currentRow].playAnimation(flipColors);
         } else {
@@ -252,6 +252,17 @@ public class WordGrid extends GridPane {
         }
 
         /**
+         * Flips the cell back to blank, used for when the reset button is clicked.
+         */
+        public void clearAnimate() {
+            if (!letterStr.equals("")) {
+                flip.setImg(letter);
+                flip.runAnimation(TileColor.DARK_GREY);
+            }
+            letterStr = "";
+        }
+
+        /**
          * Returns this letter as a string.
          * @return This letter as a string.
          */
@@ -279,7 +290,7 @@ public class WordGrid extends GridPane {
          * Flips the cell to the given color.
          * @param color Color to flip to.
          */
-        public void flip(FlipTileAnimation.Colors color) {
+        public void flip(TileColor color) {
             flip.runAnimation(color);
         }
 

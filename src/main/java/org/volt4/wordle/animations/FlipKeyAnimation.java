@@ -1,6 +1,7 @@
 package org.volt4.wordle.animations;
 
 import javafx.scene.layout.AnchorPane;
+import org.volt4.wordle.TileColor;
 
 public class FlipKeyAnimation extends WAnimation {
 
@@ -8,7 +9,7 @@ public class FlipKeyAnimation extends WAnimation {
     private AnchorPane root;
 
     // Color to flip to.
-    private FlipTileAnimation.Colors color;
+    private TileColor color;
 
     // Used for animation.
     private boolean atMidpoint;
@@ -23,10 +24,25 @@ public class FlipKeyAnimation extends WAnimation {
     }
 
     /**
+     * Returns the color.
+     * @return The color.
+     */
+    public TileColor getColor() {
+        return color;
+    }
+
+    /**
+     * Resets this animation.
+     */
+    public void reset() {
+        color = null;
+    }
+
+    /**
      * Sets the color.
      * @param color Color to be set.
      */
-    public void setColor(FlipTileAnimation.Colors color) {
+    public void setColor(TileColor color) {
         this.color = color;
     }
 
@@ -48,7 +64,11 @@ public class FlipKeyAnimation extends WAnimation {
             if (!atMidpoint) {
                 root.getStyleClass().clear();
                 switch(color) {
-                    case GREY:
+                    case DARK_GREY: // Swapped with LIGHT_GREY
+                        root.getStyleClass().add("keyboard-tile-lightgrey");
+                        reset();
+                        break;
+                    case LIGHT_GREY: // Swapped with DARK_GREY
                         root.getStyleClass().add("keyboard-tile-darkgrey");
                         break;
                     case YELLOW:

@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import org.volt4.wordle.animations.FlipTileAnimation;
 import org.volt4.wordle.animations.FlipKeyAnimation;
 
 import java.io.IOException;
@@ -80,9 +79,11 @@ public class KeyboardUIController extends AnchorPane {
      */
     public void reset() {
         for (int i = 0; i < letters.length; i++) {
+            if (flipped[i]) {
+                flipKeyAnimations[i].setColor(TileColor.DARK_GREY);
+                flipKeyAnimations[i].runAnimation();
+            }
             flipped[i] = false;
-            letters[i].getStyleClass().clear();
-            letters[i].getStyleClass().add("keyboard-tile-lightgrey");
         }
     }
 
@@ -91,12 +92,13 @@ public class KeyboardUIController extends AnchorPane {
      * @param letter Letter to flip.
      * @param color Color to flip to.
      */
-    public void flipLetter(String letter, FlipTileAnimation.Colors color) {
+    public void flipLetter(String letter, TileColor color) {
         int letterIndex = "abcdefghijklmnopqrstuvwxyz".indexOf(letter);
         if (!flipped[letterIndex])
             flipped[letterIndex] = true;
         else
-            return;
+            if (!(flipKeyAnimations[letterIndex].getColor() == TileColor.YELLOW && color == TileColor.GREEN))
+                return;
         FlipKeyAnimation animation = flipKeyAnimations[letterIndex];
         animation.setColor(color);
         animation.runAnimation();

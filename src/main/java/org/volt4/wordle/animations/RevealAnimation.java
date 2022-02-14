@@ -1,6 +1,7 @@
 package org.volt4.wordle.animations;
 
 import javafx.animation.AnimationTimer;
+import org.volt4.wordle.TileColor;
 import org.volt4.wordle.WordGrid;
 import org.volt4.wordle.WordleApplication;
 
@@ -15,7 +16,7 @@ public class RevealAnimation extends AnimationTimer {
     private WordGrid.Cell[] cellRow;
 
     // Colors to flip to.
-    private FlipTileAnimation.Colors[] flipColors;
+    private TileColor[] flipColors;
 
     // Time the animation starts.
     private long startTime;
@@ -34,7 +35,7 @@ public class RevealAnimation extends AnimationTimer {
     /**
      * Plays the animation.
      */
-    public void playAnimation(FlipTileAnimation.Colors[] flipColors) {
+    public void playAnimation(TileColor[] flipColors) {
         startTime = -1;
         this.flipColors = flipColors;
         flipped = new boolean[] {false, false, false, false, false};

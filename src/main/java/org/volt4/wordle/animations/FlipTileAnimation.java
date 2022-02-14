@@ -1,6 +1,9 @@
 package org.volt4.wordle.animations;
 
 import javafx.animation.AnimationTimer;
+import javafx.scene.image.ImageView;
+import org.volt4.wordle.Letters;
+import org.volt4.wordle.TileColor;
 import org.volt4.wordle.WordGrid;
 
 import java.util.concurrent.TimeUnit;
@@ -17,13 +20,16 @@ public class FlipTileAnimation extends AnimationTimer {
     private WordGrid.Cell cell;
 
     // Color this flips to.
-    private Colors color;
+    private TileColor color;
 
     // Time this animation starts.
     private long startTime;
 
     // Used for animation.
     private boolean atMidpoint;
+
+    // Used when reseting.
+    private ImageView letterImg;
 
     /**
      * Constructs a FlipAnimation object.
@@ -33,10 +39,18 @@ public class FlipTileAnimation extends AnimationTimer {
     }
 
     /**
+     * Sets the letter image, this is used for resetting.
+     * @param letterImg
+     */
+    public void setImg(ImageView letterImg) {
+        this.letterImg = letterImg;
+    }
+
+    /**
      * Runs the animation to flip to the desired color.
      * @param color Color to flip to.
      */
-    public void runAnimation(Colors color) {
+    public void runAnimation(TileColor color) {
         this.color = color;
         atMidpoint = false;
         startTime = -1;
@@ -59,8 +73,12 @@ public class FlipTileAnimation extends AnimationTimer {
             if (!atMidpoint) {
                 cell.getRoot().getStyleClass().clear();
                 switch(color) {
-                    case GREY:
+                    case LIGHT_GREY:
                         cell.getRoot().getStyleClass().add("grey-cells");
+                        break;
+                    case DARK_GREY:
+                        cell.getRoot().getStyleClass().add("empty-cells");
+                        letterImg.setImage(Letters.EMPTY.getImage());
                         break;
                     case YELLOW:
                         cell.getRoot().getStyleClass().add("yellow-cells");
@@ -73,13 +91,6 @@ public class FlipTileAnimation extends AnimationTimer {
             }
             cell.getRoot().setRotate(1 + (90 * (ANIMATION_DURATION - millisElapsed) / (ANIMATION_DURATION / 2)));
         }
-    }
-
-    /**
-     * Colors this can flip to.
-     */
-    public enum Colors {
-        GREY, YELLOW, GREEN;
     }
 
 }
