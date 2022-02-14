@@ -10,8 +10,6 @@ import org.volt4.wordle.WordleApplication;
 import org.volt4.wordle.animation.KeyboardInAnimation;
 import org.volt4.wordle.animation.KeyboardOutAnimation;
 import org.volt4.wordle.animation.ResetAnimation;
-import org.volt4.wordle.controller.KeyboardUIController;
-import org.volt4.wordle.controller.WordGridUIController;
 
 import java.io.IOException;
 
@@ -121,5 +119,15 @@ public class WordleUIController extends AnchorPane {
         WordleApplication.primaryStage.setX(event.getScreenX() - offset[0]);
         WordleApplication.primaryStage.setY(event.getScreenY() - offset[1]);
     }
+
+    /**
+     * Consumers for the menubar.
+     */
+    @FXML void onXPressed(MouseEvent event) {event.consume();}
+    @FXML void onXDragged(MouseEvent event) {event.consume();}
+    @FXML void onResetPressed(MouseEvent event) {event.consume();}
+    @FXML void onResetDragged(MouseEvent event) {event.consume();}
+    @FXML void onKeyboardPressed(MouseEvent event) {event.consume();}
+    @FXML void onKeyboardDragged(MouseEvent event) {event.consume();}
 
 }

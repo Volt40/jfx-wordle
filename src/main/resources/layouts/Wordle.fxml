@@ -11,7 +11,7 @@
    <children>
       <AnchorPane layoutX="23.0" layoutY="74.0" onMouseDragged="#onDragBarDragged" onMousePressed="#onDragBarPressed" prefHeight="30.0" prefWidth="200.0" styleClass="drag-bar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane layoutX="101.0" layoutY="-86.0" onMouseClicked="#onClose" prefHeight="200.0" prefWidth="30.0" styleClass="drag-bar-buttons" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane layoutX="101.0" layoutY="-86.0" onMouseClicked="#onClose" onMouseDragged="#onXDragged" onMousePressed="#onXPressed" prefHeight="200.0" prefWidth="30.0" styleClass="drag-bar-buttons" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
                      <image>
@@ -20,7 +20,7 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="151.0" layoutY="-84.0" onMouseClicked="#onReset" prefHeight="200.0" prefWidth="30.0" styleClass="drag-bar-buttons" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane layoutX="151.0" layoutY="-84.0" onMouseClicked="#onReset" onMouseDragged="#onResetDragged" onMousePressed="#onResetPressed" prefHeight="200.0" prefWidth="30.0" styleClass="drag-bar-buttons" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="0.0">
                <children>
                   <ImageView fx:id="resetImage" fitHeight="20.0" fitWidth="20.0" layoutX="-86.0" layoutY="-61.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
                      <image>
@@ -98,7 +98,7 @@
                   </AnchorPane>
                </children>
             </GridPane>
-            <AnchorPane layoutX="168.0" layoutY="-86.0" onMouseClicked="#onKeyboard" prefHeight="200.0" prefWidth="30.0" styleClass="drag-bar-buttons" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane layoutX="168.0" layoutY="-86.0" onMouseClicked="#onKeyboard" onMouseDragged="#onKeyboardDragged" onMousePressed="#onKeyboardPressed" prefHeight="200.0" prefWidth="30.0" styleClass="drag-bar-buttons" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="0.0">
                <children>
                   <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="-86.0" layoutY="-59.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="2.5" AnchorPane.topAnchor="2.5">
                      <image>
