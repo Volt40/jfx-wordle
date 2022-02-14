@@ -2,6 +2,7 @@ package org.volt4.wordle;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.volt4.wordle.controller.WordleUIController;
@@ -19,9 +20,10 @@ public class WordleApplication extends Application {
         WordLists.load();
         Scene scene = new Scene(controller = new WordleUIController());
         scene.getStylesheets().add("wordlestyle.css");
+        scene.setFill(Color.TRANSPARENT);
         scene.setOnKeyPressed(e -> handleKeyPress(e.getCode().getName().toLowerCase()));
         primaryStage.setScene(scene);
-        primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setResizable(false);
         primaryStage.show();
         WordleApplication.primaryStage = primaryStage;
