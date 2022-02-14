@@ -7,6 +7,9 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.volt4.wordle.controller.WordleUIController;
 
+/**
+ * Wordle main application class.
+ */
 public class WordleApplication extends Application {
 
     // Wordle controller.
