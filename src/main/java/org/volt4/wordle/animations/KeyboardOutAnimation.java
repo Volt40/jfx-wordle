@@ -37,7 +37,10 @@ public class KeyboardOutAnimation extends AnimationTimer {
         }
         double position = ((double) millisElapsed / (double) ANIMATION_DURATION);
         double newHeight = 450 + (position * 120);
-        Platform.runLater(() -> WordleApplication.primaryStage.setHeight(newHeight));
+        Platform.runLater(() -> {
+            if (newHeight > WordleApplication.primaryStage.getHeight())
+                WordleApplication.primaryStage.setHeight(newHeight);
+        });
     }
 
 }
