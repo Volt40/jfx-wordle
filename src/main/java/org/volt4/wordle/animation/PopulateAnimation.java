@@ -1,7 +1,9 @@
 package org.volt4.wordle.animation;
 
 import javafx.animation.AnimationTimer;
+import javafx.scene.layout.AnchorPane;
 import org.volt4.wordle.Letters;
+import org.volt4.wordle.WordleApplication;
 import org.volt4.wordle.controller.WordGridUIController;
 
 import java.util.concurrent.TimeUnit;
@@ -13,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 public class PopulateAnimation extends AnimationTimer {
 
     // How long the animation takes to complete.
-    public static final long ANIMATION_DURATION = 80;
+    public static final long ANIMATION_DURATION = 120;
 
     // How big the cell grows.
     public static final double CELL_GROWTH = .07;
@@ -57,22 +59,34 @@ public class PopulateAnimation extends AnimationTimer {
             startTime = TimeUnit.MILLISECONDS.convert(now, TimeUnit.NANOSECONDS);
         long millisElapsed = TimeUnit.MILLISECONDS.convert(now, TimeUnit.NANOSECONDS) - startTime;
         if (millisElapsed >= ANIMATION_DURATION) {
-            cell.getRoot().setScaleX(1);
-            cell.getRoot().setScaleY(1);
+            setScale(1);
             stop();
             return;
         }
         if (millisElapsed <= ANIMATION_DURATION / 2) {
-            cell.getRoot().setScaleX(1 + (CELL_GROWTH * millisElapsed / (ANIMATION_DURATION / 2)));
-            cell.getRoot().setScaleY(1 + (CELL_GROWTH * millisElapsed / (ANIMATION_DURATION / 2)));
+            setScale(1 + (CELL_GROWTH * millisElapsed / (ANIMATION_DURATION / 2)));
         } else {
             if (!atLargest) {
                 cell.setLetterInternal(letter);
                 atLargest = true;
             }
-            cell.getRoot().setScaleX(1 + (CELL_GROWTH * (ANIMATION_DURATION - millisElapsed) / (ANIMATION_DURATION / 2)));
-            cell.getRoot().setScaleY(1 + (CELL_GROWTH * (ANIMATION_DURATION - millisElapsed) / (ANIMATION_DURATION / 2)));
+            setScale(1 + (CELL_GROWTH * (ANIMATION_DURATION - millisElapsed) / (ANIMATION_DURATION / 2)));
         }
+    }
+
+    /**
+     * Sets the scale to the panes.
+     * @param scale Scale to set.
+     */
+    private void setScale(double scale) {
+        cell.getRoot().setScaleX(scale);
+        cell.getRoot().setScaleY(scale);
+        AnchorPane keyboardLetterPane = WordleApplication.getController().getKeyboard().getEmbeddedPane(letter.getLetter());
+        scale -= 1;
+        scale *= 2;
+        scale += 1;
+        keyboardLetterPane.setScaleX(scale);
+        keyboardLetterPane.setScaleY(scale);
     }
 
 }

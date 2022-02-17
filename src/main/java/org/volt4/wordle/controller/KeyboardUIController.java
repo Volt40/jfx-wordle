@@ -89,6 +89,15 @@ public class KeyboardUIController extends AnchorPane {
     }
 
     /**
+     * Returns the AnchorPane that contains the letter given.
+     * @param letter Letter the search for.
+     * @return The AnchorPane that contains the letter given.
+     */
+    public AnchorPane getEmbeddedPane(String letter) {
+        return letters["abcdefghijklmnopqrstuvwxyz".indexOf(letter)];
+    }
+
+    /**
      * Flips this keyboard letter.
      * @param letter Letter to flip.
      * @param color Color to flip to.

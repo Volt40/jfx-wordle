@@ -8,10 +8,7 @@ import javafx.scene.layout.GridPane;
 import org.volt4.wordle.Letters;
 import org.volt4.wordle.TileColor;
 import org.volt4.wordle.WordLists;
-import org.volt4.wordle.animation.FlipTileAnimation;
-import org.volt4.wordle.animation.PopulateAnimation;
-import org.volt4.wordle.animation.RevealAnimation;
-import org.volt4.wordle.animation.ShakeAnimation;
+import org.volt4.wordle.animation.*;
 
 import java.io.IOException;
 
@@ -103,6 +100,7 @@ public class WordGridUIController extends GridPane {
     // Row animations
     private ShakeAnimation[] shakeAnimations;
     private RevealAnimation[] revealAnimations;
+    private WinAnimation[] winAnimations;
 
     public void reset() {
         currentRow = 0;
@@ -142,6 +140,7 @@ public class WordGridUIController extends GridPane {
         // Setup animations.
         shakeAnimations = new ShakeAnimation[] {new ShakeAnimation(grid[0]), new ShakeAnimation(grid[1]), new ShakeAnimation(grid[2]), new ShakeAnimation(grid[3]), new ShakeAnimation(grid[4]), new ShakeAnimation(grid[5])};
         revealAnimations = new RevealAnimation[] {new RevealAnimation(grid[0]), new RevealAnimation(grid[1]),new RevealAnimation(grid[2]),new RevealAnimation(grid[3]), new RevealAnimation(grid[4]), new RevealAnimation(grid[5])};
+        winAnimations = new WinAnimation[] {new WinAnimation(grid[0]), new WinAnimation(grid[1]), new WinAnimation(grid[2]), new WinAnimation(grid[3]), new WinAnimation(grid[4]), new WinAnimation(grid[5])};
     }
 
     /**
@@ -206,6 +205,13 @@ public class WordGridUIController extends GridPane {
     }
 
     /**
+     * Plays the win animation on the current row.
+     */
+    public void playWinAnimation() {
+        winAnimations[currentRow - 1].runAnimation();
+    }
+
+    /**
      * Chooses a new answer.
      */
     private void chooseNewAnswer() {
@@ -232,6 +238,7 @@ public class WordGridUIController extends GridPane {
         // Animations
         private PopulateAnimation populateCell;
         private FlipTileAnimation flip;
+        private BounceAnimation bounce;
 
         public Cell(AnchorPane gridCell, ImageView letter) {
             this.gridCell = gridCell;
@@ -242,6 +249,7 @@ public class WordGridUIController extends GridPane {
             // Create animations.
             populateCell = new PopulateAnimation(this);
             flip = new FlipTileAnimation(this);
+            bounce = new BounceAnimation(gridCell);
         }
 
         /**
@@ -295,6 +303,13 @@ public class WordGridUIController extends GridPane {
          */
         public void flip(TileColor color) {
             flip.runAnimation(color);
+        }
+
+        /**
+         * Runs the bounce animation.
+         */
+        public void bounce() {
+            bounce.runAnimation();
         }
 
         /**

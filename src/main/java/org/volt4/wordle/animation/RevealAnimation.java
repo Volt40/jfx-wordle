@@ -52,6 +52,12 @@ public class RevealAnimation extends AnimationTimer {
             startTime = TimeUnit.MILLISECONDS.convert(now, TimeUnit.NANOSECONDS);
         long millisElapsed = TimeUnit.MILLISECONDS.convert(now, TimeUnit.NANOSECONDS) - startTime;
         if (millisElapsed >= ANIMATION_DURATION) {
+            boolean hasWon = true;
+            for (TileColor color : flipColors)
+                if (color != TileColor.GREEN)
+                    hasWon = false;
+            if (hasWon)
+                WordleApplication.getController().embeddedGrid().playWinAnimation();
             stop();
             return;
         }
