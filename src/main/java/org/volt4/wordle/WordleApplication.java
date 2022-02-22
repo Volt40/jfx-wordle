@@ -45,12 +45,13 @@ public class WordleApplication extends Application {
      * @param key Key that is pressed.
      */
     public void handleKeyPress(String key) {
-        if (key.equals("backspace"))
-            controller.embeddedGrid().deleteLetter();
-        else if (key.equals("enter"))
-            controller.embeddedGrid().enterWord();
-        else if ("abcdefghijklmnopqrstuvwxyz".indexOf(key) != -1)
-            controller.embeddedGrid().inputLetter(key);
+//        if (key.equals("backspace"))
+//            controller.embeddedGrid().deleteLetter();
+//        else if (key.equals("enter"))
+//            controller.embeddedGrid().enterWord();
+//        else if ("abcdefghijklmnopqrstuvwxyz".indexOf(key) != -1)
+//            controller.embeddedGrid().inputLetter(key);
+        AnimationManager.playTilePopulateAnimation(0, 0, Letter.getMatch(key));
     }
 
     public static void main(String[] args) {

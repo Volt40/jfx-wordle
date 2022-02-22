@@ -62,7 +62,9 @@ public class WordleUIController extends AnchorPane {
         keyboard.setLayoutX(0);
         keyboard.setLayoutY(450);
         // Add the grid and keyboard to the layout.
-        getChildren().addAll(wordGridUIController, keyboard);
+        WordGrid wg = new WordGrid();
+        wg.setLayoutY(30);
+        getChildren().addAll(wg, keyboard);
         // Contruct animations.
         inAnimation = new KeyboardInAnimation();
         outAnimation = new KeyboardOutAnimation();

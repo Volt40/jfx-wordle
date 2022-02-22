@@ -5,7 +5,7 @@ import javafx.scene.image.Image;
 /**
  * Enum containing all the letters + empty letter with paths to all the files and related Image objects.
  */
-public enum Letters {
+public enum Letter {
 
     EMPTY("EMPTY", "letters/empty.png"),
     A("a", "letters/a.png"),
@@ -40,8 +40,8 @@ public enum Letters {
      * @param letter
      * @return
      */
-    public static Letters getMatch(String letter) {
-        for (Letters l : values())
+    public static Letter getMatch(String letter) {
+        for (Letter l : values())
             if (l.letter.equals(letter.toLowerCase()))
                 return l;
         return null;
@@ -53,7 +53,7 @@ public enum Letters {
     // The String version of this letter.
     private String letter;
 
-    Letters(String letter, String pathToImg) {
+    Letter(String letter, String pathToImg) {
         this.letter = letter;
         letterImg = new Image(pathToImg);
     }

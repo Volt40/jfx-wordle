@@ -2,7 +2,7 @@ package org.volt4.wordle.animation;
 
 import javafx.animation.AnimationTimer;
 import javafx.scene.layout.AnchorPane;
-import org.volt4.wordle.Letters;
+import org.volt4.wordle.Letter;
 import org.volt4.wordle.WordleApplication;
 import org.volt4.wordle.controller.WordGridUIController;
 
@@ -24,7 +24,7 @@ public class PopulateAnimation extends AnimationTimer {
     private WordGridUIController.Cell cell;
 
     // Letter that gets populated.
-    private Letters letter;
+    private Letter letter;
 
     // Time the animation starts.
     private long startTime;
@@ -44,7 +44,7 @@ public class PopulateAnimation extends AnimationTimer {
      * Runs the animation to populate the given latter.
      * @param letter Letter to populate.
      */
-    public void runAnimation(Letters letter) {
+    public void runAnimation(Letter letter) {
         this.letter = letter;
         atLargest = false;
         startTime = -1;

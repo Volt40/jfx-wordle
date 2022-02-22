@@ -2,7 +2,7 @@ package org.volt4.wordle.animation;
 
 import javafx.animation.AnimationTimer;
 import javafx.scene.image.ImageView;
-import org.volt4.wordle.Letters;
+import org.volt4.wordle.Letter;
 import org.volt4.wordle.TileColor;
 import org.volt4.wordle.controller.WordGridUIController;
 
@@ -79,7 +79,7 @@ public class FlipTileAnimation extends AnimationTimer {
                         break;
                     case DARK_GREY:
                         cell.getRoot().getStyleClass().add("empty-cells");
-                        letterImg.setImage(Letters.EMPTY.getImage());
+                        letterImg.setImage(Letter.EMPTY.getImage());
                         break;
                     case YELLOW:
                         cell.getRoot().getStyleClass().add("yellow-cells");

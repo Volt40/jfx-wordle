@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import org.volt4.wordle.Letters;
+import org.volt4.wordle.Letter;
 import org.volt4.wordle.TileColor;
 import org.volt4.wordle.WordLists;
 import org.volt4.wordle.animation.*;
@@ -113,10 +113,10 @@ public class WordGridUIController extends GridPane {
     }
 
     /**
-     * Constructs a WordGrid object. Loads WordGrid.fxml.
+     * Constructs a WordGrid object. Loads WordGridUI.fxml.
      */
     public WordGridUIController() {
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("layouts/WordGrid.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("layouts/WordGridUI.fxml"));
         loader.setRoot(this);
         loader.setController(this);
         try {
@@ -244,7 +244,7 @@ public class WordGridUIController extends GridPane {
             this.gridCell = gridCell;
             this.letter = letter;
             // Set the letter to blank.
-            letter.setImage(Letters.EMPTY.getImage());
+            letter.setImage(Letter.EMPTY.getImage());
             letterStr = "";
             // Create animations.
             populateCell = new PopulateAnimation(this);
@@ -258,7 +258,7 @@ public class WordGridUIController extends GridPane {
         public void clear() {
             gridCell.getStyleClass().clear();
             gridCell.getStyleClass().add("empty-cells");
-            letter.setImage(Letters.EMPTY.getImage());
+            letter.setImage(Letter.EMPTY.getImage());
             letterStr = "";
         }
 
@@ -294,7 +294,7 @@ public class WordGridUIController extends GridPane {
          * @param letter Letter to populate.
          */
         public void setLetter(String letter) {
-            populateCell.runAnimation(Letters.getMatch(letter));
+            populateCell.runAnimation(Letter.getMatch(letter));
         }
 
         /**
@@ -316,7 +316,7 @@ public class WordGridUIController extends GridPane {
          * Sets the letter image of this cell.
          * @param letter Letter to set.
          */
-        public void setLetterInternal(Letters letter) {
+        public void setLetterInternal(Letter letter) {
             this.letter.setImage(letter.getImage());
             letterStr = letter.getLetter();
         }
