@@ -1,11 +1,11 @@
-package org.volt4.wordle.controller;
+package org.volt4.wordle.archive;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.volt4.wordle.TileColor;
-import org.volt4.wordle.animation.FlipKeyAnimation;
+import org.volt4.wordle.archive.animation.FlipKeyAnimation;
 
 import java.io.IOException;
 

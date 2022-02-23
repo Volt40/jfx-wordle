@@ -1,10 +1,10 @@
-package org.volt4.wordle.animation;
+package org.volt4.wordle.archive.animation;
 
 import javafx.animation.AnimationTimer;
 import javafx.scene.image.ImageView;
 import org.volt4.wordle.Letter;
 import org.volt4.wordle.TileColor;
-import org.volt4.wordle.controller.WordGridUIController;
+import org.volt4.wordle.archive.WordGridUIController;
 
 import java.util.concurrent.TimeUnit;
 

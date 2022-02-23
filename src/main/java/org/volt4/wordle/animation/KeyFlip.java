@@ -1,8 +1,8 @@
-package org.volt4.wordle.animations;
+package org.volt4.wordle.animation;
 
 import org.volt4.wordle.WordleAnimation;
 
-public class KeyboardShow implements WordleAnimation {
+public class KeyFlip implements WordleAnimation {
     @Override
     public void start() {
 

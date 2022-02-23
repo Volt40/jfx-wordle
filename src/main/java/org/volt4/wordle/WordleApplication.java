@@ -5,7 +5,8 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.volt4.wordle.controller.WordleUIController;
+import org.volt4.wordle.archive.WordleUIController;
+import org.volt4.wordle.controller.Wordle;
 
 /**
  * Wordle main application class.
@@ -21,7 +22,8 @@ public class WordleApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         WordLists.load();
-        Scene scene = new Scene(controller = new WordleUIController());
+        controller = new WordleUIController();
+        Scene scene = new Scene(new Wordle());
         scene.getStylesheets().add("wordlestyle.css");
         scene.setFill(Color.TRANSPARENT);
         scene.setOnKeyPressed(e -> handleKeyPress(e.getCode().getName().toLowerCase()));

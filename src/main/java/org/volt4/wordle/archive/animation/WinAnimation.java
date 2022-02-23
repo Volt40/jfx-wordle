@@ -1,7 +1,6 @@
-package org.volt4.wordle.animation;
+package org.volt4.wordle.archive.animation;
 
-import org.volt4.wordle.WordleApplication;
-import org.volt4.wordle.controller.WordGridUIController;
+import org.volt4.wordle.archive.WordGridUIController;
 
 /**
  * Animation of an entire row bouncing when someone wins the game.

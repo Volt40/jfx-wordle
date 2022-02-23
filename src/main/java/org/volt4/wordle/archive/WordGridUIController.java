@@ -1,4 +1,4 @@
-package org.volt4.wordle.controller;
+package org.volt4.wordle.archive;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,7 +8,7 @@ import javafx.scene.layout.GridPane;
 import org.volt4.wordle.Letter;
 import org.volt4.wordle.TileColor;
 import org.volt4.wordle.WordLists;
-import org.volt4.wordle.animation.*;
+import org.volt4.wordle.archive.animation.*;
 
 import java.io.IOException;
 

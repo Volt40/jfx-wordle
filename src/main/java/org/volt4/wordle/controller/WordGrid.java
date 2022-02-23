@@ -19,6 +19,7 @@ public class WordGrid extends GridPane {
      * Constructs a WordGrid and set a parameter.
      */
     public WordGrid() {
+        getStyleClass().add("word-grid");
         tiles = new WordGridTile[N_ROWS][N_COLUMNS];
         for (int i = 0; i < N_ROWS; i++)
             for (int j = 0; j < N_COLUMNS; j++) {

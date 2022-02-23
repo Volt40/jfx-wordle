@@ -1,4 +1,4 @@
-package org.volt4.wordle.animation;
+package org.volt4.wordle.archive.animation;
 
 import javafx.scene.image.ImageView;
 

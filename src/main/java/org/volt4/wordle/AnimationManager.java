@@ -1,7 +1,9 @@
 package org.volt4.wordle;
 
 import javafx.animation.AnimationTimer;
-import org.volt4.wordle.animations.*;
+import javafx.scene.image.ImageView;
+import org.volt4.wordle.animation.*;
+import org.volt4.wordle.controller.KeyboardKey;
 import org.volt4.wordle.controller.WordGridTile;
 
 import java.util.concurrent.TimeUnit;
@@ -74,6 +76,36 @@ public final class AnimationManager {
     }
 
     /**
+     * Inits all key animations.
+     * @param keys Keys to animate.
+     */
+    public static void initKeyAnimations(KeyboardKey[] keys) {
+        // TODO: KEY FLIP ANIMATIONS
+        keyGrowAnimations = new AnimationController[keys.length];
+        keyShrinkAnimations = new AnimationController[keys.length];
+        for (int i = 0; i < keys.length; i++) {
+            keyGrowAnimations[i] = new AnimationController<>(new KeyGrow(keys[i]));
+            keyShrinkAnimations[i] = new AnimationController<>(new KeyShrink(keys[i]));
+        }
+    }
+
+    /**
+     * Inits the keyboard animations.
+     */
+    public static void initKeyboardAnimations() {
+        keyboardShowAnimation = new AnimationController<>(new KeyboardShow());
+        keyboardHideAnimation = new AnimationController<>(new KeyboardHide());
+    }
+
+    /**
+     * Inits all the reset animations.
+     * @param resetImage Reset icon.
+     */
+    public static void initResetAnimations(ImageView resetImage) {
+        resetIconSpinAnimation = new AnimationController<>(new ResetIconSpin(resetImage));
+    }
+
+    /**
      * Plays the tile bounce animation on the given tile.
      * @param row Row of the tile.
      * @param column Column of the tile.
@@ -102,6 +134,43 @@ public final class AnimationManager {
     public static void playTilePopulateAnimation(int row, int column, Letter letter) {
         tilePopulateAnimations[row][column].getType().setLetter(letter);
         tilePopulateAnimations[row][column].play();
+    }
+
+    /**
+     * Plays the key grow animation on the given key.
+     * @param id ID of the Key to animate.
+     */
+    public static void playKeyGrowAnimation(int id) {
+        keyGrowAnimations[id].play();
+    }
+
+    /**
+     * Plays the key shrink animation on the given key.
+     * @param id ID of the Key to animate.
+     */
+    public static void playKeyShrinkAnimation(int id) {
+        keyShrinkAnimations[id].play();
+    }
+
+    /**
+     * Plays the show keyboard animation.
+     */
+    public static void playKeyboardShowAnimation() {
+        keyboardShowAnimation.play();
+    }
+
+    /**
+     * Plays the hide keyboard animation.
+     */
+    public static void playKeyboardHideAnimation() {
+        keyboardHideAnimation.play();
+    }
+
+    /**
+     * Plays the reset icon spin animation.
+     */
+    public static void playResetIconSpinAnimation() {
+        resetIconSpinAnimation.play();
     }
 
     /**

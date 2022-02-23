@@ -8,6 +8,8 @@ import javafx.scene.image.Image;
 public enum Letter {
 
     EMPTY("EMPTY", "letters/empty.png"),
+    ENTER("EMTER", "icons/enter.png"),
+    BACKSPACE("BACKSPACE", "icons/backspace.png"),
     A("a", "letters/a.png"),
     B("b", "letters/b.png"),
     C("c", "letters/c.png"),
@@ -72,6 +74,17 @@ public enum Letter {
      */
     public String getLetter() {
         return letter;
+    }
+
+    /**
+     * Gets the id of the letter. Useful for animation.
+     * @return The id of the letter.
+     */
+    public int ID() {
+        for (int i = 0; i < values().length; i++)
+            if (this == values()[i])
+                return i;
+        return -1;
     }
 
 }

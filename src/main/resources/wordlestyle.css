@@ -81,19 +81,9 @@
 	-fx-background-radius: 4;
 }
 
-.keyboard-tile-lightgrey:hover {
-	-fx-scale-x: 1.1;
-	-fx-scale-y: 1.1;
-}
-
 .keyboard-tile-lightgrey:pressed {
 	-fx-scale-x: 1;
 	-fx-scale-y: 1;
-}
-
-.keyboard-tile-darkgrey:hover {
-	-fx-scale-x: 1.1;
-	-fx-scale-y: 1.1;
 }
 
 .keyboard-tile-darkgrey:pressed {
@@ -101,19 +91,9 @@
 	-fx-scale-y: 1;
 }
 
-.keyboard-tile-green:hover {
-	-fx-scale-x: 1.1;
-	-fx-scale-y: 1.1;
-}
-
 .keyboard-tile-green:pressed {
 	-fx-scale-x: 1;
 	-fx-scale-y: 1;
-}
-
-.keyboard-tile-yellow:hover {
-	-fx-scale-x: 1.1;
-	-fx-scale-y: 1.1;
 }
 
 .keyboard-tile-yellow:pressed {

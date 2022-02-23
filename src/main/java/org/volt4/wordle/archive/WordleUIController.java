@@ -1,4 +1,4 @@
-package org.volt4.wordle.controller;
+package org.volt4.wordle.archive;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -7,9 +7,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.volt4.wordle.WordleApplication;
-import org.volt4.wordle.animation.KeyboardInAnimation;
-import org.volt4.wordle.animation.KeyboardOutAnimation;
-import org.volt4.wordle.animation.ResetAnimation;
+import org.volt4.wordle.archive.animation.KeyboardInAnimation;
+import org.volt4.wordle.archive.animation.KeyboardOutAnimation;
+import org.volt4.wordle.archive.animation.ResetAnimation;
+import org.volt4.wordle.archive.KeyboardUIController;
+import org.volt4.wordle.archive.WordGridUIController;
+import org.volt4.wordle.controller.Keyboard;
 
 import java.io.IOException;
 
@@ -62,9 +65,11 @@ public class WordleUIController extends AnchorPane {
         keyboard.setLayoutX(0);
         keyboard.setLayoutY(450);
         // Add the grid and keyboard to the layout.
-        WordGrid wg = new WordGrid();
-        wg.setLayoutY(30);
-        getChildren().addAll(wg, keyboard);
+        //WordGrid wg = new WordGrid();
+        //wg.setLayoutY(30);
+        Keyboard kb = new Keyboard();
+        kb.setLayoutY(30);
+        getChildren().addAll(kb);
         // Contruct animations.
         inAnimation = new KeyboardInAnimation();
         outAnimation = new KeyboardOutAnimation();

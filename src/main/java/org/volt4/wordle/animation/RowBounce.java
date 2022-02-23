@@ -1,8 +1,8 @@
-package org.volt4.wordle.animations;
+package org.volt4.wordle.animation;
 
 import org.volt4.wordle.WordleAnimation;
 
-public class KeyGrow implements WordleAnimation {
+public class RowBounce implements WordleAnimation {
     @Override
     public void start() {
 
