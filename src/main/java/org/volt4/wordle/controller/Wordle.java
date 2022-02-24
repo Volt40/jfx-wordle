@@ -7,6 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.volt4.wordle.AnimationManager;
+import org.volt4.wordle.Letter;
 import org.volt4.wordle.WordleApplication;
 
 import java.io.IOException;
@@ -55,6 +56,21 @@ public class Wordle extends AnchorPane {
         keyboard.setLayoutY(450);
         // Add children.
         getChildren().addAll(wordgrid, keyboard);
+    }
+
+    /**
+     * Inputs the letter into the grid.
+     * @param letter Letter to be inputted.
+     */
+    public void inputLetter(Letter letter) {
+        wordgrid.inputLetter(letter);
+    }
+
+    /**
+     * Removed the last letter typed.
+     */
+    public void deleteLetter() {
+        wordgrid.deleteLetter();
     }
 
     @FXML

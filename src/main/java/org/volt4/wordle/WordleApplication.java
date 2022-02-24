@@ -15,6 +15,7 @@ public class WordleApplication extends Application {
 
     // Wordle controller.
     private static WordleUIController controller;
+    private static Wordle wordle;
 
     // The state this is on.
     public static Stage primaryStage;
@@ -23,7 +24,7 @@ public class WordleApplication extends Application {
     public void start(Stage primaryStage) throws Exception {
         WordLists.load();
         controller = new WordleUIController();
-        Scene scene = new Scene(new Wordle());
+        Scene scene = new Scene(wordle = new Wordle());
         scene.getStylesheets().add("wordlestyle.css");
         scene.setFill(Color.TRANSPARENT);
         scene.setOnKeyPressed(e -> handleKeyPress(e.getCode().getName().toLowerCase()));
@@ -47,13 +48,12 @@ public class WordleApplication extends Application {
      * @param key Key that is pressed.
      */
     public void handleKeyPress(String key) {
-//        if (key.equals("backspace"))
-//            controller.embeddedGrid().deleteLetter();
-//        else if (key.equals("enter"))
-//            controller.embeddedGrid().enterWord();
-//        else if ("abcdefghijklmnopqrstuvwxyz".indexOf(key) != -1)
-//            controller.embeddedGrid().inputLetter(key);
-        AnimationManager.playTilePopulateAnimation(0, 0, Letter.getMatch(key));
+        if (key.equals("backspace"))
+            wordle.deleteLetter();
+        else if (key.equals("enter"))
+            controller.embeddedGrid().enterWord();
+        else if ("abcdefghijklmnopqrstuvwxyz".indexOf(key) != -1)
+            wordle.inputLetter(Letter.getMatch(key));
     }
 
     public static void main(String[] args) {

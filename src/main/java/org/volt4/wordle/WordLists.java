@@ -27,16 +27,19 @@ public final class WordLists {
         BufferedReader answerReader = new BufferedReader(new FileReader(WordLists.class.getClassLoader().getResource("wordlists/guesses.txt").getPath()));
         String word;
         List<String> answerList = new ArrayList<>();
-        while((word = answerReader.readLine()) != null)
+        guesses = new HashMap<>();
+        while((word = answerReader.readLine()) != null) {
             answerList.add(word);
+            guesses.put(word, word);
+        }
         answers = new String[answerList.size()];
         for (int i = 0; i < answers.length; i++)
             answers[i] = answerList.get(i);
         answerReader.close();
         BufferedReader guessesReader = new BufferedReader(new FileReader(WordLists.class.getClassLoader().getResource("wordlists/answers.txt").getPath()));
-        guesses = new HashMap<>();
         while((word = guessesReader.readLine()) != null)
-            guesses.put(word, word);
+            if (!guesses.containsKey(word))
+                guesses.put(word, word);
         guessesReader.close();
     }
 
