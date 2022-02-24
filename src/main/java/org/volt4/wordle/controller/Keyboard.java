@@ -1,7 +1,5 @@
 package org.volt4.wordle.controller;
 
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import org.volt4.wordle.AnimationManager;
@@ -21,10 +19,15 @@ public class Keyboard extends AnchorPane {
     // All keys this keyboard contains.
     private KeyboardKey[][] keys;
 
+    // WordGrid this interacts with.
+    private WordGrid wordGrid;
+
     /**
      * Constructs a keyboard.
+     * @param wordGrid WordGrid this interacts with.
      */
-    public Keyboard() {
+    public Keyboard(WordGrid wordGrid) {
+        this.wordGrid = wordGrid;
         // Layout the rows.
         keyGrid = new GridPane[3];
         keys = new KeyboardKey[3][];
@@ -68,7 +71,12 @@ public class Keyboard extends AnchorPane {
      * @param key Key to be clicked.
      */
     private void onClick(Letter key) {
-        System.out.println(key.getLetter());
+        if (key == Letter.BACKSPACE)
+            wordGrid.deleteLetter();
+        else if (key == Letter.ENTER)
+            wordGrid.enterWord();
+        else
+            wordGrid.inputLetter(key);
     }
 
 }

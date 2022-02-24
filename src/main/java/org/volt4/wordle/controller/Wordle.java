@@ -50,7 +50,7 @@ public class Wordle extends AnchorPane {
         offset = new double[] {0, 0};
         // Construct keyboard and grid.
         wordgrid = new WordGrid();
-        keyboard = new Keyboard();
+        keyboard = new Keyboard(wordgrid);
         // Set constraints.
         wordgrid.setLayoutY(30);
         keyboard.setLayoutY(450);

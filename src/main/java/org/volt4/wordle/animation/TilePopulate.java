@@ -55,7 +55,6 @@ public class TilePopulate implements WordleAnimation {
         else
             scale = 2 * (1 - position) * GROWTH;
         setScale(1 + scale);
-        System.out.println(scale);
     }
 
     @Override
