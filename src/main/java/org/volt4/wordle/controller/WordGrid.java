@@ -1,10 +1,6 @@
 package org.volt4.wordle.controller;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.scene.layout.GridPane;
-import javafx.util.Duration;
 import org.volt4.wordle.AnimationManager;
 import org.volt4.wordle.Letter;
 import org.volt4.wordle.TileColor;
@@ -31,6 +27,9 @@ public class WordGrid extends GridPane {
     // Wordle answer.
     private String answer;
 
+    // True if the current game has been on.
+    private boolean hasWon;
+
     /**
      * Constructs a WordGrid and set a parameter.
      */
@@ -46,6 +45,7 @@ public class WordGrid extends GridPane {
         currentColumn = 0;
         AnimationManager.initTileAnimations(tiles);
         answer = WordLists.pickRandomAnswer(); // First answer.
+        hasWon = false;
     }
 
     /**
@@ -62,6 +62,7 @@ public class WordGrid extends GridPane {
                     AnimationManager.playTileFlipAnimation(i, j, TileColor.DARK_GREY, true);
         // Pick new answer.
         answer = WordLists.pickRandomAnswer();
+        hasWon = false;
     }
 
     /**
@@ -69,6 +70,8 @@ public class WordGrid extends GridPane {
      * @param letter Letter to be inputted.
      */
     public void inputLetter(Letter letter) {
+        if (hasWon)
+            return;
         if (currentColumn >= N_COLUMNS)
             return;
         AnimationManager.playTilePopulateAnimation(currentRow, currentColumn, letter);
@@ -79,6 +82,8 @@ public class WordGrid extends GridPane {
      * Removed the last letter.
      */
     public void deleteLetter() {
+        if (hasWon)
+            return;
         if (currentColumn > 0)
             currentColumn--;
         tiles[currentRow][currentColumn].setLetter(Letter.EMPTY);
@@ -89,6 +94,8 @@ public class WordGrid extends GridPane {
      * @return True if the answer is correct.
      */
     public boolean enterWord() {
+        if (hasWon)
+            return true;
         // Make sure the word is the correct length.
         if (currentColumn != N_COLUMNS)
             return false;
@@ -101,8 +108,10 @@ public class WordGrid extends GridPane {
             AnimationManager.playRowShakeAnimation(currentRow);
             return false;
         }
-        if (word.equals(answer))
+        if (word.equals(answer)) {
             AnimationManager.playRowBounceAnimation(currentRow, RowReveal.ANIMATION_DURATION + TileBounce.ANIMATION_DURATION);
+            hasWon = true;
+        }
         // Get the colors to flip to.
         TileColor[] colors = new TileColor[N_COLUMNS];
         for (int i = 0; i < N_COLUMNS; i++) {
