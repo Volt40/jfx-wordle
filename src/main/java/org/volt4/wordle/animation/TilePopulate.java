@@ -47,6 +47,8 @@ public class TilePopulate implements WordleAnimation {
     public void animate(double position) {
         if (!atLargest && position >= 0.5) {
             tile.setLetter(letter);
+            tile.getStyleClass().clear();
+            tile.getStyleClass().add("filled-cells");
             atLargest = true;
         }
         double scale;
