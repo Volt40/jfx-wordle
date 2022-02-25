@@ -59,6 +59,14 @@ public class Wordle extends AnchorPane {
     }
 
     /**
+     * Resets the game.
+     */
+    public void reset() {
+        wordgrid.reset();
+        keyboard.reset();
+    }
+
+    /**
      * Inputs the letter into the grid.
      * @param letter Letter to be inputted.
      */
@@ -71,6 +79,13 @@ public class Wordle extends AnchorPane {
      */
     public void deleteLetter() {
         wordgrid.deleteLetter();
+    }
+
+    /**
+     * Attempts to enter the current word.
+     */
+    public void enterWord() {
+        wordgrid.enterWord();
     }
 
     @FXML
@@ -106,6 +121,7 @@ public class Wordle extends AnchorPane {
     @FXML
     void onReset(MouseEvent event) {
         AnimationManager.playResetIconSpinAnimation();
+        reset();
     }
 
     /**

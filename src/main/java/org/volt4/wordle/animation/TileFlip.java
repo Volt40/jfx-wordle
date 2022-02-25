@@ -1,5 +1,6 @@
 package org.volt4.wordle.animation;
 
+import org.volt4.wordle.Letter;
 import org.volt4.wordle.TileColor;
 import org.volt4.wordle.WordleAnimation;
 import org.volt4.wordle.controller.WordGridTile;
@@ -10,13 +11,13 @@ import org.volt4.wordle.controller.WordGridTile;
 public class TileFlip implements WordleAnimation {
 
     // Duration of this animation.
-    private static final long ANIMATION_DURATION = 500;
+    public static final long ANIMATION_DURATION = 500;
 
     // Tile this animates.
     private WordGridTile tile;
 
     // Parameters for animation;
-    private boolean isReseting;
+    private boolean isResetting;
     private boolean atMidpoint;
     private TileColor colorToFlip;
 
@@ -30,10 +31,10 @@ public class TileFlip implements WordleAnimation {
 
     /**
      * Sets whether this is resetting or not.
-     * @param isReseting Whether this is resetting or not.
+     * @param isResetting Whether this is resetting or not.
      */
-    public void isReseting(boolean isReseting) {
-        this.isReseting = isReseting;
+    public void isResetting(boolean isResetting) {
+        this.isResetting = isResetting;
     }
 
     /**
@@ -54,6 +55,8 @@ public class TileFlip implements WordleAnimation {
         if (!atMidpoint && position >= 0.5) {
             tile.getStyleClass().clear();
             tile.getStyleClass().add(colorToFlip.getTileStyleClassName());
+            if (isResetting)
+                tile.setLetter(Letter.EMPTY);
             atMidpoint = true;
         }
         double angle;

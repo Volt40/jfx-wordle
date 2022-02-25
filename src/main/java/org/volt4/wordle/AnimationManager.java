@@ -28,6 +28,7 @@ public final class AnimationManager {
      * - Shrink Key (KeyShrink)
      * - Flip Key (KeyFlip)
      *     - (TileColor) color to flip to.
+     * - Pulse Key (KeyPulse)
      * - Show Keyboard (KeyboardShow)
      * - Hide Keyboard (KeyboardHide)
      * - Shake Row (RowShake)
@@ -47,6 +48,7 @@ public final class AnimationManager {
     private static AnimationController<KeyGrow>[] keyGrowAnimations;
     private static AnimationController<KeyShrink>[] keyShrinkAnimations;
     private static AnimationController<KeyFlip>[] keyFlipAnimations;
+    private static AnimationController<KeyPulse>[] keyPulseAnimations;
     private static AnimationController<KeyboardShow> keyboardShowAnimation;
     private static AnimationController<KeyboardHide> keyboardHideAnimation;
     private static AnimationController<RowShake>[] rowShakeAnimations;
@@ -67,12 +69,19 @@ public final class AnimationManager {
         tileBounceAnimations = new AnimationController[tiles.length][tiles[0].length];
         tileFlipAnimations = new AnimationController[tiles.length][tiles[0].length];
         tilePopulateAnimations = new AnimationController[tiles.length][tiles[0].length];
-        for (int i = 0; i < tiles.length; i++)
+        rowRevealAnimations = new AnimationController[tiles.length];
+        rowShakeAnimations = new AnimationController[tiles.length];
+        rowBounceAnimations = new AnimationController[tiles.length];
+        for (int i = 0; i < tiles.length; i++) {
+            rowRevealAnimations[i] = new AnimationController<>(new RowReveal(i));
+            rowShakeAnimations[i] = new AnimationController<>(new RowShake(tiles[i]));
+            rowBounceAnimations[i] = new AnimationController<>(new RowBounce(i));
             for (int j = 0; j < tiles[0].length; j++) {
                 tileBounceAnimations[i][j] = new AnimationController<>(new TileBounce(tiles[i][j]));
                 tileFlipAnimations[i][j] = new AnimationController<>(new TileFlip(tiles[i][j]));
                 tilePopulateAnimations[i][j] = new AnimationController<>(new TilePopulate(tiles[i][j]));
             }
+        }
     }
 
     /**
@@ -80,12 +89,15 @@ public final class AnimationManager {
      * @param keys Keys to animate.
      */
     public static void initKeyAnimations(KeyboardKey[] keys) {
-        // TODO: KEY FLIP ANIMATIONS
+        keyFlipAnimations = new AnimationController[keys.length];
         keyGrowAnimations = new AnimationController[keys.length];
         keyShrinkAnimations = new AnimationController[keys.length];
+        keyPulseAnimations = new AnimationController[keys.length];
         for (int i = 0; i < keys.length; i++) {
+            keyFlipAnimations[i] = new AnimationController<>(new KeyFlip(keys[i]));
             keyGrowAnimations[i] = new AnimationController<>(new KeyGrow(keys[i]));
             keyShrinkAnimations[i] = new AnimationController<>(new KeyShrink(keys[i]));
+            keyPulseAnimations[i] = new AnimationController<>(new KeyPulse(keys[i]));
         }
     }
 
@@ -120,8 +132,9 @@ public final class AnimationManager {
      * @param column Column of the tile.
      * @param color Color to flip to.
      */
-    public static void playTileFlipAnimation(int row, int column, TileColor color) {
+    public static void playTileFlipAnimation(int row, int column, TileColor color, boolean isResetting) {
         tileFlipAnimations[row][column].getType().setColorToFlip(color);
+        tileFlipAnimations[row][column].getType().isResetting(isResetting);
         tileFlipAnimations[row][column].play();
     }
 
@@ -137,8 +150,18 @@ public final class AnimationManager {
     }
 
     /**
+     * Plays the key flip animate to flip to the given color.
+     * @param id ID of the key to animate.
+     * @param color Color to flip to.
+     */
+    public static void playKeyFlipAnimation(int id, TileColor color) {
+        keyFlipAnimations[id].getType().setColorToFlip(color);
+        keyFlipAnimations[id].play();
+    }
+
+    /**
      * Plays the key grow animation on the given key.
-     * @param id ID of the Key to animate.
+     * @param id ID of the key to animate.
      */
     public static void playKeyGrowAnimation(int id) {
         keyGrowAnimations[id].play();
@@ -146,10 +169,18 @@ public final class AnimationManager {
 
     /**
      * Plays the key shrink animation on the given key.
-     * @param id ID of the Key to animate.
+     * @param id ID of the key to animate.
      */
     public static void playKeyShrinkAnimation(int id) {
         keyShrinkAnimations[id].play();
+    }
+
+    /**
+     * Plays the key pulse animation on the given key.
+     * @param id ID of the key to animate.
+     */
+    public static void playKeyPulseAnimation(int id) {
+        keyPulseAnimations[id].play();
     }
 
     /**
@@ -171,6 +202,34 @@ public final class AnimationManager {
      */
     public static void playResetIconSpinAnimation() {
         resetIconSpinAnimation.play();
+    }
+
+    /**
+     * Plays the row reveal animation on the given row.
+     * @param row Row to reveal.
+     * @param colors Colors to reveal.
+     * @param letters Letters to flip.
+     */
+    public static void playRowRevealAnimation(int row, TileColor[] colors, Letter[] letters) {
+        rowRevealAnimations[row].getType().setColors(colors);
+        rowRevealAnimations[row].getType().setLetters(letters);
+        rowRevealAnimations[row].play();
+    }
+
+    /**
+     * Plays the row shake animation on the given row.
+     * @param row Row to animate.
+     */
+    public static void playRowShakeAnimation(int row) {
+        rowShakeAnimations[row].play();
+    }
+
+    /**
+     * Plays the row bounce animation on the given row.
+     * @param row Row to animate.
+     */
+    public static void playRowBounceAnimation(int row) {
+        rowBounceAnimations[row].play();
     }
 
     /**

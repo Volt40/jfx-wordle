@@ -9,7 +9,7 @@ import org.volt4.wordle.WordleAnimation;
 public class ResetIconSpin implements WordleAnimation {
 
     // Duration of this animation.
-    private static final long ANIMATION_DURATION = 200;
+    public static final long ANIMATION_DURATION = 200;
 
     // Image this animates.
     private ImageView image;

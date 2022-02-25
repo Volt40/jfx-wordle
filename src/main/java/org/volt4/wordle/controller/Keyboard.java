@@ -4,6 +4,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import org.volt4.wordle.AnimationManager;
 import org.volt4.wordle.Letter;
+import org.volt4.wordle.TileColor;
 
 /**
  * Keyboard for wordle.
@@ -64,6 +65,14 @@ public class Keyboard extends AnchorPane {
                 keysList[keys[i][j].getLetter().ID()] = keys[i][j];
             }
         AnimationManager.initKeyAnimations(keysList);
+    }
+
+    /**
+     * Resets the keyboard.
+     */
+    public void reset() {
+        for (int i = 3; i < Letter.values().length; i++)
+            AnimationManager.playKeyFlipAnimation(i, TileColor.DARK_GREY);
     }
 
     /**

@@ -57,7 +57,9 @@ public final class WordLists {
      * @return Random Answer.
      */
     public static String pickRandomAnswer() {
-        return answers[(int) (Math.random() * answers.length) - 1];
+        String newAnswer = answers[(int) (Math.random() * answers.length) - 1];
+        System.out.println(newAnswer); // TODO: remove before final release.
+        return newAnswer;
     }
 
 }

@@ -10,7 +10,7 @@ import org.volt4.wordle.WordleApplication;
 public class KeyboardHide implements WordleAnimation {
 
     // Duration of this animation.
-    private static final long ANIMATION_DURATION = 80;
+    public static final long ANIMATION_DURATION = 80;
 
     @Override
     public void start() {

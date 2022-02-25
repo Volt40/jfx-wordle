@@ -10,7 +10,7 @@ import org.volt4.wordle.controller.WordGridTile;
 public class TilePopulate implements WordleAnimation {
 
     // Duration of this animation.
-    private static final long ANIMATION_DURATION = 120;
+    public static final long ANIMATION_DURATION = 120;
 
     // How big the tiles grow.
     private static final double GROWTH = 0.07;
@@ -54,26 +54,19 @@ public class TilePopulate implements WordleAnimation {
             scale = 2 * position * GROWTH;
         else
             scale = 2 * (1 - position) * GROWTH;
-        setScale(1 + scale);
+        tile.setScaleX(1 + scale);
+        tile.setScaleY(1 + scale);
     }
 
     @Override
     public void end() {
-        setScale(1);
+        tile.setScaleX(1);
+        tile.setScaleY(1);
     }
 
     @Override
     public long getDuration() {
         return ANIMATION_DURATION;
-    }
-
-    /**
-     * Sets the scale of the tiles.
-     * @param scale Scale to set.
-     */
-    private void setScale(double scale) {
-        tile.setScaleX(scale);
-        tile.setScaleY(scale);
     }
 
 }

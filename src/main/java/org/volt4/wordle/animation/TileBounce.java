@@ -9,7 +9,7 @@ import org.volt4.wordle.controller.WordGridTile;
 public class TileBounce implements WordleAnimation {
 
     // Duration of this animation.
-    private static final long ANIMATION_DURATION = 900;
+    public static final long ANIMATION_DURATION = 400;
 
     // How high the tiles bounce.
     private static final double BOUNCE_HEIGHT = 30;
@@ -32,11 +32,6 @@ public class TileBounce implements WordleAnimation {
 
     @Override
     public void animate(double position) {
-        // Small delay letting the last cell flip.
-        if (position < 0.4)
-            return;
-        position -= 0.4;
-        position *= 1 / 0.4;
         position -= 0.25;
         if (position == 0)
             position = 0.0001;

@@ -9,7 +9,7 @@ import org.volt4.wordle.controller.KeyboardKey;
 public class KeyShrink implements WordleAnimation {
 
     // Duration of this animation.
-    private static final long ANIMATION_DURATION = 80;
+    public static final long ANIMATION_DURATION = 80;
 
     // How big the key is when it starts to shrink.
     private static final double GROWTH = 0.14;

@@ -4,24 +4,24 @@ import org.volt4.wordle.WordleAnimation;
 import org.volt4.wordle.controller.KeyboardKey;
 
 /**
- * Animates a key growing.
+ * Animation of a key growing and then shrinking.
  */
-public class KeyGrow implements WordleAnimation {
+public class KeyPulse implements WordleAnimation {
 
     // Duration of this animation.
-    public static final long ANIMATION_DURATION = 80;
+    public static final long ANIMATION_DURATION = 200;
 
     // How big the key grows.
     private static final double GROWTH = 0.14;
 
-    // KeyboardKey this animates.
+    // Key this animates.
     private KeyboardKey key;
 
     /**
-     * Creates a KeyGrow animation that animates the given key.
+     * Constructs the animation on the given key.
      * @param key Key to animate.
      */
-    public KeyGrow(KeyboardKey key) {
+    public KeyPulse(KeyboardKey key) {
         this.key = key;
     }
 
@@ -32,15 +32,19 @@ public class KeyGrow implements WordleAnimation {
 
     @Override
     public void animate(double position) {
-        double scale = 1 + (position * GROWTH);
-        key.setScaleX(scale);
-        key.setScaleY(scale);
+        double scale;
+        if (position < 0.5)
+            scale = 2 * position * GROWTH;
+        else
+            scale = 2 * (1 - position) * GROWTH;
+        key.setScaleX(1 + scale);
+        key.setScaleY(1 + scale);
     }
 
     @Override
     public void end() {
-        key.setScaleX(1 + GROWTH);
-        key.setScaleY(1 + GROWTH);
+        key.setScaleX(1);
+        key.setScaleY(1);
     }
 
     @Override

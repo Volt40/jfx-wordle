@@ -51,9 +51,11 @@ public class WordleApplication extends Application {
         if (key.equals("backspace"))
             wordle.deleteLetter();
         else if (key.equals("enter"))
-            controller.embeddedGrid().enterWord();
-        else if ("abcdefghijklmnopqrstuvwxyz".indexOf(key) != -1)
+            wordle.enterWord();
+        else if ("abcdefghijklmnopqrstuvwxyz".indexOf(key) != -1) {
             wordle.inputLetter(Letter.getMatch(key));
+            AnimationManager.playKeyPulseAnimation(Letter.getMatch(key).ID());
+        }
     }
 
     public static void main(String[] args) {
