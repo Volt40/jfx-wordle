@@ -29,6 +29,7 @@ public class KeyFlip implements WordleAnimation {
      */
     public KeyFlip(KeyboardKey key) {
         this.key = key;
+        colorToFlip = TileColor.DARK_GREY;
     }
 
     /**
