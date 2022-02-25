@@ -41,6 +41,10 @@ public class WordGridTile extends AnchorPane {
     public void setLetter(Letter letter) {
         letterImage.setImage(letter.getImage());
         this.letter = letter;
+        if (letter == Letter.EMPTY) {
+            getStyleClass().clear();
+            getStyleClass().add("empty-cells");
+        }
     }
 
     /**
