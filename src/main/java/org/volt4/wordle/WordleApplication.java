@@ -5,7 +5,6 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.volt4.wordle.archive.WordleUIController;
 import org.volt4.wordle.controller.Wordle;
 
 /**
@@ -14,7 +13,6 @@ import org.volt4.wordle.controller.Wordle;
 public class WordleApplication extends Application {
 
     // Wordle controller.
-    private static WordleUIController controller;
     private static Wordle wordle;
 
     // The state this is on.
@@ -23,7 +21,6 @@ public class WordleApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         WordLists.load();
-        controller = new WordleUIController();
         Scene scene = new Scene(wordle = new Wordle());
         scene.getStylesheets().add("wordlestyle.css");
         scene.setFill(Color.TRANSPARENT);
@@ -33,14 +30,6 @@ public class WordleApplication extends Application {
         primaryStage.setResizable(false);
         primaryStage.show();
         WordleApplication.primaryStage = primaryStage;
-    }
-
-    /**
-     * Returns the controller.
-     * @return The controller.
-     */
-    public static WordleUIController getController() {
-        return controller;
     }
 
     /**

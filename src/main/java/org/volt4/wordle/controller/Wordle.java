@@ -104,7 +104,6 @@ public class Wordle extends AnchorPane {
 
     @FXML
     void onDragBarDragged(MouseEvent event) {
-        System.out.println("dragged");
         WordleApplication.primaryStage.setX(event.getScreenX() - offset[0]);
         WordleApplication.primaryStage.setY(event.getScreenY() - offset[1]);
     }
