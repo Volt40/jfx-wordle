@@ -1,7 +1,11 @@
 package org.volt4.wordle;
 
 import javafx.animation.AnimationTimer;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 import org.volt4.wordle.animation.*;
 import org.volt4.wordle.controller.KeyboardKey;
 import org.volt4.wordle.controller.WordGridTile;
@@ -227,9 +231,10 @@ public final class AnimationManager {
     /**
      * Plays the row bounce animation on the given row.
      * @param row Row to animate.
+     * @param delay Delay before the animation plays.
      */
-    public static void playRowBounceAnimation(int row) {
-        rowBounceAnimations[row].play();
+    public static void playRowBounceAnimation(int row, long delay) {
+        rowBounceAnimations[row].playLater(delay);
     }
 
     /**
@@ -267,6 +272,14 @@ public final class AnimationManager {
             startTime = -1;
             animation.start();
             timer.start();
+        }
+
+        /**
+         * Plays the animation after a delay.
+         * @param delay Delay before the animation plays.
+         */
+        public void playLater(long delay) {
+            Platform.runLater(new Timeline(new KeyFrame(Duration.millis(delay), e -> play()))::play);
         }
 
         /**

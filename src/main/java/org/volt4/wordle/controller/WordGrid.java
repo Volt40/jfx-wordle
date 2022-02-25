@@ -101,10 +101,8 @@ public class WordGrid extends GridPane {
             AnimationManager.playRowShakeAnimation(currentRow);
             return false;
         }
-        if (word.equals(answer)) {
-            final int correctRow = currentRow;
-            Platform.runLater(new Timeline(new KeyFrame(Duration.millis(RowReveal.ANIMATION_DURATION + TileBounce.ANIMATION_DURATION),e -> AnimationManager.playRowBounceAnimation(correctRow)))::play);
-        }
+        if (word.equals(answer))
+            AnimationManager.playRowBounceAnimation(currentRow, RowReveal.ANIMATION_DURATION + TileBounce.ANIMATION_DURATION);
         // Get the colors to flip to.
         TileColor[] colors = new TileColor[N_COLUMNS];
         for (int i = 0; i < N_COLUMNS; i++) {
