@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<fx:root layoutX="-190.0" layoutY="205.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="190.0" styleClass="lose-card" type="AnchorPane" xmlns="http://javafx.com/javafx/13" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text fx:id="titleText" fill="WHITE" layoutX="84.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="THE WORD WAS:" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="13.0">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Text>
+      <Text fx:id="word" fill="WHITE" layoutX="36.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IRATE" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="32.0">
+         <font>
+            <Font name="Arial Bold" size="25.0" />
+         </font>
+      </Text>
+   </children>
+</fx:root>

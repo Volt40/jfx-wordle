@@ -1,12 +1,16 @@
 package org.volt4.wordle.controller;
 
 import javafx.scene.layout.GridPane;
+import javafx.scene.shape.Rectangle;
 import org.volt4.wordle.AnimationManager;
 import org.volt4.wordle.Letter;
 import org.volt4.wordle.TileColor;
 import org.volt4.wordle.WordLists;
 import org.volt4.wordle.animation.RowReveal;
 import org.volt4.wordle.animation.TileBounce;
+import org.volt4.wordle.animation.TileFlip;
+
+import java.awt.*;
 
 /**
  * Represents a wordgrid.
@@ -30,6 +34,9 @@ public class WordGrid extends GridPane {
     // True if the current game has been on.
     private boolean hasWon;
 
+    // True if the current game has been lost.\
+    private boolean hasLost;
+
     /**
      * Constructs a WordGrid and set a parameter.
      */
@@ -41,6 +48,11 @@ public class WordGrid extends GridPane {
                 tiles[i][j] = new WordGridTile();
                 add(tiles[i][j], j, i);
             }
+        // Create clipping pane.
+        Rectangle clip = new Rectangle(70 * N_COLUMNS, 70 * N_ROWS);
+        clip.setLayoutX(getLayoutX());
+        clip.setLayoutY(getLayoutY());
+        setClip(clip);
         currentRow = 0;
         currentColumn = 0;
         AnimationManager.initTileAnimations(tiles);
@@ -60,9 +72,13 @@ public class WordGrid extends GridPane {
             for (int j = 0; j < N_COLUMNS; j++)
                 if (tiles[i][j].getLetter() != Letter.EMPTY)
                     AnimationManager.playTileFlipAnimation(i, j, TileColor.DARK_GREY, true);
+        // Hide the lose card (if the game was lost).
+        if (hasLost)
+            AnimationManager.playLoseCardHideAnimation();
         // Pick new answer.
         answer = WordLists.pickRandomAnswer();
         hasWon = false;
+        hasLost = false;
     }
 
     /**
@@ -96,6 +112,8 @@ public class WordGrid extends GridPane {
     public boolean enterWord() {
         if (hasWon)
             return true;
+        if (hasLost)
+            return false;
         // Make sure the word is the correct length.
         if (currentColumn != N_COLUMNS)
             return false;
@@ -109,7 +127,7 @@ public class WordGrid extends GridPane {
             return false;
         }
         if (word.equals(answer)) {
-            AnimationManager.playRowBounceAnimation(currentRow, RowReveal.ANIMATION_DURATION + TileBounce.ANIMATION_DURATION);
+            AnimationManager.playRowBounceAnimation(currentRow, RowReveal.ANIMATION_DURATION + TileFlip.ANIMATION_DURATION);
             hasWon = true;
         }
         // Get the colors to flip to.
@@ -134,6 +152,11 @@ public class WordGrid extends GridPane {
         // Increment row.
         currentRow++;
         currentColumn = 0;
+        if (currentRow == N_ROWS) {
+            // Game has been lost.
+            hasLost = true;
+            AnimationManager.playLoseCardShowAnimation(answer, RowReveal.ANIMATION_DURATION + TileFlip.ANIMATION_DURATION);
+        }
         return word.equals(answer);
     }
 

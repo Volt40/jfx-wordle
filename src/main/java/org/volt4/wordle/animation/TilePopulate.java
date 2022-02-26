@@ -41,6 +41,7 @@ public class TilePopulate implements WordleAnimation {
     @Override
     public void start() {
         atLargest = false;
+        tile.setLetterInternal(letter);
     }
 
     @Override

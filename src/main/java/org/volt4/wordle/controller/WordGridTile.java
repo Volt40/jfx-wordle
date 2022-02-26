@@ -48,6 +48,14 @@ public class WordGridTile extends AnchorPane {
     }
 
     /**
+     * Only changes the internal letter, not the image.
+     * @param letter Letter to set.
+     */
+    public void setLetterInternal(Letter letter) {
+        this.letter = letter;
+    }
+
+    /**
      * Returns the letter in this tile.
      * @return The letter in this tile.
      */

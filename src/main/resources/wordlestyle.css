@@ -105,3 +105,8 @@
 	-fx-scale-x: 1;
 	-fx-scale-y: 1;
 }
+
+.lose-card {
+    -fx-background-radius: 10;
+    -fx-background-color: #b43a3a;
+}

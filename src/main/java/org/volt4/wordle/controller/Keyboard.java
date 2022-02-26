@@ -2,6 +2,7 @@ package org.volt4.wordle.controller;
 
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.shape.Rectangle;
 import org.volt4.wordle.AnimationManager;
 import org.volt4.wordle.Letter;
 import org.volt4.wordle.TileColor;
@@ -65,6 +66,11 @@ public class Keyboard extends AnchorPane {
                 keysList[keys[i][j].getLetter().ID()] = keys[i][j];
             }
         AnimationManager.initKeyAnimations(keysList);
+        // Create clipping pane.
+        Rectangle clip = new Rectangle(350, 170);
+        clip.setLayoutX(getLayoutX());
+        clip.setLayoutY(getLayoutY());
+        setClip(clip);
     }
 
     /**

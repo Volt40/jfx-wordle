@@ -51,11 +51,14 @@ public class Wordle extends AnchorPane {
         // Construct keyboard and grid.
         wordgrid = new WordGrid();
         keyboard = new Keyboard(wordgrid);
+        // Create lose card.
+        LoseCard loseCard = new LoseCard();
+        AnimationManager.initLoseCardAnimations(loseCard);
         // Set constraints.
         wordgrid.setLayoutY(30);
         keyboard.setLayoutY(450);
         // Add children.
-        getChildren().addAll(wordgrid, keyboard);
+        getChildren().addAll(wordgrid, keyboard, loseCard);
     }
 
     /**

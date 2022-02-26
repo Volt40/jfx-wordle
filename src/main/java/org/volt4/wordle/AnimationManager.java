@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import org.volt4.wordle.animation.*;
 import org.volt4.wordle.controller.KeyboardKey;
+import org.volt4.wordle.controller.LoseCard;
 import org.volt4.wordle.controller.WordGridTile;
 
 import java.util.concurrent.TimeUnit;
@@ -40,6 +41,9 @@ public final class AnimationManager {
      *     (TileColor[]) colors to reveal.
      * - Bounce Row (RowBounce)
      * - Spin Reset Icon (ResetIconSpin)
+     * - Show Lose Card (LoseCardShow)
+     *     (String) correct word.
+     * - Hide Lose Card (LoseCardHide)
      *
      */
 
@@ -59,6 +63,8 @@ public final class AnimationManager {
     private static AnimationController<RowReveal>[] rowRevealAnimations;
     private static AnimationController<RowBounce>[] rowBounceAnimations;
     private static AnimationController<ResetIconSpin> resetIconSpinAnimation;
+    private static AnimationController<LoseCardShow> loseCardShowAnimation;
+    private static AnimationController<LoseCardHide> loseCardHideAnimation;
 
     /**
      * Hides the default constructor as this class should not be instantiated.
@@ -119,6 +125,15 @@ public final class AnimationManager {
      */
     public static void initResetAnimations(ImageView resetImage) {
         resetIconSpinAnimation = new AnimationController<>(new ResetIconSpin(resetImage));
+    }
+
+    /**
+     * Inits all lose card animations.
+     * @param loseCard Lose card to animate.
+     */
+    public static void initLoseCardAnimations(LoseCard loseCard) {
+        loseCardShowAnimation = new AnimationController<>(new LoseCardShow(loseCard));
+        loseCardHideAnimation = new AnimationController<>(new LoseCardHide(loseCard));
     }
 
     /**
@@ -235,6 +250,23 @@ public final class AnimationManager {
      */
     public static void playRowBounceAnimation(int row, long delay) {
         rowBounceAnimations[row].playLater(delay);
+    }
+
+    /**
+     * Plays the lose card show animation with the given word.
+     * @param correctWord Correct word to display.
+     * @param delay Delay before playing the animation.
+     */
+    public static void playLoseCardShowAnimation(String correctWord, long delay) {
+        loseCardShowAnimation.getType().setCorrectWord(correctWord);
+        loseCardShowAnimation.playLater(delay);
+    }
+
+    /**
+     * Plays the lose card hide animation.
+     */
+    public static void playLoseCardHideAnimation() {
+        loseCardHideAnimation.play();
     }
 
     /**
