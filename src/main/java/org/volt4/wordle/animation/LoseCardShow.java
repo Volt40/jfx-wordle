@@ -9,7 +9,7 @@ import org.volt4.wordle.controller.LoseCard;
 public class LoseCardShow implements WordleAnimation {
 
     // Duration of this animation.
-    public static final long ANIMATION_DURATION = 400;
+    public static final long ANIMATION_DURATION = 300;
 
     // Card to animate.
     private LoseCard loseCard;
@@ -42,6 +42,7 @@ public class LoseCardShow implements WordleAnimation {
     @Override
     public void animate(double position) {
         double x = position;
+        x = Math.sqrt(x);
         double res;
         if (x <= 0.75)
             res = ((4 * Math.PI * (x - 0.75)) + 3 * Math.PI) / 9.42524249999;
