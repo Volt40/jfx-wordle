@@ -76,4 +76,5 @@ public class TileFlip implements WordleAnimation {
     public long getDuration() {
         return ANIMATION_DURATION;
     }
+
 }

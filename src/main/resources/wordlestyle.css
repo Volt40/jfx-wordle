@@ -107,6 +107,18 @@
 }
 
 .lose-card {
+	-fx-background-color: #bd362b;
+	-fx-background-radius: 10;
+}
+
+.lose-card {
     -fx-background-radius: 10;
     -fx-background-color: #b43a3a;
+}
+
+.good-job-text {
+	-fx-fill: white;
+	-fx-font-family: ARIAL;
+	-fx-font-size: 40;
+	-fx-font-weight: bold;
 }

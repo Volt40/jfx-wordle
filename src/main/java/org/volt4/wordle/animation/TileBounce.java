@@ -31,6 +31,7 @@ public class TileBounce implements WordleAnimation {
     @Override
     public void start() {
         midBounce = false;
+        tile.toFront();
     }
 
     @Override

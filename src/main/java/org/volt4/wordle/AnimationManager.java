@@ -40,6 +40,7 @@ public final class AnimationManager {
      * - Reveal Row (RowReveal)
      *     (TileColor[]) colors to reveal.
      * - Bounce Row (RowBounce)
+     * - Double Flip Row (RowDoubleFlip)
      * - Spin Reset Icon (ResetIconSpin)
      * - Show Lose Card (LoseCardShow)
      *     (String) correct word.
@@ -62,6 +63,7 @@ public final class AnimationManager {
     private static AnimationController<RowShake>[] rowShakeAnimations;
     private static AnimationController<RowReveal>[] rowRevealAnimations;
     private static AnimationController<RowBounce>[] rowBounceAnimations;
+    private static AnimationController<RowDoubleFlip>[] rowDoubleFlipAnimations;
     private static AnimationController<ResetIconSpin> resetIconSpinAnimation;
     private static AnimationController<LoseCardShow> loseCardShowAnimation;
     private static AnimationController<LoseCardHide> loseCardHideAnimation;
@@ -82,10 +84,12 @@ public final class AnimationManager {
         rowRevealAnimations = new AnimationController[tiles.length];
         rowShakeAnimations = new AnimationController[tiles.length];
         rowBounceAnimations = new AnimationController[tiles.length];
-        for (int i = 0; i < tiles.length; i++) {
+        rowDoubleFlipAnimations = new AnimationController[tiles.length];
+        for (int i = tiles.length - 1; i >= 0; i--) {
             rowRevealAnimations[i] = new AnimationController<>(new RowReveal(i));
             rowShakeAnimations[i] = new AnimationController<>(new RowShake(tiles[i]));
             rowBounceAnimations[i] = new AnimationController<>(new RowBounce(i));
+            rowDoubleFlipAnimations[i] = new AnimationController<>(new RowDoubleFlip(tiles[i]));
             for (int j = 0; j < tiles[0].length; j++) {
                 tileBounceAnimations[i][j] = new AnimationController<>(new TileBounce(tiles[i][j]));
                 tileFlipAnimations[i][j] = new AnimationController<>(new TileFlip(tiles[i][j]));
@@ -250,6 +254,15 @@ public final class AnimationManager {
      */
     public static void playRowBounceAnimation(int row, long delay) {
         rowBounceAnimations[row].playLater(delay);
+    }
+
+    /**
+     * Plays the row merge animation on the given row.
+     * @param row Row to animate.
+     * @param delay Delay before the animation plays.
+     */
+    public static void playRowDoubleFlipAnimation(int row, long delay) {
+        rowDoubleFlipAnimations[row].playLater(delay);
     }
 
     /**

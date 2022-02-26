@@ -17,6 +17,17 @@ import java.io.IOException;
  */
 public class Wordle extends AnchorPane {
 
+    // Singleton for this object.
+    private static Wordle singleton;
+
+    /**
+     * Gets the instance of this Wordle.
+     * @return The instance of this Wordle.
+     */
+    public static Wordle getInstance() {
+        return singleton;
+    }
+
     @FXML
     private ImageView resetImage;
 
@@ -33,6 +44,8 @@ public class Wordle extends AnchorPane {
      * Constructs a Wordle game.
      */
     public Wordle() {
+        // Set singleton.
+        singleton = this;
         // Load the layout.
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("layouts/Wordle.fxml"));
         loader.setRoot(this);

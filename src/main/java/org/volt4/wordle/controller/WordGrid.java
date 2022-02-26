@@ -6,6 +6,7 @@ import org.volt4.wordle.AnimationManager;
 import org.volt4.wordle.Letter;
 import org.volt4.wordle.TileColor;
 import org.volt4.wordle.WordLists;
+import org.volt4.wordle.animation.RowBounce;
 import org.volt4.wordle.animation.RowReveal;
 import org.volt4.wordle.animation.TileBounce;
 import org.volt4.wordle.animation.TileFlip;
@@ -128,6 +129,7 @@ public class WordGrid extends GridPane {
         }
         if (word.equals(answer)) {
             AnimationManager.playRowBounceAnimation(currentRow, RowReveal.ANIMATION_DURATION + TileFlip.ANIMATION_DURATION);
+            AnimationManager.playRowDoubleFlipAnimation(currentRow, RowReveal.ANIMATION_DURATION + TileFlip.ANIMATION_DURATION + RowBounce.ANIMATION_DURATION + TileBounce.ANIMATION_DURATION);
             hasWon = true;
         }
         // Get the colors to flip to.
@@ -152,7 +154,7 @@ public class WordGrid extends GridPane {
         // Increment row.
         currentRow++;
         currentColumn = 0;
-        if (currentRow == N_ROWS) {
+        if (currentRow == N_ROWS && !hasWon) {
             // Game has been lost.
             hasLost = true;
             AnimationManager.playLoseCardShowAnimation(answer, RowReveal.ANIMATION_DURATION + TileFlip.ANIMATION_DURATION);

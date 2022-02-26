@@ -63,4 +63,12 @@ public class WordGridTile extends AnchorPane {
         return letter;
     }
 
+    /**
+     * Returns the ImageView that holds the letter in this tile.
+     * @return The ImageView that holds the letter in this tile.
+     */
+    public ImageView getLetterImage() {
+        return letterImage;
+    }
+
 }

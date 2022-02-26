@@ -39,8 +39,8 @@ public class LoseCard extends AnchorPane {
      * @param correctWord Word to set.
      */
     public void setCorrectWord(String correctWord) {
-        word.setLayoutX((getWidth() / 2) - (word.getLayoutBounds().getWidth() / 2));
         word.setText(correctWord.toUpperCase());
+        word.setLayoutX((getWidth() / 2) - (word.getLayoutBounds().getWidth() / 2));
     }
 
 }
