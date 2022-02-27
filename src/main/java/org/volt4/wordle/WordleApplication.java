@@ -2,6 +2,7 @@ package org.volt4.wordle;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -28,6 +29,7 @@ public class WordleApplication extends Application {
         primaryStage.setScene(scene);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setResizable(false);
+        primaryStage.getIcons().add(new Image("icons/wordle.ico"));
         primaryStage.show();
         WordleApplication.primaryStage = primaryStage;
     }

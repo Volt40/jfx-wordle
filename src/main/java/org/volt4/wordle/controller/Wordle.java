@@ -17,19 +17,11 @@ import java.io.IOException;
  */
 public class Wordle extends AnchorPane {
 
-    // Singleton for this object.
-    private static Wordle singleton;
-
-    /**
-     * Gets the instance of this Wordle.
-     * @return The instance of this Wordle.
-     */
-    public static Wordle getInstance() {
-        return singleton;
-    }
-
     @FXML
     private ImageView resetImage;
+
+    @FXML
+    private ImageView settingsImage;
 
     // WordGrid the game is played on.
     private WordGrid wordgrid;
@@ -44,8 +36,6 @@ public class Wordle extends AnchorPane {
      * Constructs a Wordle game.
      */
     public Wordle() {
-        // Set singleton.
-        singleton = this;
         // Load the layout.
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("layouts/Wordle.fxml"));
         loader.setRoot(this);
@@ -139,6 +129,16 @@ public class Wordle extends AnchorPane {
         reset();
     }
 
+    @FXML
+    void onMinimize(MouseEvent event) {
+        WordleApplication.primaryStage.setIconified(true);
+    }
+
+    @FXML
+    void onSettings(MouseEvent event) {
+        // TODO
+    }
+
     /**
      * Consumers for the menubar.
      */
@@ -148,5 +148,9 @@ public class Wordle extends AnchorPane {
     @FXML void onResetDragged(MouseEvent event) {event.consume();}
     @FXML void onKeyboardPressed(MouseEvent event) {event.consume();}
     @FXML void onKeyboardDragged(MouseEvent event) {event.consume();}
+    @FXML void onMinimizePressed(MouseEvent event) {event.consume();}
+    @FXML void onMinimizeDragged(MouseEvent event) {event.consume();}
+    @FXML void onSettingsPressed(MouseEvent event) {event.consume();}
+    @FXML void onSettingsDragged(MouseEvent event) {event.consume();}
 
 }

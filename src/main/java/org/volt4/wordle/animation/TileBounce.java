@@ -17,9 +17,6 @@ public class TileBounce implements WordleAnimation {
     // Tile this animates.
     private WordGridTile tile;
 
-    // Used for animation.
-    private boolean midBounce;
-
     /**
      * Creates the animation on the given tile.
      * @param tile Tile to animate.
@@ -30,17 +27,11 @@ public class TileBounce implements WordleAnimation {
 
     @Override
     public void start() {
-        midBounce = false;
         tile.toFront();
     }
 
     @Override
     public void animate(double position) {
-        if (position >= 0.75 && !midBounce) {
-            tile.getStyleClass().clear();
-            tile.getStyleClass().add("correct-green-cells");
-            midBounce = true;
-        }
         position -= 0.25;
         if (position == 0)
             position = 0.0001;
