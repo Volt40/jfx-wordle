@@ -63,7 +63,7 @@ public class Wordle extends AnchorPane {
         Settings settings = new Settings();
         settings.setLayoutY(30);
         settings.setLayoutX(350);
-        AnimationManager.initSettingsAnimations(settings);
+        AnimationManager.initSettingsAnimations(settings, settingsImage);
         // Set constraints.
         wordgrid.setLayoutY(30);
         keyboard.setLayoutY(450);
@@ -144,10 +144,13 @@ public class Wordle extends AnchorPane {
     @FXML
     void onSettings(MouseEvent event) {
         settingsVisable = !settingsVisable;
-        if (settingsVisable)
+        if (settingsVisable) {
             AnimationManager.playSettingsShowAnimation();
-        else
+            AnimationManager.playSpinSettingsIconAnimation();
+        } else {
             AnimationManager.playSettingsHideAnimation();
+            AnimationManager.stopSpinSettingsIconAnimation();
+        }
     }
 
     /**

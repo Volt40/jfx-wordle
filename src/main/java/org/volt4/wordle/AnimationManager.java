@@ -43,6 +43,7 @@ public final class AnimationManager {
      * - Bounce Row (RowBounce)
      * - Double Flip Row (RowDoubleFlip)
      * - Spin Reset Icon (ResetIconSpin)
+     * - Spin Settings Icon (SettingsIconSpin)
      * - Show Lose Card (LoseCardShow)
      *     (String) correct word.
      * - Hide Lose Card (LoseCardHide)
@@ -68,6 +69,7 @@ public final class AnimationManager {
     private static AnimationController<RowBounce>[] rowBounceAnimations;
     private static AnimationController<RowDoubleFlip>[] rowDoubleFlipAnimations;
     private static AnimationController<ResetIconSpin> resetIconSpinAnimation;
+    private static AnimationController<SettingsIconSpin> settingsIconSpinAnimation;
     private static AnimationController<LoseCardShow> loseCardShowAnimation;
     private static AnimationController<LoseCardHide> loseCardHideAnimation;
     private static AnimationController<SettingsShow> settingsShowAnimation;
@@ -132,9 +134,10 @@ public final class AnimationManager {
      * Inits the settings animations.
      * @param settings
      */
-    public static void initSettingsAnimations(Settings settings) {
+    public static void initSettingsAnimations(Settings settings, ImageView icon) {
         settingsShowAnimation = new AnimationController<>(new SettingsShow(settings));
         settingsHideAnimation = new AnimationController<>(new SettingsHide(settings));
+        settingsIconSpinAnimation = new AnimationController<>(new SettingsIconSpin(icon));
     }
 
     /**
@@ -311,6 +314,20 @@ public final class AnimationManager {
     }
 
     /**
+     * Plays the spin settings animation.
+     */
+    public static void playSpinSettingsIconAnimation() {
+        settingsIconSpinAnimation.play();
+    }
+
+    /**
+     * Plays the spin settings animation.
+     */
+    public static void stopSpinSettingsIconAnimation() {
+        settingsIconSpinAnimation.stop();
+    }
+
+    /**
      * Controls a WordleAnimation.
      */
     private static class AnimationController<T extends WordleAnimation> {
@@ -353,6 +370,14 @@ public final class AnimationManager {
          */
         public void playLater(long delay) {
             Platform.runLater(new Timeline(new KeyFrame(Duration.millis(delay), e -> play()))::play);
+        }
+
+        /**
+         * Stops the animation.
+         */
+        public void stop() {
+            animation.end();
+            timer.stop();
         }
 
         /**
