@@ -29,7 +29,7 @@ public class WordleApplication extends Application {
         primaryStage.setScene(scene);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setResizable(false);
-        primaryStage.getIcons().add(new Image("icons/wordle.ico"));
+        primaryStage.getIcons().add(new Image("icons/wordle.png"));
         primaryStage.show();
         WordleApplication.primaryStage = primaryStage;
     }
