@@ -24,7 +24,7 @@ public final class WordLists {
      */
     public static void load() throws IOException {
         // Load answers.
-        BufferedReader answerReader = new BufferedReader(new FileReader(WordLists.class.getClassLoader().getResource("wordlists/guesses.txt").getPath()));
+        BufferedReader answerReader = new BufferedReader(new FileReader(WordLists.class.getClassLoader().getResource("wordlists/answers.txt").getPath()));
         String word;
         List<String> answerList = new ArrayList<>();
         guesses = new HashMap<>();
@@ -36,7 +36,7 @@ public final class WordLists {
         for (int i = 0; i < answers.length; i++)
             answers[i] = answerList.get(i);
         answerReader.close();
-        BufferedReader guessesReader = new BufferedReader(new FileReader(WordLists.class.getClassLoader().getResource("wordlists/answers.txt").getPath()));
+        BufferedReader guessesReader = new BufferedReader(new FileReader(WordLists.class.getClassLoader().getResource("wordlists/guesses.txt").getPath()));
         while((word = guessesReader.readLine()) != null)
             if (!guesses.containsKey(word))
                 guesses.put(word, word);
