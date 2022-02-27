@@ -3,13 +3,13 @@ package org.volt4.wordle;
 import javafx.scene.image.Image;
 
 /**
- * Enum containing all the letters + empty letter with paths to all the files and related Image objects.
+ * Enum containing all the letters + empty, backspace and enter letter with paths to all the files and related Image objects.
  */
 public enum Letter {
 
     EMPTY("EMPTY", "letters/empty.png"),
-    ENTER("EMTER", "icons/enter.png"),
-    BACKSPACE("BACKSPACE", "icons/backspace.png"),
+    ENTER("EMTER", "letters/enter.png"),
+    BACKSPACE("BACKSPACE", "letters/backspace.png"),
     A("a", "letters/a.png"),
     B("b", "letters/b.png"),
     C("c", "letters/c.png"),
