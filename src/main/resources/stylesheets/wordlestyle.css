@@ -1,10 +1,10 @@
 .word-grid {
-	-fx-background-color: #121213;
+	-fx-background-color: -color-a;
 	-fx-background-radius: 10 10 5 5;
 }
 
 .word-grid .empty-cells {
-	-fx-border-color: #3A3A3C;
+	-fx-border-color: -color-b;
 	-fx-border-width: 1.7;
 	-fx-border-insets: 1.4;
 }
@@ -16,72 +16,72 @@
 }
 
 .word-grid .grey-cells {
-	-fx-background-color: #3A3A3C;
+	-fx-background-color: -color-b;
 	-fx-background-insets: 1.4;
 }
 
 .word-grid .yellow-cells {
-	-fx-background-color: #B49F3A;
+	-fx-background-color: -incorrect-color;
 	-fx-background-insets: 1.4;
 }
 
 .word-grid .green-cells {
-	-fx-background-color: #538D4E;
+	-fx-background-color: -correct-color;
 	-fx-background-insets: 1.4;
 }
 
 .word-grid .correct-green-cells {
-	-fx-background-color: #538D4E;
+	-fx-background-color: -correct-color;
 	-fx-background-insets: 1.4 0 1.4 0;
 }
 
 .drag-bar {
-	-fx-background-color: #2b2b2b;
+	-fx-background-color: -color-c;
 	-fx-background-radius: 10 10 0 0;
 }
 
 .title-tiles {
-	-fx-background-color: #538D4E;
+	-fx-background-color: -correct-color;
 	-fx-background-insets: 3;
 	-fx-background-radius: 5;
 }
 
 .drag-bar-buttons {
-	-fx-background-color: #2b2b2b;
+	-fx-background-color: -color-c;
 	-fx-background-insets: 0;
 	-fx-background-radius: 10;
 }
 
 .drag-bar-buttons:hover {
-	-fx-background-color: #3A3A3C;
+	-fx-background-color: -color-b;
 	-fx-background-insets: 1.5;
 }
 
 .drag-bar-buttons:pressed {
-	-fx-background-color: #515154;
+	-fx-background-color: -color-d;
 	-fx-background-insets: 1.5;
 }
 
 .keyboard-tile-lightgrey {
-	-fx-background-color: #3A3A3C;
+	-fx-background-color: -color-b;
 	-fx-background-insets: 2.5;
 	-fx-background-radius: 4;
 }
 
 .keyboard-tile-darkgrey {
-	-fx-background-color: #121213;
+	-fx-background-color: -color-a;
 	-fx-background-insets: 3;
 	-fx-background-radius: 4;
 }
 
 .keyboard-tile-green {
-	-fx-background-color: #538D4E;
+	-fx-background-color: -correct-color;
 	-fx-background-insets: 3;
 	-fx-background-radius: 4;
 }
 
 .keyboard-tile-yellow {
-	-fx-background-color: #B49F3A;
+	-fx-background-color: -incorrect-color;
 	-fx-background-insets: 3;
 	-fx-background-radius: 4;
 }
@@ -107,17 +107,12 @@
 }
 
 .lose-card {
-	-fx-background-color: #bd362b;
-	-fx-background-radius: 10;
-}
-
-.lose-card {
     -fx-background-radius: 10;
     -fx-background-color: #b43a3a;
 }
 
 .good-job-text {
-	-fx-fill: white;
+	-fx-fill: -c-base;
 	-fx-font-family: ARIAL;
 	-fx-font-size: 40;
 	-fx-font-weight: bold;
@@ -129,12 +124,12 @@
 }
 
 .settings-text {
-	-fx-fill: white;
+	-fx-fill: -c-base;
 	-fx-font-family: Futura;
 }
 
 .settings-text .settings-title {
-	-fx-fill: white;
+	-fx-fill: -c-base;
 	-fx-font-family: ARIAL;
 	-fx-font-weight: bold;
 }
@@ -148,12 +143,12 @@
 }
 
 .settings-info-buttons {
-	-fx-background-color: #2b2b2b;
+	-fx-background-color: -color-c;
 	-fx-background-radius: 15;
 }
 
 .settings-info-buttons:hover {
-	-fx-border-color: white;
+	-fx-border-color: -c-base;
 	-fx-border-width: 2;
 	-fx-border-insets: -2;
 	-fx-border-radius: 15;
@@ -165,11 +160,11 @@
 }
 
 .settings-toggle-on {
-	-fx-background-color: #538D4E;
+	-fx-background-color: -correct-color;
 	-fx-background-radius: 10;
 }
 
 .settings-toggle-handle {
-	-fx-background-color: white;
+	-fx-background-color: -c-base;
 	-fx-background-radius: 8;
 }

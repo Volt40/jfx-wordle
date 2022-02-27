@@ -3,6 +3,8 @@ package org.volt4.wordle.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
+import org.volt4.wordle.WordleApplication;
+import org.volt4.wordle.WordleTheme;
 
 import java.io.IOException;
 
@@ -44,7 +46,7 @@ public class Settings extends AnchorPane {
      * @param state Attribute to set.
      */
     private void setDarkMode(boolean state) {
-        System.out.println("Dark Mode: " + state);
+        WordleApplication.initTheme(state ? WordleTheme.DARK : WordleTheme.LIGHT);
     }
 
     /**
@@ -52,7 +54,7 @@ public class Settings extends AnchorPane {
      * @param state Attribute to set.
      */
     private void setHardMode(boolean state) {
-        System.out.println("Hard Mode: " + state);
+        // TODO
     }
 
     /**
@@ -60,7 +62,7 @@ public class Settings extends AnchorPane {
      * @param state Attribute to set.
      */
     private void setHighContrastMode(boolean state) {
-        System.out.println("High Contrast Mode: " + state);
+        WordleApplication.initTheme(state ? WordleTheme.HIGH_CONTRAST : WordleTheme.LOW_CONTRAST);
     }
 
     /**
@@ -68,7 +70,7 @@ public class Settings extends AnchorPane {
      * @param state Attribute to set.
      */
     private void setDailyMode(boolean state) {
-        System.out.println("Daily Mode: " + state);
+        // TODO
     }
 
     /**
@@ -76,7 +78,7 @@ public class Settings extends AnchorPane {
      * @param state Attribute to set.
      */
     private void setHelpfulKeyboard(boolean state) {
-        System.out.println("Helpful Keyboard: " + state);
+        // TODO
     }
 
 }

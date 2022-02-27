@@ -3,6 +3,7 @@ package org.volt4.wordle;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -16,14 +17,20 @@ public class WordleApplication extends Application {
     // Wordle controller.
     private static Wordle wordle;
 
-    // The state this is on.
+    // The stage this is on.
     public static Stage primaryStage;
+
+    // Wordle scene.
+    private static Scene scene;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         WordLists.load();
-        Scene scene = new Scene(wordle = new Wordle());
-        scene.getStylesheets().add("wordlestyle.css");
+        scene = new Scene(new AnchorPane()); // Workaround, might remove later.
+        scene.getStylesheets().add("stylesheets/wordlestyle.css");
+        scene.getStylesheets().add(WordleTheme.DARK.pathToCss());
+        scene.getStylesheets().add(WordleTheme.LOW_CONTRAST.pathToCss());
+        scene.setRoot(wordle = new Wordle());
         scene.setFill(Color.TRANSPARENT);
         scene.setOnKeyPressed(e -> handleKeyPress(e.getCode().getName().toLowerCase()));
         primaryStage.setScene(scene);
@@ -32,6 +39,14 @@ public class WordleApplication extends Application {
         primaryStage.getIcons().add(new Image("icons/wordle.png"));
         primaryStage.show();
         WordleApplication.primaryStage = primaryStage;
+    }
+
+    /**
+     * Inits the wordle theme.
+     * @param theme Theme to init.
+     */
+    public static void initTheme(WordleTheme theme) {
+        scene.getStylesheets().set(theme.getStylesheetIndex(), theme.pathToCss());
     }
 
     /**
