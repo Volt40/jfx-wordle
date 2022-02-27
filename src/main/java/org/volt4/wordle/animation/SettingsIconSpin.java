@@ -34,7 +34,7 @@ public class SettingsIconSpin implements WordleAnimation {
 
     @Override
     public void end() {
-        icon.setRotate(0);
+
     }
 
     @Override
