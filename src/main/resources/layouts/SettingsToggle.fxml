@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+
+<fx:root onMouseClicked="#onToggle" prefHeight="20.0" prefWidth="35.0" styleClass="settings-toggle-off" type="AnchorPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane fx:id="handle" layoutX="2.0" layoutY="2.0" prefHeight="16.0" prefWidth="16.0" styleClass="settings-toggle-handle" />
+   </children>
+</fx:root>

@@ -122,3 +122,54 @@
 	-fx-font-size: 40;
 	-fx-font-weight: bold;
 }
+
+.settings {
+	-fx-background-color: #333333;
+	-fx-background-radius: 0 0 5 5;
+}
+
+.settings-text {
+	-fx-fill: white;
+	-fx-font-family: Futura;
+}
+
+.settings-text .settings-title {
+	-fx-fill: white;
+	-fx-font-family: ARIAL;
+	-fx-font-weight: bold;
+}
+
+.settings .list-dark {
+	-fx-background-color: #3d3d3d;
+}
+
+.settings .list-light {
+	-fx-background-color: #474747;
+}
+
+.settings-info-buttons {
+	-fx-background-color: #2b2b2b;
+	-fx-background-radius: 15;
+}
+
+.settings-info-buttons:hover {
+	-fx-border-color: white;
+	-fx-border-width: 2;
+	-fx-border-insets: -2;
+	-fx-border-radius: 15;
+}
+
+.settings-toggle-off {
+	-fx-background-color: #757575;
+	-fx-background-radius: 10;
+}
+
+.settings-toggle-on {
+	-fx-background-color: #538D4E;
+	-fx-background-radius: 10;
+}
+
+.settings-toggle-handle {
+	-fx-background-color: white;
+	-fx-background-radius: 8;
+}

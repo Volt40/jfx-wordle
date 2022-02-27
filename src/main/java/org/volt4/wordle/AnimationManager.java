@@ -9,6 +9,7 @@ import javafx.util.Duration;
 import org.volt4.wordle.animation.*;
 import org.volt4.wordle.controller.KeyboardKey;
 import org.volt4.wordle.controller.LoseCard;
+import org.volt4.wordle.controller.Settings;
 import org.volt4.wordle.controller.WordGridTile;
 
 import java.util.concurrent.TimeUnit;
@@ -45,6 +46,8 @@ public final class AnimationManager {
      * - Show Lose Card (LoseCardShow)
      *     (String) correct word.
      * - Hide Lose Card (LoseCardHide)
+     * - Show Settings (SettingsShow)
+     * - Hide Settings (SettingsHide)
      *
      */
 
@@ -67,6 +70,8 @@ public final class AnimationManager {
     private static AnimationController<ResetIconSpin> resetIconSpinAnimation;
     private static AnimationController<LoseCardShow> loseCardShowAnimation;
     private static AnimationController<LoseCardHide> loseCardHideAnimation;
+    private static AnimationController<SettingsShow> settingsShowAnimation;
+    private static AnimationController<SettingsHide> settingsHideAnimation;
 
     /**
      * Hides the default constructor as this class should not be instantiated.
@@ -121,6 +126,15 @@ public final class AnimationManager {
     public static void initKeyboardAnimations() {
         keyboardShowAnimation = new AnimationController<>(new KeyboardShow());
         keyboardHideAnimation = new AnimationController<>(new KeyboardHide());
+    }
+
+    /**
+     * Inits the settings animations.
+     * @param settings
+     */
+    public static void initSettingsAnimations(Settings settings) {
+        settingsShowAnimation = new AnimationController<>(new SettingsShow(settings));
+        settingsHideAnimation = new AnimationController<>(new SettingsHide(settings));
     }
 
     /**
@@ -280,6 +294,20 @@ public final class AnimationManager {
      */
     public static void playLoseCardHideAnimation() {
         loseCardHideAnimation.play();
+    }
+
+    /**
+     * Plays the settings show animation.
+     */
+    public static void playSettingsShowAnimation() {
+        settingsShowAnimation.play();
+    }
+
+    /**
+     * Plays the settings hide animation.
+     */
+    public static void playSettingsHideAnimation() {
+        settingsHideAnimation.play();
     }
 
     /**

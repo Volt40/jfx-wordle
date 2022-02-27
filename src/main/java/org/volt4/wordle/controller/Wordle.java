@@ -31,6 +31,7 @@ public class Wordle extends AnchorPane {
 
     // Used for animation.
     private boolean keyboardHidden;
+    private boolean settingsVisable;
 
     /**
      * Constructs a Wordle game.
@@ -47,6 +48,7 @@ public class Wordle extends AnchorPane {
         }
         // Setup animations.
         keyboardHidden = true;
+        settingsVisable = false;
         AnimationManager.initKeyboardAnimations();
         AnimationManager.initResetAnimations(resetImage);
         // Setup offsets.
@@ -57,11 +59,16 @@ public class Wordle extends AnchorPane {
         // Create lose card.
         LoseCard loseCard = new LoseCard();
         AnimationManager.initLoseCardAnimations(loseCard);
+        // Create settings window.
+        Settings settings = new Settings();
+        settings.setLayoutY(30);
+        settings.setLayoutX(350);
+        AnimationManager.initSettingsAnimations(settings);
         // Set constraints.
         wordgrid.setLayoutY(30);
         keyboard.setLayoutY(450);
         // Add children.
-        getChildren().addAll(wordgrid, keyboard, loseCard);
+        getChildren().addAll(wordgrid, keyboard, loseCard, settings);
     }
 
     /**
@@ -136,7 +143,11 @@ public class Wordle extends AnchorPane {
 
     @FXML
     void onSettings(MouseEvent event) {
-        // TODO
+        settingsVisable = !settingsVisable;
+        if (settingsVisable)
+            AnimationManager.playSettingsShowAnimation();
+        else
+            AnimationManager.playSettingsHideAnimation();
     }
 
     /**

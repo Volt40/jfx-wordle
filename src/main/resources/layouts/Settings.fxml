@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="350.0" styleClass="settings" type="AnchorPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text layoutX="117.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="SETTINGS" AnchorPane.topAnchor="10.0">
+         <font>
+            <Font name="Arial Bold" size="23.0" />
+         </font>
+      </Text>
+      <GridPane layoutX="75.0" layoutY="67.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="50.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <AnchorPane fx:id="darkModePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 10 10 0 0;" styleClass="list-dark">
+               <children>
+                  <Text layoutX="14.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Dark Mode" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <AnchorPane layoutX="62.0" layoutY="-85.0" prefHeight="15.0" prefWidth="15.0" styleClass="settings-info-buttons" AnchorPane.leftAnchor="95.0" AnchorPane.topAnchor="7.5">
+                     <children>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <image>
+                              <Image url="@../icons/info.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="hardModePane" prefHeight="200.0" prefWidth="200.0" styleClass="list-light" GridPane.rowIndex="1">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Hard Mode" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <AnchorPane prefHeight="15.0" prefWidth="15.0" styleClass="settings-info-buttons" AnchorPane.leftAnchor="95.0" AnchorPane.topAnchor="7.5">
+                     <children>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <image>
+                              <Image url="@../icons/info.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="highContrastModePane" prefHeight="200.0" prefWidth="200.0" styleClass="list-dark" GridPane.rowIndex="2">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="High Contrast Mode" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <AnchorPane prefHeight="15.0" prefWidth="15.0" styleClass="settings-info-buttons" AnchorPane.leftAnchor="154.0" AnchorPane.topAnchor="7.5">
+                     <children>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <image>
+                              <Image url="@../icons/info.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="DailyModePane" prefHeight="200.0" prefWidth="200.0" styleClass="list-light" GridPane.rowIndex="3">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Daily Mode" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <AnchorPane prefHeight="15.0" prefWidth="15.0" styleClass="settings-info-buttons" AnchorPane.leftAnchor="95.0" AnchorPane.topAnchor="7.5">
+                     <children>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <image>
+                              <Image url="@../icons/info.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="helpfulKeyboardPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 0 0 10 10;" styleClass="list-dark" GridPane.rowIndex="4">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Helpful Keyboard" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <AnchorPane prefHeight="15.0" prefWidth="15.0" styleClass="settings-info-buttons" AnchorPane.leftAnchor="136.0" AnchorPane.topAnchor="7.5">
+                     <children>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <image>
+                              <Image url="@../icons/info.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </GridPane>
+   </children>
+</fx:root>
