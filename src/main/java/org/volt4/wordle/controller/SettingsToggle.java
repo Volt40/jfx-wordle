@@ -7,6 +7,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Controls the settings toggle sliders.
@@ -22,6 +23,9 @@ public class SettingsToggle extends AnchorPane {
     // Handles the state chenges.
     private StateHandler handler;
 
+    // Animations.
+    private SwitchAnimation on, off;
+
     /**
      * Creates the Settings toggle with the default state.
      * @param state State to set.
@@ -35,6 +39,8 @@ public class SettingsToggle extends AnchorPane {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        on = new SwitchAnimation(2, 17);
+        off = new SwitchAnimation(17, 2);
         this.handler = handler;
         this.state = state;
         updateState(state);
@@ -56,7 +62,7 @@ public class SettingsToggle extends AnchorPane {
         handler.stateChanged(state);
         getStyleClass().clear();
         getStyleClass().add(state ? "settings-toggle-on" : "settings-toggle-off");
-        handle.setLayoutX(state ? 17 : 2);
+        (state ? on : off).start();
     }
 
     /**
@@ -70,6 +76,63 @@ public class SettingsToggle extends AnchorPane {
          */
         void stateChanged(boolean state);
 
+    }
+
+    /**
+     * Animates the switch moving from left to right.
+     */
+    private class SwitchAnimation {
+
+        // Duration of the animation.
+        private static final long ANIMATION_DURATION = 100;
+
+        // Animation timer.
+        private AnimationTimer timer;
+
+        // Start and end layout x points;
+        private double start, end;
+
+        // Used for animation.
+        private long startTime;
+
+        /**
+         * Creates the animation with the given start and end points.
+         * @param start Start point.
+         * @param end End point.
+         */
+        public SwitchAnimation(double start, double end) {
+            this.start = start;
+            this.end = end;
+            timer = new AnimationTimer() {
+                @Override
+                public void handle(long now) {
+                    animate(now);
+                }
+            };
+        }
+
+        /**
+         * Runs the animation.
+         */
+        public void start() {
+            startTime = -1;
+            timer.start();
+        }
+
+        public void animate(long now) {
+            if (startTime == -1)
+                startTime = TimeUnit.MILLISECONDS.convert(now, TimeUnit.NANOSECONDS);
+            long millisElapsed = TimeUnit.MILLISECONDS.convert(now, TimeUnit.NANOSECONDS) - startTime;
+            if (millisElapsed >= ANIMATION_DURATION) {
+                handle.setLayoutX(end);
+                timer.stop();
+                return;
+            } else {
+                double position = (double) millisElapsed / (double) ANIMATION_DURATION;
+                double dX = end - start;
+                handle.setLayoutX(start + (position * dX));
+            }
+        }
     }
 
 }
