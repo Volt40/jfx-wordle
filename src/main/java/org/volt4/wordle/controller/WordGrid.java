@@ -2,10 +2,7 @@ package org.volt4.wordle.controller;
 
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Rectangle;
-import org.volt4.wordle.AnimationManager;
-import org.volt4.wordle.Letter;
-import org.volt4.wordle.TileColor;
-import org.volt4.wordle.WordLists;
+import org.volt4.wordle.*;
 import org.volt4.wordle.animation.tile.row.RowBounce;
 import org.volt4.wordle.animation.tile.row.RowReveal;
 import org.volt4.wordle.animation.tile.TileBounce;
@@ -91,6 +88,10 @@ public class WordGrid extends GridPane {
             return;
         AnimationManager.playTilePopulateAnimation(currentRow, currentColumn, letter);
         currentColumn++;
+        if (Settings.HelpfulKeyboard && currentColumn != 5)
+            WordleApplication.getWordle().getKeyboard().updateSmartKeyboard(buildWord(), currentColumn);
+        else if (Settings.HelpfulKeyboard && currentColumn == 5)
+            WordleApplication.getWordle().getKeyboard().setAllKeysDisabled(true);
     }
 
     /**
@@ -102,6 +103,22 @@ public class WordGrid extends GridPane {
         if (currentColumn > 0)
             currentColumn--;
         tiles[currentRow][currentColumn].setLetter(Letter.EMPTY);
+        if (Settings.HelpfulKeyboard)
+            WordleApplication.getWordle().getKeyboard().updateSmartKeyboard(buildWord(), currentColumn);
+    }
+
+    /**
+     * Builds the current word in the grid.
+     * @return The current word in the grid.
+     */
+    private String buildWord() {
+        String word = "";
+        for (int i = 0; i < N_COLUMNS; i++)
+            if (tiles[currentRow][i].getLetter() != Letter.EMPTY)
+                word += tiles[currentRow][i].getLetter().getLetter();
+            else
+                word += " ";
+        return word;
     }
 
     /**
@@ -157,6 +174,8 @@ public class WordGrid extends GridPane {
             hasLost = true;
             AnimationManager.playLoseCardShowAnimation(answer, RowReveal.ANIMATION_DURATION + TileFlip.ANIMATION_DURATION);
         }
+        if (Settings.HelpfulKeyboard)
+            WordleApplication.getWordle().getKeyboard().setAllKeysDisabled(false);
         return word.equals(answer);
     }
 

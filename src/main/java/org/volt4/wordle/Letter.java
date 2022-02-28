@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
  */
 public enum Letter {
 
-    EMPTY("EMPTY", "letters/empty.png"),
+    EMPTY(" ", "letters/empty.png"),
     ENTER("ENTER", "letters/enter.png"),
     BACKSPACE("BACKSPACE", "letters/backspace.png"),
     A("a", "letters/a.png"),

@@ -72,6 +72,14 @@ public class Wordle extends AnchorPane {
     }
 
     /**
+     * Returns the keyboard.
+     * @return The keyboard.
+     */
+    public Keyboard getKeyboard() {
+        return keyboard;
+    }
+
+    /**
      * Resets the game.
      */
     public void reset() {

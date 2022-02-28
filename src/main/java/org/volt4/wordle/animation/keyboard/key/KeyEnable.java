@@ -10,7 +10,7 @@ import org.volt4.wordle.controller.KeyboardKey;
 public class KeyEnable implements WordleAnimation {
 
     // Duration of this animation.
-    public static final long ANIMATION_DURATION = 100;
+    public static final long ANIMATION_DURATION = 250;
 
     // Key to animate.
     private KeyboardKey key;
@@ -43,16 +43,18 @@ public class KeyEnable implements WordleAnimation {
 
     @Override
     public void animate(double position) {
+        key.setOpacity(0.5 + (0.5 * position));
         position = 1 - position;
         position *= 0.75;
         setXPosition(position);
-        key.setOpacity(0.5 + (0.5 * position));
     }
 
     @Override
     public void end() {
-        l1.setVisible(false);
-        l2.setVisible(false);
+        if (!key.isDisable()) {
+            l1.setVisible(false);
+            l2.setVisible(false);
+        }
         key.setOpacity(1);
     }
 

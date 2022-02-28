@@ -28,6 +28,14 @@ public class Settings extends AnchorPane {
     @FXML private AnchorPane dailyModeInfo;
     @FXML private AnchorPane helpfulKeyboardInfo;
 
+    // Settings
+    public static boolean DarkMode;
+    public static boolean HardMode;
+    public static boolean HighContrastMode;
+    public static boolean DailyMode;
+    public static boolean HelpfulKeyboard;
+
+
     /**
      * Creates the settings window.
      */
@@ -55,6 +63,7 @@ public class Settings extends AnchorPane {
      */
     private void setDarkMode(boolean state) {
         WordleApplication.initTheme(state ? WordleTheme.DARK : WordleTheme.LIGHT);
+        DarkMode = state;
     }
 
     /**
@@ -71,6 +80,7 @@ public class Settings extends AnchorPane {
      */
     private void setHighContrastMode(boolean state) {
         WordleApplication.initTheme(state ? WordleTheme.HIGH_CONTRAST : WordleTheme.LOW_CONTRAST);
+        HighContrastMode = state;
     }
 
     /**
@@ -86,7 +96,7 @@ public class Settings extends AnchorPane {
      * @param state Attribute to set.
      */
     private void setHelpfulKeyboard(boolean state) {
-        // TODO
+        HelpfulKeyboard = state;
     }
 
     // Info handlers.

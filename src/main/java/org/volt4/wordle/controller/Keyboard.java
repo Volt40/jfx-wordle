@@ -6,6 +6,7 @@ import javafx.scene.shape.Rectangle;
 import org.volt4.wordle.AnimationManager;
 import org.volt4.wordle.Letter;
 import org.volt4.wordle.TileColor;
+import org.volt4.wordle.WordLists;
 
 /**
  * Keyboard for wordle.
@@ -79,8 +80,45 @@ public class Keyboard extends AnchorPane {
      * Resets the keyboard.
      */
     public void reset() {
+        setAllKeysDisabled(false);
         for (int i = 3; i < Letter.values().length; i++)
             AnimationManager.playKeyFlipAnimation(i, TileColor.DARK_GREY);
+    }
+
+    /**
+     * Updates the smart keyboard.
+     * @param word Current word guess
+     * @param position Current tile.
+     */
+    public void updateSmartKeyboard(String word, int position) {
+        for (int i = 0; i < keys.length; i++)
+            for (int j = 0; j < keys[i].length; j++)
+                if (i == 1 && j == 0 || i == 2 && j == 0 || i == 2 && j == 8)
+                    continue;
+                else
+                    if (WordLists.isValidLetter(keys[i][j].getLetter(), position, word)) {
+                        if (keys[i][j].isDisable())
+                            AnimationManager.playKeyEnableAnimation(keys[i][j].getLetter().ID());
+                    } else
+                        if (!keys[i][j].isDisable())
+                            AnimationManager.playKeyDisableAnimation(keys[i][j].getLetter().ID());
+    }
+
+    /**
+     * Enables or disables all keys.
+     * @param disable
+     */
+    public void setAllKeysDisabled(boolean disable) {
+        for (int i = 0; i < keys.length; i++)
+            for (int j = 0; j < keys[i].length; j++)
+                if (i == 1 && j == 0 || i == 2 && j == 0 || i == 2 && j == 8)
+                    continue;
+                else {
+                    if (disable && !keys[i][j].isDisable())
+                        AnimationManager.playKeyDisableAnimation(keys[i][j].getLetter().ID());
+                    else if (!disable && keys[i][j].isDisable())
+                        AnimationManager.playKeyEnableAnimation(keys[i][j].getLetter().ID());
+                }
     }
 
     /**

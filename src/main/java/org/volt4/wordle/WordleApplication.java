@@ -42,6 +42,14 @@ public class WordleApplication extends Application {
     }
 
     /**
+     * Returns the wordle controller.
+     * @return The wordle controller.
+     */
+    public static Wordle getWordle() {
+        return wordle;
+    }
+
+    /**
      * Inits the wordle theme.
      * @param theme Theme to init.
      */

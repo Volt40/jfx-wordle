@@ -10,7 +10,7 @@ import org.volt4.wordle.controller.KeyboardKey;
 public class KeyDisable implements WordleAnimation {
 
     // Duration of this animation.
-    public static final long ANIMATION_DURATION = 100;
+    public static final long ANIMATION_DURATION = 250;
 
     // Key to animate.
     private KeyboardKey key;
@@ -37,7 +37,6 @@ public class KeyDisable implements WordleAnimation {
 
     @Override
     public void start() {
-        System.out.println();
         setCoords(l1, key.getLayoutX() + (key.getWidth() / 2), key.getLayoutX() + (key.getWidth() / 2), layoutY + (key.getHeight() / 2), layoutY + (key.getHeight() / 2));
         setCoords(l2, key.getLayoutX() + (key.getWidth() / 2), key.getLayoutX() + (key.getWidth() / 2), layoutY + (key.getHeight() / 2), layoutY + (key.getHeight() / 2));
         l1.setEndX(key.getLayoutX() + (key.getWidth() / 2));

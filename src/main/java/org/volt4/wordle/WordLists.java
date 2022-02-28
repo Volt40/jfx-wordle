@@ -62,4 +62,26 @@ public final class WordLists {
         return newAnswer;
     }
 
+    /**
+     * Used if smart keyboard is active. This will check to see if a word exists
+     * with a letter in the given spot given the other letters in the word.
+     * @param letter Letter to check.
+     * @param position Potential position of the letter in the word.
+     * @param word Letters to check with.
+     * @return
+     */
+    public static boolean isValidLetter(Letter letter, int position, String word) {
+        word = word.substring(0, position) + letter.getLetter() + word.substring(position + 1);
+        for (String possibleWord : guesses.keySet()) {
+            for (int i = 0; i < word.length(); i++) {
+                if (word.charAt(i) != possibleWord.charAt(i))
+                    if (word.charAt(i) != ' ')
+                        break;
+                if (i == word.length() - 1)
+                    return true;
+            }
+        }
+        return false;
+    }
+
 }
