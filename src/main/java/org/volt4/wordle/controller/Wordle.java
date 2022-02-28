@@ -147,13 +147,9 @@ public class Wordle extends AnchorPane {
         if (settingsVisable) {
             AnimationManager.playSettingsShowAnimation();
             AnimationManager.playSpinSettingsIconAnimation();
-            if (!keyboardHidden)
-                AnimationManager.playKeyboardHideAnimation();
         } else {
             AnimationManager.playSettingsHideAnimation();
             AnimationManager.stopSpinSettingsIconAnimation();
-            if (!keyboardHidden)
-                AnimationManager.playKeyboardShowAnimation();
         }
     }
 

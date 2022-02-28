@@ -9,7 +9,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="350.0" styleClass="settings" type="AnchorPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text layoutX="117.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="SETTINGS" AnchorPane.topAnchor="10.0">
@@ -36,7 +35,7 @@
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <AnchorPane layoutX="62.0" layoutY="-85.0" prefHeight="15.0" prefWidth="15.0" styleClass="settings-info-buttons" AnchorPane.leftAnchor="95.0" AnchorPane.topAnchor="7.5">
+                  <AnchorPane layoutX="62.0" layoutY="-85.0" onMouseEntered="#onDarkModeInfo" onMouseExited="#offDarkModeInfo" prefHeight="15.0" prefWidth="15.0" styleClass="settings-info-buttons" AnchorPane.leftAnchor="95.0" AnchorPane.topAnchor="7.5">
                      <children>
                         <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <image>
@@ -54,7 +53,7 @@
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <AnchorPane prefHeight="15.0" prefWidth="15.0" styleClass="settings-info-buttons" AnchorPane.leftAnchor="95.0" AnchorPane.topAnchor="7.5">
+                  <AnchorPane onMouseEntered="#onHardModeInfo" onMouseExited="#offHardModeInfo" prefHeight="15.0" prefWidth="15.0" styleClass="settings-info-buttons" AnchorPane.leftAnchor="95.0" AnchorPane.topAnchor="7.5">
                      <children>
                         <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <image>
@@ -72,7 +71,7 @@
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <AnchorPane prefHeight="15.0" prefWidth="15.0" styleClass="settings-info-buttons" AnchorPane.leftAnchor="154.0" AnchorPane.topAnchor="7.5">
+                  <AnchorPane onMouseEntered="#onHighContrastModeInfo" onMouseExited="#offHighContrastModeInfo" prefHeight="15.0" prefWidth="15.0" styleClass="settings-info-buttons" AnchorPane.leftAnchor="154.0" AnchorPane.topAnchor="7.5">
                      <children>
                         <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <image>
@@ -90,7 +89,7 @@
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <AnchorPane prefHeight="15.0" prefWidth="15.0" styleClass="settings-info-buttons" AnchorPane.leftAnchor="95.0" AnchorPane.topAnchor="7.5">
+                  <AnchorPane onMouseEntered="#onDailyModeInfo" onMouseExited="#offDailyModeInfo" prefHeight="15.0" prefWidth="15.0" styleClass="settings-info-buttons" AnchorPane.leftAnchor="95.0" AnchorPane.topAnchor="7.5">
                      <children>
                         <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <image>
@@ -108,7 +107,7 @@
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <AnchorPane prefHeight="15.0" prefWidth="15.0" styleClass="settings-info-buttons" AnchorPane.leftAnchor="136.0" AnchorPane.topAnchor="7.5">
+                  <AnchorPane onMouseEntered="#onHelpfulKeyboardInfo" onMouseExited="#offHelpfulKeyboardInfo" prefHeight="15.0" prefWidth="15.0" styleClass="settings-info-buttons" AnchorPane.leftAnchor="136.0" AnchorPane.topAnchor="7.5">
                      <children>
                         <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <image>
@@ -121,5 +120,50 @@
             </AnchorPane>
          </children>
       </GridPane>
+      <AnchorPane fx:id="darkModeInfo" layoutX="40.0" layoutY="213.0" prefHeight="60.0" prefWidth="225.0" styleClass="settings-info-box" visible="false" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="78.0">
+         <children>
+            <Text layoutX="88.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Darker, more pleasant &#10;theme.  Easier on the eyes." textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="6.0">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="hardModeInfo" layoutX="29.0" layoutY="239.0" prefHeight="60.0" prefWidth="230.0" styleClass="settings-info-box" visible="false" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="108.0">
+         <children>
+            <Text layoutX="88.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Any revealed hints must be &#10;used in subsequent guesses" textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="6.0">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="highContrastModeInfo" prefHeight="60.0" prefWidth="160.0" styleClass="settings-info-box" visible="false" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="137.0">
+         <children>
+            <Text layoutX="88.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Improved contrast &#10;for better vision" textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="6.0">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="dailyModeInfo" prefHeight="60.0" prefWidth="170.0" styleClass="settings-info-box" visible="false" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="167.0">
+         <children>
+            <Text layoutX="88.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Follows the official &#10;daily Wordle word." textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="6.0">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="helpfulKeyboardInfo" prefHeight="60.0" prefWidth="235.0" styleClass="settings-info-box" visible="false" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="197.0">
+         <children>
+            <Text layoutX="88.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="The keyboard automatically&#10;disables unusable letters." textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="6.0">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
    </children>
 </fx:root>

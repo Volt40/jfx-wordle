@@ -1,3 +1,6 @@
+
+@import "colors/dark.css";
+
 .word-grid {
 	-fx-background-color: -color-a;
 	-fx-background-radius: 10 10 5 5;
@@ -129,7 +132,6 @@
 }
 
 .settings-text .settings-title {
-	-fx-fill: -c-base;
 	-fx-font-family: ARIAL;
 	-fx-font-weight: bold;
 }
@@ -148,10 +150,11 @@
 }
 
 .settings-info-buttons:hover {
-	-fx-border-color: -c-base;
-	-fx-border-width: 2;
-	-fx-border-insets: -2;
-	-fx-border-radius: 15;
+	/*-fx-border-color: -c-base;*/
+	/*-fx-border-width: 2;*/
+	/*-fx-border-insets: -2;*/
+	/*-fx-border-radius: 15;*/
+	-fx-background-color: -correct-color;
 }
 
 .settings-toggle-off {
@@ -167,4 +170,9 @@
 .settings-toggle-handle {
 	-fx-background-color: -c-base;
 	-fx-background-radius: 8;
+}
+
+.settings-info-box {
+	-fx-background-color: rgba(43, 43, 43, 0.8);
+	-fx-background-radius: 10;
 }

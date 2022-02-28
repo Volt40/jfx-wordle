@@ -2,6 +2,7 @@ package org.volt4.wordle.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.volt4.wordle.WordleApplication;
 import org.volt4.wordle.WordleTheme;
@@ -19,6 +20,13 @@ public class Settings extends AnchorPane {
     @FXML private AnchorPane highContrastModePane;
     @FXML private AnchorPane DailyModePane;
     @FXML private AnchorPane helpfulKeyboardPane;
+
+    // Info
+    @FXML private AnchorPane darkModeInfo;
+    @FXML private AnchorPane hardModeInfo;
+    @FXML private AnchorPane highContrastModeInfo;
+    @FXML private AnchorPane dailyModeInfo;
+    @FXML private AnchorPane helpfulKeyboardInfo;
 
     /**
      * Creates the settings window.
@@ -80,5 +88,17 @@ public class Settings extends AnchorPane {
     private void setHelpfulKeyboard(boolean state) {
         // TODO
     }
+
+    // Info handlers.
+    @FXML void offDailyModeInfo(MouseEvent event) { dailyModeInfo.setVisible(false); }
+    @FXML void offDarkModeInfo(MouseEvent event) { darkModeInfo.setVisible(false); }
+    @FXML void offHardModeInfo(MouseEvent event) { hardModeInfo.setVisible(false); }
+    @FXML void offHelpfulKeyboardInfo(MouseEvent event) { helpfulKeyboardInfo.setVisible(false); }
+    @FXML void offHighContrastModeInfo(MouseEvent event) { highContrastModeInfo.setVisible(false); }
+    @FXML void onDailyModeInfo(MouseEvent event) { dailyModeInfo.setVisible(true); }
+    @FXML void onDarkModeInfo(MouseEvent event) { darkModeInfo.setVisible(true); }
+    @FXML void onHardModeInfo(MouseEvent event) { hardModeInfo.setVisible(true); }
+    @FXML void onHelpfulKeyboardInfo(MouseEvent event) { helpfulKeyboardInfo.setVisible(true); }
+    @FXML void onHighContrastModeInfo(MouseEvent event) { highContrastModeInfo.setVisible(true); }
 
 }
