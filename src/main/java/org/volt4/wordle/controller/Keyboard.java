@@ -59,13 +59,15 @@ public class Keyboard extends AnchorPane {
         getChildren().addAll(keyGrid[0], keyGrid[1], keyGrid[2]);
         // Init the animations.
         KeyboardKey[] keysList = new KeyboardKey[Letter.values().length];
+        double[] layoutYs = new double[Letter.values().length];
         for (int i = 0; i < keys.length; i++)
             for (int j = 0; j < keys[i].length; j++) {
                 if (i == 1 && j == 0)
                     continue;
                 keysList[keys[i][j].getLetter().ID()] = keys[i][j];
+                layoutYs[keys[i][j].getLetter().ID()] = i * 40;
             }
-        AnimationManager.initKeyAnimations(keysList);
+        AnimationManager.initKeyAnimations(keysList, layoutYs, this);
         // Create clipping pane.
         Rectangle clip = new Rectangle(350, 170);
         clip.setLayoutX(getLayoutX());

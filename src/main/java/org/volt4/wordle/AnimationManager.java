@@ -5,12 +5,11 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.util.Duration;
 import org.volt4.wordle.animation.*;
-import org.volt4.wordle.controller.KeyboardKey;
-import org.volt4.wordle.controller.LoseCard;
-import org.volt4.wordle.controller.Settings;
-import org.volt4.wordle.controller.WordGridTile;
+import org.volt4.wordle.controller.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -35,6 +34,8 @@ public final class AnimationManager {
      * - Flip Key (KeyFlip)
      *     - (TileColor) color to flip to.
      * - Pulse Key (KeyPulse)
+     * - Enable Key (KeyEnable)
+     * - Disable Key (KeyDisable)
      * - Show Keyboard (KeyboardShow)
      * - Hide Keyboard (KeyboardHide)
      * - Shake Row (RowShake)
@@ -62,6 +63,8 @@ public final class AnimationManager {
     private static AnimationController<KeyShrink>[] keyShrinkAnimations;
     private static AnimationController<KeyFlip>[] keyFlipAnimations;
     private static AnimationController<KeyPulse>[] keyPulseAnimations;
+    private static AnimationController<KeyEnable>[] keyEnableAnimations;
+    private static AnimationController<KeyDisable>[] keyDisableAnimations;
     private static AnimationController<KeyboardShow> keyboardShowAnimation;
     private static AnimationController<KeyboardHide> keyboardHideAnimation;
     private static AnimationController<RowShake>[] rowShakeAnimations;
@@ -109,16 +112,27 @@ public final class AnimationManager {
      * Inits all key animations.
      * @param keys Keys to animate.
      */
-    public static void initKeyAnimations(KeyboardKey[] keys) {
+    public static void initKeyAnimations(KeyboardKey[] keys, double[] layoutYs, Keyboard keyboard) {
         keyFlipAnimations = new AnimationController[keys.length];
         keyGrowAnimations = new AnimationController[keys.length];
         keyShrinkAnimations = new AnimationController[keys.length];
         keyPulseAnimations = new AnimationController[keys.length];
+        keyEnableAnimations = new AnimationController[keys.length];
+        keyDisableAnimations = new AnimationController[keys.length];
         for (int i = 0; i < keys.length; i++) {
             keyFlipAnimations[i] = new AnimationController<>(new KeyFlip(keys[i]));
             keyGrowAnimations[i] = new AnimationController<>(new KeyGrow(keys[i]));
             keyShrinkAnimations[i] = new AnimationController<>(new KeyShrink(keys[i]));
             keyPulseAnimations[i] = new AnimationController<>(new KeyPulse(keys[i]));
+            Line l1 = new Line();
+            l1.setStroke(Color.web("#b43a3a"));
+            l1.setStrokeWidth(2);
+            Line l2 = new Line();
+            l2.setStroke(Color.web("#b43a3a"));
+            l2.setStrokeWidth(2);
+            keyboard.getChildren().addAll(l1, l2);
+            keyEnableAnimations[i] = new AnimationController<>(new KeyEnable(keys[i], l1, l2, layoutYs[i]));
+            keyDisableAnimations[i] = new AnimationController<>(new KeyDisable(keys[i], l1, l2, layoutYs[i]));
         }
     }
 
@@ -221,6 +235,22 @@ public final class AnimationManager {
      */
     public static void playKeyPulseAnimation(int id) {
         keyPulseAnimations[id].play();
+    }
+
+    /**
+     * Plays the enable animation on the given key.
+     * @param id ID of the key to animate.
+     */
+    public static void playKeyEnableAnimation(int id) {
+        keyEnableAnimations[id].play();
+    }
+
+    /**
+     * Plays the disable animation on the given key.
+     * @param id ID of the key to animate.
+     */
+    public static void playKeyDisableAnimation(int id) {
+        keyDisableAnimations[id].play();
     }
 
     /**
