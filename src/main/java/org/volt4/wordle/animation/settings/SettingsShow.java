@@ -1,24 +1,24 @@
-package org.volt4.wordle.animation;
+package org.volt4.wordle.animation.settings;
 
 import org.volt4.wordle.WordleAnimation;
 import org.volt4.wordle.controller.Settings;
 
 /**
- * Animates the settings window getting hidden.
+ * Animates the settings getting revealed.
  */
-public class SettingsHide implements WordleAnimation {
+public class SettingsShow implements WordleAnimation {
 
     // Duration of this animation.
     public static final long ANIMATION_DURATION = 200;
 
-    // Settings this animates.
+    // Settings to animate.
     private Settings settings;
 
     /**
-     * Creates the animation to animate the given settings.
+     * Creates the animation on the given Settings.
      * @param settings Settings to animate.
      */
-    public SettingsHide(Settings settings) {
+    public SettingsShow(Settings settings) {
         this.settings = settings;
     }
 
@@ -29,12 +29,12 @@ public class SettingsHide implements WordleAnimation {
 
     @Override
     public void animate(double position) {
-        settings.setLayoutX(position * 350);
+        settings.setLayoutX(350 - (position * 350));
     }
 
     @Override
     public void end() {
-        settings.setLayoutX(350);
+        settings.setLayoutX(0);
     }
 
     @Override

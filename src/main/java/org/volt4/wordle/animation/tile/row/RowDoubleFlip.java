@@ -1,11 +1,9 @@
-package org.volt4.wordle.animation;
+package org.volt4.wordle.animation.tile.row;
 
 import javafx.geometry.Point3D;
-import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import org.volt4.wordle.WordleAnimation;
 import org.volt4.wordle.controller.WordGridTile;
-import org.volt4.wordle.controller.Wordle;
 
 /**
  * Animates the letters in a row merging together.

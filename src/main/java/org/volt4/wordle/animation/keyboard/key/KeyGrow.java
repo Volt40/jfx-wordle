@@ -1,4 +1,4 @@
-package org.volt4.wordle.animation;
+package org.volt4.wordle.animation.keyboard.key;
 
 import org.volt4.wordle.WordleAnimation;
 import org.volt4.wordle.controller.KeyboardKey;

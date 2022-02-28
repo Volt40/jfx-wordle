@@ -6,12 +6,10 @@ import org.volt4.wordle.AnimationManager;
 import org.volt4.wordle.Letter;
 import org.volt4.wordle.TileColor;
 import org.volt4.wordle.WordLists;
-import org.volt4.wordle.animation.RowBounce;
-import org.volt4.wordle.animation.RowReveal;
-import org.volt4.wordle.animation.TileBounce;
-import org.volt4.wordle.animation.TileFlip;
-
-import java.awt.*;
+import org.volt4.wordle.animation.tile.row.RowBounce;
+import org.volt4.wordle.animation.tile.row.RowReveal;
+import org.volt4.wordle.animation.tile.TileBounce;
+import org.volt4.wordle.animation.tile.TileFlip;
 
 /**
  * Represents a wordgrid.

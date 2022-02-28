@@ -1,13 +1,13 @@
-package org.volt4.wordle.animation;
+package org.volt4.wordle.animation.keyboard;
 
 import javafx.application.Platform;
 import org.volt4.wordle.WordleAnimation;
 import org.volt4.wordle.WordleApplication;
 
 /**
- * Animates the keyboard getting hidden.
+ * Animates the keyboard getting revealed.
  */
-public class KeyboardHide implements WordleAnimation {
+public class KeyboardShow implements WordleAnimation {
 
     // Duration of this animation.
     public static final long ANIMATION_DURATION = 80;
@@ -19,16 +19,16 @@ public class KeyboardHide implements WordleAnimation {
 
     @Override
     public void animate(double position) {
-        double newHeight = 570 - (position * 120);
+        double newHeight = 450 + (position * 120);
         Platform.runLater(() -> {
-            if (newHeight < WordleApplication.primaryStage.getHeight())
+            if (newHeight > WordleApplication.primaryStage.getHeight())
                 WordleApplication.primaryStage.setHeight(newHeight);
         });
     }
 
     @Override
     public void end() {
-        Platform.runLater(() -> WordleApplication.primaryStage.setHeight(450));
+        Platform.runLater(() -> WordleApplication.primaryStage.setHeight(570));
     }
 
     @Override

@@ -1,6 +1,5 @@
-package org.volt4.wordle.animation;
+package org.volt4.wordle.animation.keyboard.key;
 
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import org.volt4.wordle.WordleAnimation;
 import org.volt4.wordle.controller.KeyboardKey;

@@ -1,4 +1,4 @@
-package org.volt4.wordle.animation;
+package org.volt4.wordle.animation.tile;
 
 import org.volt4.wordle.Letter;
 import org.volt4.wordle.TileColor;
