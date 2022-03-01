@@ -97,6 +97,11 @@ public class Settings extends AnchorPane {
      */
     private void setHelpfulKeyboard(boolean state) {
         HelpfulKeyboard = state;
+        if (WordleApplication.getWordle() != null)
+            if (!state)
+                WordleApplication.getWordle().clearHelpfulKeyboard();
+            else
+                WordleApplication.getWordle().refreshHelpfulKeyboard();
     }
 
     // Info handlers.

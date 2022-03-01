@@ -22,15 +22,14 @@ public class Keyboard extends AnchorPane {
     // All keys this keyboard contains.
     private KeyboardKey[][] keys;
 
-    // WordGrid this interacts with.
-    private WordGrid wordGrid;
+    // Handles key presses.
+    private KeyHandler handler;
 
     /**
      * Constructs a keyboard.
-     * @param wordGrid WordGrid this interacts with.
      */
-    public Keyboard(WordGrid wordGrid) {
-        this.wordGrid = wordGrid;
+    public Keyboard(KeyHandler handler) {
+        this.handler = handler;
         // Layout the rows.
         keyGrid = new GridPane[3];
         keys = new KeyboardKey[3][];
@@ -86,11 +85,11 @@ public class Keyboard extends AnchorPane {
     }
 
     /**
-     * Updates the smart keyboard.
+     * Updates the helpful keyboard.
      * @param word Current word guess
      * @param position Current tile.
      */
-    public void updateSmartKeyboard(String word, int position) {
+    public void updateHelpfulKeyboard(String word, int position) {
         for (int i = 0; i < keys.length; i++)
             for (int j = 0; j < keys[i].length; j++)
                 if (i == 1 && j == 0 || i == 2 && j == 0 || i == 2 && j == 8)
@@ -126,12 +125,20 @@ public class Keyboard extends AnchorPane {
      * @param key Key to be clicked.
      */
     private void onClick(Letter key) {
-        if (key == Letter.BACKSPACE)
-            wordGrid.deleteLetter();
-        else if (key == Letter.ENTER)
-            wordGrid.enterWord();
-        else
-            wordGrid.inputLetter(key);
+        handler.onKeyPress(key);
+    }
+
+    /**
+     * Handles key presses.
+     */
+    public interface KeyHandler {
+
+        /**
+         * Runs when a key is pressed.
+         * @param key Key that is pressed.
+         */
+        void onKeyPress(Letter key);
+
     }
 
 }

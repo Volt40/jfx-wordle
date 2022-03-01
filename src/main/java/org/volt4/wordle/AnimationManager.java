@@ -295,8 +295,9 @@ public final class AnimationManager {
      * @param colors Colors to reveal.
      * @param letters Letters to flip.
      */
-    public static void playRowRevealAnimation(int row, TileColor[] colors, Letter[] letters) {
+    public static void playRowRevealAnimation(int row, TileColor[] colors, TileColor[] keyHints, Letter[] letters) {
         rowRevealAnimations[row].getType().setColors(colors);
+        rowRevealAnimations[row].getType().setKeyHints(keyHints);
         rowRevealAnimations[row].getType().setLetters(letters);
         rowRevealAnimations[row].play();
     }

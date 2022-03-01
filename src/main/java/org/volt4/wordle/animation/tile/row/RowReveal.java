@@ -18,6 +18,7 @@ public class RowReveal implements WordleAnimation {
 
     // Colors to reveal too.
     private TileColor[] colors;
+    private TileColor[] keyHints;
 
     // Letters to flip.
     private Letter[] letters;
@@ -49,6 +50,14 @@ public class RowReveal implements WordleAnimation {
         this.letters = letters;
     }
 
+    /**
+     * Sets the key hints.
+     * @param keyHints Key hints.
+     */
+    public void setKeyHints(TileColor[] keyHints) {
+        this.keyHints = keyHints;
+    }
+
     @Override
     public void start() {
         flipped = new boolean[colors.length];
@@ -62,7 +71,7 @@ public class RowReveal implements WordleAnimation {
         if (!flipped[indexToFlip]) {
             flipped[indexToFlip] = true;
             AnimationManager.playTileFlipAnimation(row, indexToFlip, colors[indexToFlip], false);
-            AnimationManager.playKeyFlipAnimation(letters[indexToFlip].ID(), colors[indexToFlip]);
+            AnimationManager.playKeyFlipAnimation(letters[indexToFlip].ID(), keyHints[indexToFlip]);
         }
     }
 
@@ -75,4 +84,5 @@ public class RowReveal implements WordleAnimation {
     public long getDuration() {
         return ANIMATION_DURATION;
     }
+
 }

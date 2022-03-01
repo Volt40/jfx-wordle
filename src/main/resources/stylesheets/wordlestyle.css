@@ -1,5 +1,6 @@
 
 @import "colors/dark.css";
+@import "colors/lowcontrast.css";
 
 .word-grid {
 	-fx-background-color: -color-a;
@@ -85,6 +86,12 @@
 
 .keyboard-tile-yellow {
 	-fx-background-color: -incorrect-color;
+	-fx-background-insets: 3;
+	-fx-background-radius: 4;
+}
+
+.keyboard-tile-yellowgreen {
+	-fx-background-color: linear-gradient(to bottom right, -correct-color 0%, -correct-color 50%, -incorrect-color 50%);
 	-fx-background-insets: 3;
 	-fx-background-radius: 4;
 }
