@@ -1,7 +1,7 @@
 package org.volt4.wordle;
 
 /**
- * Enum containing all colors a tile (keyboard key or gid tile) can be.
+ * Enum containing all colors a tile (keyboard key or grid tile) can be.
  */
 public enum TileColor {
 

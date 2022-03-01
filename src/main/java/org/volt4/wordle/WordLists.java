@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -11,6 +12,9 @@ import java.util.List;
  * Final class. Manages the wordlists.
  */
 public final class WordLists {
+
+    // Non-changing list of core answers.
+    private static String[] coreAnswers;
 
     // All words that can be a solution.
     private static String[] answers;
@@ -41,6 +45,7 @@ public final class WordLists {
             if (!guesses.containsKey(word))
                 guesses.put(word, word);
         guessesReader.close();
+        coreAnswers = answers;
     }
 
     /**
@@ -82,6 +87,20 @@ public final class WordLists {
             }
         }
         return false;
+    }
+
+    /**
+     * Enables linguist mode.
+     */
+    public static void enableLinguistMode() {
+        answers = guesses.keySet().toArray(new String[0]);
+    }
+
+    /**
+     * Disables linguist mode.
+     */
+    public static void disableLinguistMode() {
+        answers = coreAnswers;
     }
 
 }

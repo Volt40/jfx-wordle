@@ -119,13 +119,22 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 0 0 10 10;" styleClass="list-light" GridPane.rowIndex="5">
+            <AnchorPane fx:id="linguistModePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 0 0 10 10;" styleClass="list-light" GridPane.rowIndex="5">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Linguist Mode" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Text>
+                  <AnchorPane onMouseEntered="#onLinguistModeInfo" onMouseExited="#offLinguistModeInfo" prefHeight="15.0" prefWidth="15.0" styleClass="settings-info-buttons" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="7.5">
+                     <children>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <image>
+                              <Image url="@../icons/info.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
          </children>
@@ -169,6 +178,15 @@
       <AnchorPane fx:id="helpfulKeyboardInfo" prefHeight="60.0" prefWidth="235.0" styleClass="settings-info-box" visible="false" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="197.0">
          <children>
             <Text layoutX="88.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="The keyboard automatically&#10;disables unusable letters." textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="6.0">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="linguistModeInfo" prefHeight="80.0" prefWidth="200.0" styleClass="settings-info-box" visible="false" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="227.0">
+         <children>
+            <Text layoutX="88.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Any valid guess is&#10;now a possible answer.&#10;(Requires reset)" textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="6.0">
                <font>
                   <Font size="17.0" />
                </font>
