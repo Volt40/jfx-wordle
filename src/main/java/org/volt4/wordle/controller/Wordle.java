@@ -114,6 +114,7 @@ public class Wordle extends AnchorPane {
         currentRow = 0;
         selectColumn(0);
         chooseNewAnswer();
+        refreshHelpfulKeyboard();
     }
 
     /**
