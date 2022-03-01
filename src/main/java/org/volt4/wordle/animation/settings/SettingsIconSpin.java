@@ -1,7 +1,7 @@
 package org.volt4.wordle.animation.settings;
 
 import javafx.scene.image.ImageView;
-import org.volt4.wordle.WordleAnimation;
+import org.volt4.wordle.animation.WordleAnimation;
 
 /**
  * Animates the settings icon spinning.
@@ -34,7 +34,7 @@ public class SettingsIconSpin implements WordleAnimation {
 
     @Override
     public void end() {
-
+        icon.setRotate(0);
     }
 
     @Override

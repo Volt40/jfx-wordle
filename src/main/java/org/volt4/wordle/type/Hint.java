@@ -1,9 +1,9 @@
-package org.volt4.wordle;
+package org.volt4.wordle.type;
 
 /**
  * Enum containing all colors a tile (keyboard key or grid tile) can be.
  */
-public enum TileColor {
+public enum Hint {
 
     LIGHT_GREY("grey-cells", "keyboard-tile-darkgrey"), // Tile that has a letter that is not in the word.
     DARK_GREY("empty-cells", "keyboard-tile-lightgrey"), // Tile that has a letter that may or may not be in the word.
@@ -16,11 +16,11 @@ public enum TileColor {
     private String keyStyleClassName;
 
     /**
-     * Creates the tile color and associates it the defined style classes.
+     * Creates the hint and associates it the defined style classes.
      * @param tileStyleClassName Style class name for tiles.
      * @param keyStyleClassName Style class name for keys.
      */
-    TileColor(String tileStyleClassName, String keyStyleClassName) {
+    Hint(String tileStyleClassName, String keyStyleClassName) {
         this.tileStyleClassName = tileStyleClassName;
         this.keyStyleClassName = keyStyleClassName;
     }

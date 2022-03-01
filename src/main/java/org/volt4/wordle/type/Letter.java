@@ -1,4 +1,4 @@
-package org.volt4.wordle;
+package org.volt4.wordle.type;
 
 import javafx.scene.image.Image;
 

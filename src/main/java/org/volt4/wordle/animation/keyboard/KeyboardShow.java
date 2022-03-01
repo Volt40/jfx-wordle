@@ -1,7 +1,7 @@
 package org.volt4.wordle.animation.keyboard;
 
 import javafx.application.Platform;
-import org.volt4.wordle.WordleAnimation;
+import org.volt4.wordle.animation.WordleAnimation;
 import org.volt4.wordle.WordleApplication;
 
 /**

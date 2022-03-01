@@ -83,14 +83,14 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="DailyModePane" prefHeight="200.0" prefWidth="200.0" styleClass="list-light" GridPane.rowIndex="3">
+            <AnchorPane fx:id="disableAnimationsPane" prefHeight="200.0" prefWidth="200.0" styleClass="list-light" GridPane.rowIndex="3">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Daily Mode" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Disable Animations" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <AnchorPane onMouseEntered="#onDailyModeInfo" onMouseExited="#offDailyModeInfo" prefHeight="15.0" prefWidth="15.0" styleClass="settings-info-buttons" AnchorPane.leftAnchor="95.0" AnchorPane.topAnchor="7.5">
+                  <AnchorPane onMouseEntered="#onDisableAnimationsInfo" onMouseExited="#offDisableAnimationsInfo" prefHeight="15.0" prefWidth="15.0" styleClass="settings-info-buttons" AnchorPane.leftAnchor="145.0" AnchorPane.topAnchor="7.5">
                      <children>
                         <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <image>
@@ -166,9 +166,9 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="dailyModeInfo" prefHeight="60.0" prefWidth="170.0" styleClass="settings-info-box" visible="false" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="167.0">
+      <AnchorPane fx:id="disableAnimationsInfo" prefHeight="60.0" prefWidth="157.0" styleClass="settings-info-box" visible="false" AnchorPane.leftAnchor="103.0" AnchorPane.topAnchor="167.0">
          <children>
-            <Text layoutX="88.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Follows the official &#10;daily Wordle word." textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="6.0">
+            <Text layoutX="88.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Disables all game&#10;animations." textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="6.0">
                <font>
                   <Font size="17.0" />
                </font>

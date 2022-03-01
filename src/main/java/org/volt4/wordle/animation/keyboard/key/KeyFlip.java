@@ -1,7 +1,7 @@
 package org.volt4.wordle.animation.keyboard.key;
 
-import org.volt4.wordle.TileColor;
-import org.volt4.wordle.WordleAnimation;
+import org.volt4.wordle.type.Hint;
+import org.volt4.wordle.animation.WordleAnimation;
 import org.volt4.wordle.controller.keyboard.KeyboardKey;
 
 /**
@@ -17,7 +17,7 @@ public class KeyFlip implements WordleAnimation {
 
     // Parameters for animation;
     private boolean atMidpoint;
-    private TileColor colorToFlip;
+    private Hint colorToFlip;
 
     // Used so the tile doesn't flip twice.
     private boolean dontFlip;
@@ -28,15 +28,15 @@ public class KeyFlip implements WordleAnimation {
      */
     public KeyFlip(KeyboardKey key) {
         this.key = key;
-        colorToFlip = TileColor.DARK_GREY;
+        colorToFlip = Hint.DARK_GREY;
     }
 
     /**
      * Sets the color this flips to.
      * @param colorToFlip Color to flip to.
      */
-    public void setColorToFlip(TileColor colorToFlip) {
-        if (colorToFlip == this.colorToFlip || colorToFlip == TileColor.YELLOW && this.colorToFlip == TileColor.GREEN || this.colorToFlip == TileColor.YELLOW_GREEN && colorToFlip != TileColor.GREEN) {
+    public void setColorToFlip(Hint colorToFlip) {
+        if (colorToFlip == this.colorToFlip || colorToFlip == Hint.YELLOW && this.colorToFlip == Hint.GREEN || this.colorToFlip == Hint.YELLOW_GREEN && colorToFlip != Hint.GREEN) {
             dontFlip = true;
             return;
         }

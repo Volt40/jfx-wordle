@@ -6,7 +6,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.volt4.wordle.WordLists;
 import org.volt4.wordle.WordleApplication;
-import org.volt4.wordle.WordleTheme;
+import org.volt4.wordle.type.WordleTheme;
 import org.volt4.wordle.controller.component.SettingsToggle;
 
 import java.io.IOException;
@@ -20,7 +20,7 @@ public class Settings extends AnchorPane {
     @FXML private AnchorPane darkModePane;
     @FXML private AnchorPane hardModePane;
     @FXML private AnchorPane highContrastModePane;
-    @FXML private AnchorPane DailyModePane;
+    @FXML private AnchorPane disableAnimationsPane;
     @FXML private AnchorPane helpfulKeyboardPane;
     @FXML private AnchorPane linguistModePane;
 
@@ -29,7 +29,7 @@ public class Settings extends AnchorPane {
     @FXML private AnchorPane darkModeInfo;
     @FXML private AnchorPane hardModeInfo;
     @FXML private AnchorPane highContrastModeInfo;
-    @FXML private AnchorPane dailyModeInfo;
+    @FXML private AnchorPane disableAnimationsInfo;
     @FXML private AnchorPane helpfulKeyboardInfo;
     @FXML private AnchorPane linguistModeInfo;
 
@@ -37,7 +37,7 @@ public class Settings extends AnchorPane {
     public static boolean DarkMode;
     public static boolean HardMode;
     public static boolean HighContrastMode;
-    public static boolean DailyMode;
+    public static boolean DisableAnimations;
     public static boolean HelpfulKeyboard;
     public static boolean linguistMode;
 
@@ -58,7 +58,7 @@ public class Settings extends AnchorPane {
         darkModePane.getChildren().add(new SettingsToggle(true, state -> setDarkMode(state)));
         hardModePane.getChildren().add(new SettingsToggle(false, state -> setHardMode(state)));
         highContrastModePane.getChildren().add(new SettingsToggle(false, state -> setHighContrastMode(state)));
-        DailyModePane.getChildren().add(new SettingsToggle(false, state -> setDailyMode(state)));
+        disableAnimationsPane.getChildren().add(new SettingsToggle(false, state -> setDisableAnimations(state)));
         helpfulKeyboardPane.getChildren().add(new SettingsToggle(false, state -> setHelpfulKeyboard(state)));
         linguistModePane.getChildren().add(new SettingsToggle(false, state -> setLinguistMode(state)));
     }
@@ -90,10 +90,10 @@ public class Settings extends AnchorPane {
     }
 
     /**
-     * Sets the daily mode attribute.
+     * Sets the disable animations attribute.
      * @param state Attribute to set.
      */
-    private void setDailyMode(boolean state) {
+    private void setDisableAnimations(boolean state) {
         // TODO
     }
 
@@ -123,13 +123,13 @@ public class Settings extends AnchorPane {
     }
 
     // Info handlers.
-    @FXML void offDailyModeInfo(MouseEvent event) { dailyModeInfo.setVisible(false); }
+    @FXML void offDisableAnimationsInfo(MouseEvent event) { disableAnimationsInfo.setVisible(false); }
     @FXML void offDarkModeInfo(MouseEvent event) { darkModeInfo.setVisible(false); }
     @FXML void offHardModeInfo(MouseEvent event) { hardModeInfo.setVisible(false); }
     @FXML void offHelpfulKeyboardInfo(MouseEvent event) { helpfulKeyboardInfo.setVisible(false); }
     @FXML void offHighContrastModeInfo(MouseEvent event) { highContrastModeInfo.setVisible(false); }
     @FXML void offLinguistModeInfo(MouseEvent event) { linguistModeInfo.setVisible(false);}
-    @FXML void onDailyModeInfo(MouseEvent event) { dailyModeInfo.setVisible(true); }
+    @FXML void onDisableAnimationsInfo(MouseEvent event) { disableAnimationsInfo.setVisible(true); }
     @FXML void onDarkModeInfo(MouseEvent event) { darkModeInfo.setVisible(true); }
     @FXML void onHardModeInfo(MouseEvent event) { hardModeInfo.setVisible(true); }
     @FXML void onHelpfulKeyboardInfo(MouseEvent event) { helpfulKeyboardInfo.setVisible(true); }

@@ -1,7 +1,7 @@
-package org.volt4.wordle.animation;
+package org.volt4.wordle.animation.settings;
 
 import javafx.scene.image.ImageView;
-import org.volt4.wordle.WordleAnimation;
+import org.volt4.wordle.animation.WordleAnimation;
 
 /**
  * Animates the reset icon spinning when it is pressed.

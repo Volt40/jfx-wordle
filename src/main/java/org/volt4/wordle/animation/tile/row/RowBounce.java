@@ -1,7 +1,7 @@
 package org.volt4.wordle.animation.tile.row;
 
-import org.volt4.wordle.AnimationManager;
-import org.volt4.wordle.WordleAnimation;
+import org.volt4.wordle.animation.AnimationManager;
+import org.volt4.wordle.animation.WordleAnimation;
 
 /**
  * Animates a row bouncing. (Winning animation)

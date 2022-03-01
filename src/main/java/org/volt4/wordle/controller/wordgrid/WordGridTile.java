@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import org.volt4.wordle.Letter;
+import org.volt4.wordle.type.Letter;
 
 import java.io.IOException;
 

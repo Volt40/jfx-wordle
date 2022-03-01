@@ -1,4 +1,4 @@
-package org.volt4.wordle;
+package org.volt4.wordle.animation;
 
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
@@ -8,12 +8,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.util.Duration;
-import org.volt4.wordle.animation.*;
+import org.volt4.wordle.type.Letter;
+import org.volt4.wordle.type.Hint;
 import org.volt4.wordle.animation.keyboard.key.*;
 import org.volt4.wordle.animation.keyboard.KeyboardHide;
 import org.volt4.wordle.animation.keyboard.KeyboardShow;
 import org.volt4.wordle.animation.losecard.LoseCardHide;
 import org.volt4.wordle.animation.losecard.LoseCardShow;
+import org.volt4.wordle.animation.settings.ResetIconSpin;
 import org.volt4.wordle.animation.tile.row.RowBounce;
 import org.volt4.wordle.animation.tile.row.RowDoubleFlip;
 import org.volt4.wordle.animation.tile.row.RowReveal;
@@ -44,14 +46,14 @@ public final class AnimationManager {
      *
      * - Bounce Tile (TileBounce)
      * - Flip Tile (TileFlip):
-     *     - (TileColor) color to flip to.
+     *     - (Hint) color to flip to.
      *     - (boolean) if this should flip to an empty tile.
      * - Populate Tile (TilePopulate)
      *     - (Letter) letter to populate to.
      * - Grow Key (KeyGrow)
      * - Shrink Key (KeyShrink)
      * - Flip Key (KeyFlip)
-     *     - (TileColor) color to flip to.
+     *     - (Hint) color to flip to.
      * - Pulse Key (KeyPulse)
      * - Enable Key (KeyEnable)
      * - Disable Key (KeyDisable)
@@ -59,7 +61,7 @@ public final class AnimationManager {
      * - Hide Keyboard (KeyboardHide)
      * - Shake Row (RowShake)
      * - Reveal Row (RowReveal)
-     *     (TileColor[]) colors to reveal.
+     *     (Hint[]) colors to reveal.
      * - Bounce Row (RowBounce)
      * - Double Flip Row (RowDoubleFlip)
      * - Spin Reset Icon (ResetIconSpin)
@@ -205,7 +207,7 @@ public final class AnimationManager {
      * @param column Column of the tile.
      * @param color Color to flip to.
      */
-    public static void playTileFlipAnimation(int row, int column, TileColor color, boolean isResetting) {
+    public static void playTileFlipAnimation(int row, int column, Hint color, boolean isResetting) {
         tileFlipAnimations[row][column].getType().setColorToFlip(color);
         tileFlipAnimations[row][column].getType().isResetting(isResetting);
         tileFlipAnimations[row][column].play();
@@ -227,7 +229,7 @@ public final class AnimationManager {
      * @param id ID of the key to animate.
      * @param color Color to flip to.
      */
-    public static void playKeyFlipAnimation(int id, TileColor color) {
+    public static void playKeyFlipAnimation(int id, Hint color) {
         keyFlipAnimations[id].getType().setColorToFlip(color);
         keyFlipAnimations[id].play();
     }
@@ -299,7 +301,7 @@ public final class AnimationManager {
      * @param colors Colors to reveal.
      * @param letters Letters to flip.
      */
-    public static void playRowRevealAnimation(int row, TileColor[] colors, TileColor[] keyHints, Letter[] letters) {
+    public static void playRowRevealAnimation(int row, Hint[] colors, Hint[] keyHints, Letter[] letters) {
         rowRevealAnimations[row].getType().setColors(colors);
         rowRevealAnimations[row].getType().setKeyHints(keyHints);
         rowRevealAnimations[row].getType().setLetters(letters);

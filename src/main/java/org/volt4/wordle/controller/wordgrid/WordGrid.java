@@ -2,9 +2,9 @@ package org.volt4.wordle.controller.wordgrid;
 
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Rectangle;
-import org.volt4.wordle.AnimationManager;
-import org.volt4.wordle.Letter;
-import org.volt4.wordle.TileColor;
+import org.volt4.wordle.animation.AnimationManager;
+import org.volt4.wordle.type.Letter;
+import org.volt4.wordle.type.Hint;
 
 /**
  * Represents a wordgrid.
@@ -47,7 +47,7 @@ public class WordGrid extends GridPane {
         for (int i = 0; i < N_ROWS; i++)
             for (int j = 0; j < N_COLUMNS; j++)
                 if (tiles[i][j].getLetter() != Letter.EMPTY)
-                    AnimationManager.playTileFlipAnimation(i, j, TileColor.DARK_GREY, true);
+                    AnimationManager.playTileFlipAnimation(i, j, Hint.DARK_GREY, true);
     }
 
     /**
@@ -160,17 +160,17 @@ public class WordGrid extends GridPane {
 //            hasWon = true;
 //        }
 //        // Get the colors to flip to.
-//        TileColor[] colors = new TileColor[N_COLUMNS];
+//        Hint[] colors = new Hint[N_COLUMNS];
 //        for (int i = 0; i < N_COLUMNS; i++) {
 //            String letter = tiles[currentRow][i].getLetter().getLetter();
-//            colors[i] = TileColor.LIGHT_GREY;
+//            colors[i] = Hint.LIGHT_GREY;
 //            for (int j = 0; j < N_COLUMNS; j++)
 //                if (("" + answer.charAt(j)).equals(letter))
 //                    if (i == j) {
-//                        colors[i] = TileColor.GREEN;
+//                        colors[i] = Hint.GREEN;
 //                        break;
 //                    } else
-//                        colors[i] = TileColor.YELLOW;
+//                        colors[i] = Hint.YELLOW;
 //        }
 //        // Create letters array.
 //        Letter[] letters = new Letter[N_COLUMNS];

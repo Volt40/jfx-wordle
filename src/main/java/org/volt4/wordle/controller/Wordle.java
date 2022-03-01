@@ -7,6 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.volt4.wordle.*;
+import org.volt4.wordle.animation.AnimationManager;
 import org.volt4.wordle.animation.tile.TileBounce;
 import org.volt4.wordle.animation.tile.TileFlip;
 import org.volt4.wordle.animation.tile.row.RowBounce;
@@ -14,6 +15,8 @@ import org.volt4.wordle.animation.tile.row.RowReveal;
 import org.volt4.wordle.controller.component.LoseCard;
 import org.volt4.wordle.controller.keyboard.Keyboard;
 import org.volt4.wordle.controller.wordgrid.WordGrid;
+import org.volt4.wordle.type.Hint;
+import org.volt4.wordle.type.Letter;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -192,8 +195,8 @@ public class Wordle extends AnchorPane {
           *   the first instance will be colored (or the correct instance).
          */
         // Create hint arrays.
-        TileColor[] tileHints = new TileColor[N_COLUMNS];
-        Map<Letter, TileColor> keyHints = new HashMap<>();
+        Hint[] tileHints = new Hint[N_COLUMNS];
+        Map<Letter, Hint> keyHints = new HashMap<>();
         // Keeps track of how many times a letter appears in the word.
         Map<Letter, Integer> letterOccurrencesGuess = new HashMap<>();
         Map<Letter, Integer> letterOccurrencesAnswer = new HashMap<>();
@@ -216,28 +219,28 @@ public class Wordle extends AnchorPane {
             // Check to see if the letter is in the correct position.
             if (answer[i] == letter) {
                 // If so update hints.
-                tileHints[i] = TileColor.GREEN;
+                tileHints[i] = Hint.GREEN;
                 // Make sure key hints does not have an overriding hint.
-                if (keyHints.get(letter) == TileColor.YELLOW)
+                if (keyHints.get(letter) == Hint.YELLOW)
                     // Set the hint to green and yellow.
-                    keyHints.put(letter, TileColor.YELLOW_GREEN);
+                    keyHints.put(letter, Hint.YELLOW_GREEN);
                 else // Otherwise, set to green as normal.
-                    keyHints.put(letter, TileColor.GREEN);
+                    keyHints.put(letter, Hint.GREEN);
             // Check to see if the letter is in the word and has occurrences left.
             } else if (letterOccurrencesAnswer.containsKey(letter) && letterOccurrencesAnswer.get(letter) != 0) {
                 // Update hints.
-                tileHints[i] = TileColor.YELLOW;
+                tileHints[i] = Hint.YELLOW;
                 // Make sure key hints does not have an overriding hint.
-                if (keyHints.get(letter) == TileColor.GREEN)
+                if (keyHints.get(letter) == Hint.GREEN)
                     // Set the hint to yellow and green.
-                    keyHints.put(letter, TileColor.YELLOW_GREEN);
+                    keyHints.put(letter, Hint.YELLOW_GREEN);
                 else // Otherwise, set to yellow as normal.
-                    keyHints.put(letter, TileColor.YELLOW);
+                    keyHints.put(letter, Hint.YELLOW);
             } else {
                 // At this point, the letter is not in the word, so set the hint to light grey.
-                tileHints[i] = TileColor.LIGHT_GREY;
+                tileHints[i] = Hint.LIGHT_GREY;
                 if (!keyHints.containsKey(letter))
-                    keyHints.put(letter, TileColor.LIGHT_GREY);
+                    keyHints.put(letter, Hint.LIGHT_GREY);
                 continue;
             }
             // Decrement the occurrence.
@@ -245,7 +248,7 @@ public class Wordle extends AnchorPane {
         } // End for each letter loop.
         // Both hint collections should now be populated correctly.
         // Construct the key hints sync list.
-        TileColor[] keyHintsSync = new TileColor[guess.length];
+        Hint[] keyHintsSync = new Hint[guess.length];
         for (int i = 0; i < keyHintsSync.length; i++)
             keyHintsSync[i] = keyHints.get(guess[i]);
         // Play the reveal animation.

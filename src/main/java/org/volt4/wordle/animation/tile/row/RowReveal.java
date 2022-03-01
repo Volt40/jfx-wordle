@@ -1,9 +1,9 @@
 package org.volt4.wordle.animation.tile.row;
 
-import org.volt4.wordle.AnimationManager;
-import org.volt4.wordle.Letter;
-import org.volt4.wordle.TileColor;
-import org.volt4.wordle.WordleAnimation;
+import org.volt4.wordle.type.Hint;
+import org.volt4.wordle.animation.AnimationManager;
+import org.volt4.wordle.type.Letter;
+import org.volt4.wordle.animation.WordleAnimation;
 
 /**
  * Animates a row getting revealed.
@@ -17,8 +17,8 @@ public class RowReveal implements WordleAnimation {
     private int row;
 
     // Colors to reveal too.
-    private TileColor[] colors;
-    private TileColor[] keyHints;
+    private Hint[] colors;
+    private Hint[] keyHints;
 
     // Letters to flip.
     private Letter[] letters;
@@ -38,7 +38,7 @@ public class RowReveal implements WordleAnimation {
      * Sets the colors the row should flip to.
      * @param colors Colors to flip to.
      */
-    public void setColors(TileColor[] colors) {
+    public void setColors(Hint[] colors) {
         this.colors = colors;
     }
 
@@ -54,7 +54,7 @@ public class RowReveal implements WordleAnimation {
      * Sets the key hints.
      * @param keyHints Key hints.
      */
-    public void setKeyHints(TileColor[] keyHints) {
+    public void setKeyHints(Hint[] keyHints) {
         this.keyHints = keyHints;
     }
 

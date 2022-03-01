@@ -7,7 +7,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.volt4.wordle.animation.AnimationManager;
 import org.volt4.wordle.controller.Wordle;
+import org.volt4.wordle.type.Letter;
+import org.volt4.wordle.type.WordleTheme;
 
 /**
  * Wordle main application class.

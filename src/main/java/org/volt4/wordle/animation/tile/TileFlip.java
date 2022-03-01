@@ -1,8 +1,8 @@
 package org.volt4.wordle.animation.tile;
 
-import org.volt4.wordle.Letter;
-import org.volt4.wordle.TileColor;
-import org.volt4.wordle.WordleAnimation;
+import org.volt4.wordle.type.Hint;
+import org.volt4.wordle.type.Letter;
+import org.volt4.wordle.animation.WordleAnimation;
 import org.volt4.wordle.controller.wordgrid.WordGridTile;
 
 /**
@@ -19,7 +19,7 @@ public class TileFlip implements WordleAnimation {
     // Parameters for animation;
     private boolean isResetting;
     private boolean atMidpoint;
-    private TileColor colorToFlip;
+    private Hint colorToFlip;
 
     /**
      * Creates the animation on the given tile.
@@ -41,7 +41,7 @@ public class TileFlip implements WordleAnimation {
      * Sets the color this flips to.
      * @param colorToFlip Color to flip to.
      */
-    public void setColorToFlip(TileColor colorToFlip) {
+    public void setColorToFlip(Hint colorToFlip) {
         this.colorToFlip = colorToFlip;
     }
 

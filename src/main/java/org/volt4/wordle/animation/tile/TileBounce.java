@@ -1,6 +1,6 @@
 package org.volt4.wordle.animation.tile;
 
-import org.volt4.wordle.WordleAnimation;
+import org.volt4.wordle.animation.WordleAnimation;
 import org.volt4.wordle.controller.wordgrid.WordGridTile;
 
 /**

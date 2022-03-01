@@ -3,9 +3,9 @@ package org.volt4.wordle.controller.keyboard;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Rectangle;
-import org.volt4.wordle.AnimationManager;
-import org.volt4.wordle.Letter;
-import org.volt4.wordle.TileColor;
+import org.volt4.wordle.type.Hint;
+import org.volt4.wordle.animation.AnimationManager;
+import org.volt4.wordle.type.Letter;
 import org.volt4.wordle.WordLists;
 
 /**
@@ -81,7 +81,7 @@ public class Keyboard extends AnchorPane {
     public void reset() {
         setAllKeysDisabled(false);
         for (int i = 3; i < Letter.values().length; i++)
-            AnimationManager.playKeyFlipAnimation(i, TileColor.DARK_GREY);
+            AnimationManager.playKeyFlipAnimation(i, Hint.DARK_GREY);
     }
 
     /**
