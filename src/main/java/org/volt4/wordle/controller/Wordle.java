@@ -117,7 +117,8 @@ public class Wordle extends AnchorPane {
         currentRow = 0;
         selectColumn(0);
         chooseNewAnswer();
-        refreshHelpfulKeyboard();
+        if (Settings.HelpfulKeyboard)
+            keyboard.setAllKeysDisabled(false);
     }
 
     /**
@@ -276,7 +277,7 @@ public class Wordle extends AnchorPane {
      */
     public void refreshHelpfulKeyboard() {
         if (Settings.HelpfulKeyboard)
-            keyboard.updateHelpfulKeyboard(wordgrid.getWord(currentRow), selectedColumn);
+            keyboard.updateHelpfulKeyboard(wordgrid.getWord(currentRow), selectedColumn == -1 ? N_COLUMNS - 1 : selectedColumn);
     }
 
     /**

@@ -79,7 +79,6 @@ public class Keyboard extends AnchorPane {
      * Resets the keyboard.
      */
     public void reset() {
-        setAllKeysDisabled(false);
         for (int i = 3; i < Letter.values().length; i++)
             AnimationManager.playKeyFlipAnimation(i, Hint.DARK_GREY);
     }
