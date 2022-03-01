@@ -1,7 +1,7 @@
 package org.volt4.wordle.animation.losecard;
 
 import org.volt4.wordle.WordleAnimation;
-import org.volt4.wordle.controller.LoseCard;
+import org.volt4.wordle.controller.component.LoseCard;
 
 /**
  * Animation to show the lose card.

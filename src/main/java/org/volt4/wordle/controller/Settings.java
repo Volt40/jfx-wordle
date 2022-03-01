@@ -7,6 +7,7 @@ import javafx.scene.layout.AnchorPane;
 import org.volt4.wordle.WordLists;
 import org.volt4.wordle.WordleApplication;
 import org.volt4.wordle.WordleTheme;
+import org.volt4.wordle.controller.component.SettingsToggle;
 
 import java.io.IOException;
 

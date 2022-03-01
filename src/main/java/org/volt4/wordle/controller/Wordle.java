@@ -11,6 +11,9 @@ import org.volt4.wordle.animation.tile.TileBounce;
 import org.volt4.wordle.animation.tile.TileFlip;
 import org.volt4.wordle.animation.tile.row.RowBounce;
 import org.volt4.wordle.animation.tile.row.RowReveal;
+import org.volt4.wordle.controller.component.LoseCard;
+import org.volt4.wordle.controller.keyboard.Keyboard;
+import org.volt4.wordle.controller.wordgrid.WordGrid;
 
 import java.io.IOException;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package org.volt4.wordle.controller;
+package org.volt4.wordle.controller.keyboard;
 
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;

@@ -1,4 +1,4 @@
-package org.volt4.wordle.controller;
+package org.volt4.wordle.controller.component;
 
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;

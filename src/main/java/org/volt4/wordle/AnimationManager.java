@@ -25,6 +25,10 @@ import org.volt4.wordle.animation.tile.TileBounce;
 import org.volt4.wordle.animation.tile.TileFlip;
 import org.volt4.wordle.animation.tile.TilePopulate;
 import org.volt4.wordle.controller.*;
+import org.volt4.wordle.controller.component.LoseCard;
+import org.volt4.wordle.controller.keyboard.Keyboard;
+import org.volt4.wordle.controller.keyboard.KeyboardKey;
+import org.volt4.wordle.controller.wordgrid.WordGridTile;
 
 import java.util.concurrent.TimeUnit;
 

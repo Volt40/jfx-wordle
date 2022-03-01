@@ -2,7 +2,7 @@ package org.volt4.wordle.animation.keyboard.key;
 
 import javafx.scene.shape.Line;
 import org.volt4.wordle.WordleAnimation;
-import org.volt4.wordle.controller.KeyboardKey;
+import org.volt4.wordle.controller.keyboard.KeyboardKey;
 
 /**
  * Animates a key getting enabled.

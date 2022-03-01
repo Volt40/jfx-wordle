@@ -1,4 +1,4 @@
-package org.volt4.wordle.controller;
+package org.volt4.wordle.controller.wordgrid;
 
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Rectangle;

@@ -1,7 +1,7 @@
 package org.volt4.wordle.animation.keyboard.key;
 
 import org.volt4.wordle.WordleAnimation;
-import org.volt4.wordle.controller.KeyboardKey;
+import org.volt4.wordle.controller.keyboard.KeyboardKey;
 
 /**
  * Animation of a key growing and then shrinking.

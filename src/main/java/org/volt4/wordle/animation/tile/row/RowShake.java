@@ -1,7 +1,7 @@
 package org.volt4.wordle.animation.tile.row;
 
 import org.volt4.wordle.WordleAnimation;
-import org.volt4.wordle.controller.WordGridTile;
+import org.volt4.wordle.controller.wordgrid.WordGridTile;
 
 /**
  * Animates a row shaking.
