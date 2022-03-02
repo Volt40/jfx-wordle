@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Point3D?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" styleClass="empty-cells" type="AnchorPane" xmlns="http://javafx.com/javafx/13" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" styleClass="empty-cells" type="AnchorPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="letterImage" fitHeight="30.0" fitWidth="30.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="lockIcon" fitHeight="12.0" fitWidth="12.0" layoutX="-74.0" layoutY="-23.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0">
+         <image>
+            <Image url="@../icons/lock.png" />
+         </image>
+      </ImageView>
    </children>
    <rotationAxis>
       <Point3D x="1.0" />

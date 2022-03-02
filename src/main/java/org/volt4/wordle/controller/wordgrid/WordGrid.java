@@ -3,6 +3,7 @@ package org.volt4.wordle.controller.wordgrid;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Rectangle;
 import org.volt4.wordle.animation.AnimationManager;
+import org.volt4.wordle.controller.Settings;
 import org.volt4.wordle.type.Letter;
 import org.volt4.wordle.type.Hint;
 
@@ -18,12 +19,16 @@ public class WordGrid extends GridPane {
     // Tiles in this wordgrid.
     private WordGridTile[][] tiles;
 
+    // Locked tiles in the current game. Used in hard mode.
+    private boolean[][] lockedTiles;
+
     /**
      * Constructs a WordGrid and set a parameter.
      */
     public WordGrid(int N_ROWS, int N_COLUMNS) {
         this.N_ROWS = N_ROWS;
         this.N_COLUMNS = N_COLUMNS;
+        lockedTiles = new boolean[N_ROWS][N_COLUMNS];
         getStyleClass().add("word-grid");
         tiles = new WordGridTile[N_ROWS][N_COLUMNS];
         for (int i = 0; i < N_ROWS; i++)
@@ -48,6 +53,56 @@ public class WordGrid extends GridPane {
             for (int j = 0; j < N_COLUMNS; j++)
                 if (tiles[i][j].getLetter() != Letter.EMPTY)
                     AnimationManager.playTileFlipAnimation(i, j, Hint.DARK_GREY, true);
+        // Reset locked array.
+        for (int i = 0; i < lockedTiles.length; i++)
+            for (int j = 0; j < lockedTiles[i].length; j++)
+                if (lockedTiles[i][j]) {
+                    lockedTiles[i][j] = false;
+                    AnimationManager.playTileUnlockAnimation(i, j);
+                }
+    }
+
+    /**
+     * Updates all the locked tiles.
+     */
+    public void updateLockedTiles() {
+        if (Settings.HardMode) {
+            for (int i = 0; i < tiles.length; i++)
+                for (int j = 0; j < tiles[i].length; j++)
+                    if (tiles[i][j].getStyleClass().get(0).equals(Hint.GREEN.getTileStyleClassName())) // Fun little workaround.
+                        lockTile(i, j);
+        } else {
+            // Reset locked array.
+            for (int i = 0; i < lockedTiles.length; i++)
+                for (int j = 0; j < lockedTiles[i].length; j++)
+                    if (lockedTiles[i][j]) {
+                        lockedTiles[i][j] = false;
+                        AnimationManager.playTileUnlockAnimation(i, j);
+                    }
+        }
+        // Show stuff.
+        refreshLockedTiles();
+    }
+
+    /**
+     * Locks the given tile.
+     * @param row Row of the tile to lock.
+     * @param column Column of the tile to lock.
+     */
+    public void lockTile(int row, int column) {
+        lockedTiles[row][column] = true;
+    }
+
+    /**
+     * Shows all locked tiles.
+     */
+    public void refreshLockedTiles() {
+        for (int i = 0; i < lockedTiles.length; i++)
+            for (int j = 0; j < lockedTiles[i].length; j++)
+                if (lockedTiles[i][j])
+                    AnimationManager.playTileLockAnimation(i, j);
+                else if (tiles[i][j].getLockIcon().isVisible())
+                    AnimationManager.playTileUnlockAnimation(i, j);
     }
 
     /**

@@ -1,6 +1,8 @@
 package org.volt4.wordle.animation.tile.row;
 
+import org.volt4.wordle.WordleApplication;
 import org.volt4.wordle.controller.Settings;
+import org.volt4.wordle.controller.wordgrid.WordGridTile;
 import org.volt4.wordle.type.Hint;
 import org.volt4.wordle.animation.AnimationManager;
 import org.volt4.wordle.type.Letter;
@@ -84,6 +86,8 @@ public class RowReveal implements WordleAnimation {
                 AnimationManager.playKeyFlipAnimation(letters[i].ID(), keyHints[i]);
             }
         }
+        if (Settings.HardMode)
+            WordleApplication.getWordle().showLockedTiles();
     }
 
     @Override

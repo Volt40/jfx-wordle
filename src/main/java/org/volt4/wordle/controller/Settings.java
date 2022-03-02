@@ -77,7 +77,9 @@ public class Settings extends AnchorPane {
      * @param state Attribute to set.
      */
     private void setHardMode(boolean state) {
-        // TODO
+        HardMode = state;
+        if (WordleApplication.getWordle() != null)
+            WordleApplication.getWordle().showLockedTiles();
     }
 
     /**
