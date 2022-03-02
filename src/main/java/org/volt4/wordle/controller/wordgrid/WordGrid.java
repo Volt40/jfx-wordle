@@ -140,6 +140,8 @@ public class WordGrid extends GridPane {
      * @return The word from the given row.
      */
     public String getWord(int row) {
+        if (row >= N_ROWS)
+            return new String(new char[N_COLUMNS]).replace('\0', ' ');
         String word = "";
         for (int i = 0; i < N_COLUMNS; i++)
             if (tiles[row][i].getLetter() != Letter.EMPTY)

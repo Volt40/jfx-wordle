@@ -177,6 +177,7 @@ public class Wordle extends AnchorPane {
         // Get the word from the grid.
         String word = wordgrid.getWord(currentRow);
         // Check to make sure it is valid.
+        // TODO: Hard mode implementation.
         if (!WordLists.guessIsValid(word)) {
             AnimationManager.playRowShakeAnimation(currentRow);
             return;
@@ -221,6 +222,21 @@ public class Wordle extends AnchorPane {
             if (answer[i] == letter) {
                 // If so update hints.
                 tileHints[i] = Hint.GREEN;
+                // Check to see if something went wrong.
+                if (letterOccurrencesAnswer.get(letter) == 0) {
+                    boolean firstHintRemoved = false;
+                    boolean moreThanOneYellowHintsFound = false;
+                    // If this is true, that means that there is a yellow instance of the letter earlier in the word.
+                    for (int j = 0; j < i; j++)
+                        if (guess[j] == letter && tileHints[j] == Hint.YELLOW) // Find a previous instance of the letter.
+                            if (!firstHintRemoved) {
+                                tileHints[j] = Hint.LIGHT_GREY; // Remove the yellow hint.
+                                firstHintRemoved = true;
+                            } else
+                                moreThanOneYellowHintsFound = true;
+                    if (!moreThanOneYellowHintsFound) // If only one other yellow hint was found, remove the key map reference.
+                        keyHints.remove(letter);
+                }
                 // Make sure key hints does not have an overriding hint.
                 if (keyHints.get(letter) == Hint.YELLOW)
                     // Set the hint to green and yellow.
