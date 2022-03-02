@@ -94,7 +94,7 @@ public class Settings extends AnchorPane {
      * @param state Attribute to set.
      */
     private void setDisableAnimations(boolean state) {
-        // TODO
+        DisableAnimations = state;
     }
 
     /**
@@ -135,5 +135,8 @@ public class Settings extends AnchorPane {
     @FXML void onHelpfulKeyboardInfo(MouseEvent event) { helpfulKeyboardInfo.setVisible(true); }
     @FXML void onHighContrastModeInfo(MouseEvent event) { highContrastModeInfo.setVisible(true); }
     @FXML void onLinguistModeInfo(MouseEvent event) { linguistModeInfo.setVisible(true);}
+
+    // Prevent things in the background from getting clicked.
+    @FXML void onClicked(MouseEvent event) { event.consume(); }
 
 }

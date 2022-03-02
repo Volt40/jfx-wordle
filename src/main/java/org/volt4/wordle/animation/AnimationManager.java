@@ -411,9 +411,14 @@ public final class AnimationManager {
          * Plays the animation.
          */
         public void play() {
-            startTime = -1;
-            animation.start();
-            timer.start();
+            if (Settings.DisableAnimations) {
+                animation.start();
+                animation.end();
+            } else {
+                startTime = -1;
+                animation.start();
+                timer.start();
+            }
         }
 
         /**
@@ -421,7 +426,10 @@ public final class AnimationManager {
          * @param delay Delay before the animation plays.
          */
         public void playLater(long delay) {
-            Platform.runLater(new Timeline(new KeyFrame(Duration.millis(delay), e -> play()))::play);
+            if (Settings.DisableAnimations)
+                play();
+            else
+                Platform.runLater(new Timeline(new KeyFrame(Duration.millis(delay), e -> play()))::play);
         }
 
         /**

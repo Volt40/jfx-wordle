@@ -67,6 +67,8 @@ public class KeyFlip implements WordleAnimation {
     @Override
     public void end() {
         key.setRotate(0);
+        key.getStyleClass().clear();
+        key.getStyleClass().add(colorToFlip.getKeyStyleClassName());
         dontFlip = false;
     }
 

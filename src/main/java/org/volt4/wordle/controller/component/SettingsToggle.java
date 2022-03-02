@@ -52,6 +52,7 @@ public class SettingsToggle extends AnchorPane {
     void onToggle(MouseEvent event) {
         state = !state;
         updateState(state);
+        event.consume();
     }
 
     /**

@@ -115,7 +115,7 @@ public class Wordle extends AnchorPane {
             AnimationManager.playLoseCardHideAnimation();
         hasLost = false;
         currentRow = 0;
-        selectColumn(0);
+        selectedColumn = 0;
         chooseNewAnswer();
         if (Settings.HelpfulKeyboard)
             keyboard.setAllKeysDisabled(false);

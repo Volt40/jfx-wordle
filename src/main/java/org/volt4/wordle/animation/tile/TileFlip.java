@@ -70,6 +70,10 @@ public class TileFlip implements WordleAnimation {
     @Override
     public void end() {
         tile.setRotate(0);
+        tile.getStyleClass().clear();
+        tile.getStyleClass().add(colorToFlip.getTileStyleClassName());
+        if (isResetting)
+            tile.setLetter(Letter.EMPTY);
     }
 
     @Override

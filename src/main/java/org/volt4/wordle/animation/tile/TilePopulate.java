@@ -63,6 +63,9 @@ public class TilePopulate implements WordleAnimation {
 
     @Override
     public void end() {
+        tile.setLetter(letter);
+        tile.getStyleClass().clear();
+        tile.getStyleClass().add("filled-cells");
         tile.setScaleX(1);
         tile.setScaleY(1);
     }
