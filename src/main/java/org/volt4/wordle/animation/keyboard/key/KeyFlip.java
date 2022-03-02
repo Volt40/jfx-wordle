@@ -36,6 +36,7 @@ public class KeyFlip implements WordleAnimation {
      * @param colorToFlip Color to flip to.
      */
     public void setColorToFlip(Hint colorToFlip) {
+        // TODO Fix this if statement.
         if (colorToFlip == this.colorToFlip || colorToFlip == Hint.YELLOW && this.colorToFlip == Hint.GREEN || this.colorToFlip == Hint.YELLOW_GREEN && colorToFlip != Hint.GREEN) {
             dontFlip = true;
             return;
