@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -16,7 +17,7 @@
             <Font name="Arial Bold" size="23.0" />
          </font>
       </Text>
-      <GridPane layoutX="75.0" layoutY="67.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="50.0">
+      <GridPane layoutX="75.0" layoutY="67.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="115.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -139,7 +140,7 @@
             </AnchorPane>
          </children>
       </GridPane>
-      <AnchorPane fx:id="darkModeInfo" layoutX="40.0" layoutY="213.0" prefHeight="60.0" prefWidth="225.0" styleClass="settings-info-box" visible="false" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="78.0">
+      <AnchorPane fx:id="darkModeInfo" layoutX="40.0" layoutY="213.0" prefHeight="60.0" prefWidth="225.0" styleClass="settings-info-box" visible="false" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="140.0">
          <children>
             <Text layoutX="88.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Darker, more pleasant &#10;theme.  Easier on the eyes." textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="6.0">
                <font>
@@ -148,7 +149,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="hardModeInfo" layoutX="29.0" layoutY="239.0" prefHeight="60.0" prefWidth="230.0" styleClass="settings-info-box" visible="false" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="108.0">
+      <AnchorPane fx:id="hardModeInfo" layoutX="29.0" layoutY="239.0" prefHeight="60.0" prefWidth="230.0" styleClass="settings-info-box" visible="false" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="170.0">
          <children>
             <Text layoutX="88.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Any revealed hints must be &#10;used in subsequent guesses" textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="6.0">
                <font>
@@ -157,7 +158,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="highContrastModeInfo" prefHeight="60.0" prefWidth="160.0" styleClass="settings-info-box" visible="false" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="137.0">
+      <AnchorPane fx:id="highContrastModeInfo" prefHeight="60.0" prefWidth="160.0" styleClass="settings-info-box" visible="false" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="200.0">
          <children>
             <Text layoutX="88.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Improved contrast &#10;for better vision" textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="6.0">
                <font>
@@ -166,7 +167,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="disableAnimationsInfo" prefHeight="60.0" prefWidth="157.0" styleClass="settings-info-box" visible="false" AnchorPane.leftAnchor="103.0" AnchorPane.topAnchor="167.0">
+      <AnchorPane fx:id="disableAnimationsInfo" prefHeight="60.0" prefWidth="157.0" styleClass="settings-info-box" visible="false" AnchorPane.leftAnchor="103.0" AnchorPane.topAnchor="230.0">
          <children>
             <Text layoutX="88.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Disables all game&#10;animations." textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="6.0">
                <font>
@@ -175,7 +176,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="helpfulKeyboardInfo" prefHeight="60.0" prefWidth="235.0" styleClass="settings-info-box" visible="false" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="197.0">
+      <AnchorPane fx:id="helpfulKeyboardInfo" prefHeight="60.0" prefWidth="235.0" styleClass="settings-info-box" visible="false" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="260.0">
          <children>
             <Text layoutX="88.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="The keyboard automatically&#10;disables unusable letters." textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="6.0">
                <font>
@@ -184,7 +185,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="linguistModeInfo" prefHeight="80.0" prefWidth="200.0" styleClass="settings-info-box" visible="false" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="227.0">
+      <AnchorPane fx:id="linguistModeInfo" prefHeight="80.0" prefWidth="200.0" styleClass="settings-info-box" visible="false" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="290.0">
          <children>
             <Text layoutX="88.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Any valid guess is&#10;now a possible answer.&#10;(Requires reset)" textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="6.0">
                <font>
@@ -193,5 +194,45 @@
             </Text>
          </children>
       </AnchorPane>
+      <AnchorPane layoutX="61.0" layoutY="215.0" prefHeight="50.0" prefWidth="200.0" styleClass="daily-wordle-box" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="50.0">
+         <children>
+            <Line endX="240.0" endY="30.0" startX="10.0" startY="30.0" stroke="WHITE" style="-fx-stroke: linear-gradient(to right, #474747 0%, white 20%, white 80%, #474747 100%);" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Daily Wordle" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="daily-wordle-info-text-active" text="New Word Available in: " AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="45.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="daily-wordle-info-text-active" text="4hr 20m" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="160.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <AnchorPane layoutX="125.0" layoutY="-86.0" prefHeight="200.0" prefWidth="50.0" styleClass="daily-wordle-button-view" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="5.0">
+               <children>
+                  <Text layoutX="-21.0" layoutY="16.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="daily-wordle-button-text" text="VIEW" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="2.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="170.0" layoutY="-85.0" prefHeight="20.0" prefWidth="40.0" styleClass="daily-wordle-history-button" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+               <children>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="-90.0" layoutY="-65.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="4.0">
+                     <image>
+                        <Image url="@../icons/history.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <Text layoutX="82.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="bottom-info-text" text="How to Play?" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" />
+      <Text layoutX="92.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="bottom-info-text" text="About" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="30.0" />
    </children>
 </fx:root>

@@ -193,6 +193,55 @@
 }
 /* End Info Box */
 
+/* Daily Wordle Elements */
+.daily-wordle-box {
+    -fx-background-color: #474747;
+    -fx-background-radius: 10;
+}
+.daily-wordle-info-text-active {
+    -fx-fill: -incorrect-color;
+    -fx-font-family: Futura;
+    -fx-font-size: 10;
+}
+.daily-wordle-button-play {
+    -fx-background-color: -correct-color;
+    -fx-background-radius: 5;
+}
+.daily-wordle-button-view {
+    -fx-background-color: -incorrect-color;
+    -fx-background-radius: 5;
+}
+.daily-wordle-button-text {
+    -fx-font-family: ARIAL;
+    -fx-font-size: 15;
+    -fx-fill: white;
+    -fx-font-weight: bold;
+}
+.daily-wordle-history-button {
+    -fx-background-color: #575757;
+    -fx-background-radius: 5;
+}
+.daily-wordle-history-button:hover {
+    -fx-background-color: #646464;
+    -fx-background-radius: 5;
+}
+.daily-wordle-history-button:pressed {
+    -fx-background-color: #797979;
+    -fx-background-radius: 5;
+}
+/* End Daily Wordle Elements */
+
+.bottom-info-text {
+    -fx-font-family: Futura;
+    -fx-font-size: 18;
+    -fx-fill: white;
+    -fx-font-weight: bold;
+}
+
+.bottom-info-text:hover {
+    -fx-font-style: underline;
+}
+
 /* =================================== Component Elements =================================== */
 
 /* Settings Toggle */
