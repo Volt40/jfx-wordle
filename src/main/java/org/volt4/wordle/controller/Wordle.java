@@ -19,9 +19,7 @@ import org.volt4.wordle.type.Hint;
 import org.volt4.wordle.type.Letter;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * A Wordle Game.
@@ -60,6 +58,10 @@ public class Wordle extends AnchorPane {
     // Won/Lose trackers.
     private boolean hasWon, hasLost;
 
+    // Hard mode variables.
+    private boolean[] lockedColumns;
+    private Map<Letter, Integer> requiredLetters;
+
     /**
      * Constructs a Wordle game.
      */
@@ -77,6 +79,8 @@ public class Wordle extends AnchorPane {
         selectColumn(0);
         hasWon = false;
         hasLost = false;
+        lockedColumns = new boolean[N_COLUMNS];
+        requiredLetters = new HashMap<>();
         // Setup animations.
         keyboardHidden = true;
         settingsVisible = false;
@@ -264,6 +268,22 @@ public class Wordle extends AnchorPane {
             letterOccurrencesAnswer.put(letter, letterOccurrencesAnswer.get(letter) - 1);
         } // End for each letter loop.
         // Both hint collections should now be populated correctly.
+        // TODO: Fix hard mode logic here.
+        // Count the amount of hints for each letter.
+        Map<Letter, Integer> letterHints = new HashMap<>();
+        for (int i = 0; i < tileHints.length; i++)
+            if (tileHints[i] == Hint.YELLOW || tileHints[i] == Hint.GREEN) // If a yellow/green hint is found.
+                if (letterHints.containsKey(guess[i]))
+                    letterHints.put(guess[i], letterHints.get(guess[i]) + 1); // If already in the map, increment 1.
+                else
+                    letterHints.put(guess[i], 1); // Otherwise, just set it to one.
+        // Used in hard mode, update the locked array.
+        for (int i = 0; i < tileHints.length; i++)
+            if (tileHints[i] == Hint.GREEN) {
+                lockedColumns[i] = true;
+                letterHints.remove(guess[i]); // Remove one green hint.
+            }
+        // Merge
         // Construct the key hints sync list.
         Hint[] keyHintsSync = new Hint[guess.length];
         for (int i = 0; i < keyHintsSync.length; i++)

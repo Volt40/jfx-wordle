@@ -31,7 +31,7 @@ public class RowDoubleFlip implements WordleAnimation {
         text.getStyleClass().add("good-job-text");
         text.setText("GOOD JOB!");
         text.setRotationAxis(new Point3D(1, 0, 0));
-        text.setLayoutX(65);
+        text.setLayoutX(62);
         text.setLayoutY(47);
         text.setRotate(180);
         text.setVisible(false);
