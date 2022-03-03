@@ -117,6 +117,8 @@ public class Wordle extends AnchorPane {
         hasWon = false;
         if (hasLost)
             AnimationManager.playLoseCardHideAnimation();
+        for (int i = 0; i < N_ROWS; i++)
+            wordgrid.clearRowSelection(i);
         hasLost = false;
         currentRow = 0;
         selectedColumn = 0;
@@ -306,6 +308,8 @@ public class Wordle extends AnchorPane {
         for (int i = 0; i < tileHints.length; i++)
             if (tileHints[i] == Hint.GREEN)
                 wordgrid.lockTile(currentRow, i);
+        // Clear the row selections.
+        wordgrid.clearRowSelection(currentRow);
         // Increment the current row.
         currentRow++;
         // Select the first column of the next row.
@@ -370,8 +374,11 @@ public class Wordle extends AnchorPane {
             return;
         int row = (int) (mY / 70);
         int column = (int) (mX / 70);
-        if (row == currentRow)
+        if (row == currentRow) {
             selectColumn(column);
+            if (wordgrid != null)
+                wordgrid.setSelected(currentRow, column);
+        }
     }
 
     @FXML

@@ -106,6 +106,26 @@ public class WordGrid extends GridPane {
     }
 
     /**
+     * Sets the selected row and column.
+     * @param row Row to be selected.
+     * @param column Column to be selected.
+     */
+    public void setSelected(int row, int column) {
+        for (WordGridTile tile : tiles[row])
+            tile.deselect();
+        tiles[row][column].select();
+    }
+
+    /**
+     * Clears the selected row.
+     * @param row Row to clear.
+     */
+    public void clearRowSelection(int row) {
+        for (WordGridTile tile : tiles[row])
+            tile.deselect();
+    }
+
+    /**
      * Sets the Letter of the given row and column.
      * @param letter Letter to set.
      * @param row Row of the letter to set.

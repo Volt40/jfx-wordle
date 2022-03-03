@@ -38,6 +38,27 @@ public class WordGridTile extends AnchorPane {
     }
 
     /**
+     * Selects this tile.
+     */
+    public void select() {
+        getStyleClass().clear();
+        getStyleClass().add("selected-tile");
+    }
+
+    /**
+     * De selects this tile.
+     */
+    public void deselect() {
+        if (!getStyleClass().contains("selected-tile"))
+            return;
+        getStyleClass().clear();
+        if (letter == Letter.EMPTY)
+            getStyleClass().add("empty-tile");
+        else
+            getStyleClass().add("filled-tile");
+    }
+
+    /**
      * Returns the lock icon.
      * @return The lock icon.
      */
