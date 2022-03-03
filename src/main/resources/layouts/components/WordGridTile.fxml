@@ -10,7 +10,7 @@
       <ImageView fx:id="letterImage" fitHeight="30.0" fitWidth="30.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="lockIcon" fitHeight="12.0" fitWidth="12.0" layoutX="-74.0" layoutY="-23.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0">
          <image>
-            <Image url="@../icons/lock.png" />
+            <Image url="@../../icons/lock.png" />
          </image>
       </ImageView>
    </children>
