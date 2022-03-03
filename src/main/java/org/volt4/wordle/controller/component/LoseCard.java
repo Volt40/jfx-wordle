@@ -22,7 +22,7 @@ public class LoseCard extends AnchorPane {
      * Constructs the lose card.
      */
     public LoseCard() {
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("layouts/LoseCard.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("layouts/components/LoseCard.fxml"));
         loader.setRoot(this);
         loader.setController(this);
         try {

@@ -29,7 +29,7 @@ public class KeyboardKey extends AnchorPane {
      * @param letter Letter of this key.
      */
     public KeyboardKey(Letter letter, Runnable onClick) {
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("layouts/KeyboardKey.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("layouts/components/KeyboardKey.fxml"));
         loader.setRoot(this);
         loader.setController(this);
         try {

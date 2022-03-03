@@ -26,7 +26,7 @@ public class WordGridTile extends AnchorPane {
      * Constructs and loads a WordGridTile.
      */
     public WordGridTile() {
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("layouts/WordGridTile.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("layouts/components/WordGridTile.fxml"));
         loader.setRoot(this);
         loader.setController(this);
         try {

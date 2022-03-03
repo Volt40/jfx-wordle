@@ -32,7 +32,7 @@ public class SettingsToggle extends AnchorPane {
      * @param state State to set.
      */
     public SettingsToggle(boolean state, StateHandler handler) {
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("layouts/SettingsToggle.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("layouts/components/SettingsToggle.fxml"));
         loader.setRoot(this);
         loader.setController(this);
         try {
