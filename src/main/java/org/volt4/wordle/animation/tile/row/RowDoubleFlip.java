@@ -54,7 +54,7 @@ public class RowDoubleFlip implements WordleAnimation {
                 for (WordGridTile tile : tiles) {
                     tile.getLetterImage().setVisible(false);
                     tile.getStyleClass().clear();
-                    tile.getStyleClass().add("correct-green-cells");
+                    tile.getStyleClass().add("winning-green-tile");
                 }
             }
             for (WordGridTile tile : tiles)
@@ -67,7 +67,7 @@ public class RowDoubleFlip implements WordleAnimation {
                 for (WordGridTile tile : tiles) {
                     tile.getLetterImage().setVisible(true);
                     tile.getStyleClass().clear();
-                    tile.getStyleClass().add("green-cells");
+                    tile.getStyleClass().add("green-tile");
                 }
             }
             for (WordGridTile tile : tiles)

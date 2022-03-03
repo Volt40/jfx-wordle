@@ -29,7 +29,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <AnchorPane fx:id="darkModePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 10 10 0 0;" styleClass="list-dark">
+            <AnchorPane fx:id="darkModePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 10 10 0 0;" styleClass="settings-list-dark">
                <children>
                   <Text layoutX="14.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Dark Mode" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0">
                      <font>
@@ -47,7 +47,7 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="hardModePane" prefHeight="200.0" prefWidth="200.0" styleClass="list-light" GridPane.rowIndex="1">
+            <AnchorPane fx:id="hardModePane" prefHeight="200.0" prefWidth="200.0" styleClass="settings-list-light" GridPane.rowIndex="1">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Hard Mode" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0">
                      <font>
@@ -65,7 +65,7 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="highContrastModePane" prefHeight="200.0" prefWidth="200.0" styleClass="list-dark" GridPane.rowIndex="2">
+            <AnchorPane fx:id="highContrastModePane" prefHeight="200.0" prefWidth="200.0" styleClass="settings-list-dark" GridPane.rowIndex="2">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="High Contrast Mode" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0">
                      <font>
@@ -83,7 +83,7 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="disableAnimationsPane" prefHeight="200.0" prefWidth="200.0" styleClass="list-light" GridPane.rowIndex="3">
+            <AnchorPane fx:id="disableAnimationsPane" prefHeight="200.0" prefWidth="200.0" styleClass="settings-list-light" GridPane.rowIndex="3">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Disable Animations" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0">
                      <font>
@@ -101,7 +101,7 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="helpfulKeyboardPane" prefHeight="200.0" prefWidth="200.0" styleClass="list-dark" GridPane.rowIndex="4">
+            <AnchorPane fx:id="helpfulKeyboardPane" prefHeight="200.0" prefWidth="200.0" styleClass="settings-list-dark" GridPane.rowIndex="4">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Helpful Keyboard" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0">
                      <font>
@@ -119,7 +119,7 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="linguistModePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 0 0 10 10;" styleClass="list-light" GridPane.rowIndex="5">
+            <AnchorPane fx:id="linguistModePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 0 0 10 10;" styleClass="settings-list-light" GridPane.rowIndex="5">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Linguist Mode" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0">
                      <font>

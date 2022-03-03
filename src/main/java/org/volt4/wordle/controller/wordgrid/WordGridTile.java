@@ -54,7 +54,7 @@ public class WordGridTile extends AnchorPane {
         this.letter = letter;
         if (letter == Letter.EMPTY) {
             getStyleClass().clear();
-            getStyleClass().add("empty-cells");
+            getStyleClass().add("empty-tile");
         }
     }
 

@@ -1,185 +1,223 @@
+/*
+ * This is the core style class for wordle. Each section has a header
+ * and a footer. All the common colors are defined at the top, but
+ * most of the colors are imported from the css files in the "colors/"
+ * directory. These colors are outlined as the following:
+ *
+ * Two different main themes: Light and Dark. The following theme-based colors are the following:
+ * TODO
+ *
+ * Two different contrast modes: Low and High. The following contrast colors are the following:
+ * -correct-color: Same as color for correct guesses.
+ * -incorrect-color: Same as color for semi-correct guesses.
+ *
+ */
 
 @import "colors/dark.css";
 @import "colors/lowcontrast.css";
 
-.word-grid {
-	-fx-background-color: -color-a;
-	-fx-background-radius: 10 10 5 5;
+* {
+
 }
 
-.word-grid .empty-cells {
-	-fx-border-color: -color-b;
-	-fx-border-width: 1.7;
-	-fx-border-insets: 1.4;
-}
+/* =================================== Drag Bar Elements =================================== */
 
-.word-grid .filled-cells {
-	-fx-border-color: #565758;
-	-fx-border-width: 1.7;
-	-fx-border-insets: 1.4;
+/* Wordle Title Tiles (This the styled "Wordle" that appears at the top of the application) */
+.wordle-title-tiles {
+    -fx-background-color: -correct-color;
+    -fx-background-insets: 3;
+    -fx-background-radius: 5;
 }
+/* End Word Title Tiles */
 
-.word-grid .grey-cells {
-	-fx-background-color: -color-b;
-	-fx-background-insets: 1.4;
-}
-
-.word-grid .yellow-cells {
-	-fx-background-color: -incorrect-color;
-	-fx-background-insets: 1.4;
-}
-
-.word-grid .green-cells {
-	-fx-background-color: -correct-color;
-	-fx-background-insets: 1.4;
-}
-
-.word-grid .correct-green-cells {
-	-fx-background-color: -correct-color;
-	-fx-background-insets: 1.4 0 1.4 0;
-}
-
+/* Drag Bar (The bar at the top of the application used for dragging and holds the menu items) */
 .drag-bar {
-	-fx-background-color: -color-c;
-	-fx-background-radius: 10 10 0 0;
+    -fx-background-color: -color-c;
+    -fx-background-radius: 10 10 0 0;
 }
+/* End Drag Bar */
 
-.title-tiles {
-	-fx-background-color: -correct-color;
-	-fx-background-insets: 3;
-	-fx-background-radius: 5;
-}
-
+/* Drag Bar Menu Items */
 .drag-bar-buttons {
-	-fx-background-color: -color-c;
-	-fx-background-insets: 0;
-	-fx-background-radius: 10;
+    -fx-background-color: -color-c;
+    -fx-background-insets: 0;
+    -fx-background-radius: 10;
 }
 
 .drag-bar-buttons:hover {
-	-fx-background-color: -color-b;
-	-fx-background-insets: 1.5;
+    -fx-background-color: -color-b;
+    -fx-background-insets: 1.5;
 }
 
 .drag-bar-buttons:pressed {
-	-fx-background-color: -color-d;
-	-fx-background-insets: 1.5;
+    -fx-background-color: -color-d;
+    -fx-background-insets: 1.5;
+}
+/* End Drag Bar Menu Items */
+
+/* =================================== Word Grid Elements =================================== */
+
+/* Word Grid (This is basically just the background of the grid) */
+.word-grid {
+    -fx-background-color: -color-a;
+    -fx-background-radius: 10 10 5 5;
+}
+/* End Word Grid */
+
+/* Grid Tiles */
+.empty-tile, .filled-tile, .selected-tile, .hinted-tile, .grey-tile, .yellow-tile, .green-tile, .winning-green-tile {
+    -fx-background-color: -color-a;
+    -fx-border-width: 1.7;
+    -fx-border-insets: 1.4;
 }
 
-.keyboard-tile-lightgrey {
-	-fx-background-color: -color-b;
-	-fx-background-insets: 2.5;
-	-fx-background-radius: 4;
+/* Empty Tiles */
+.empty-tile {
+    -fx-border-color: -color-b;
 }
 
-.keyboard-tile-darkgrey {
-	-fx-background-color: -color-a;
-	-fx-background-insets: 3;
-	-fx-background-radius: 4;
+.filled-tile {
+    -fx-border-color: #565758;
 }
 
-.keyboard-tile-green {
-	-fx-background-color: -correct-color;
-	-fx-background-insets: 3;
-	-fx-background-radius: 4;
+.selected-tile {
+    -fx-border-color: #6b6d6e;
+}
+/* End Empty Tiles */
+
+.grey-tile, .yellow-tile, .green-tile, .winning-green-tile {
+    -fx-background-insets: 1.4;
 }
 
-.keyboard-tile-yellow {
-	-fx-background-color: -incorrect-color;
-	-fx-background-insets: 3;
-	-fx-background-radius: 4;
+.grey-tile {
+    -fx-background-color: -color-b;
 }
 
-.keyboard-tile-yellowgreen {
-	-fx-background-color: linear-gradient(to bottom right, -correct-color 0%, -correct-color 50%, -incorrect-color 50%);
-	-fx-background-insets: 3;
-	-fx-background-radius: 4;
+.yellow-tile {
+    -fx-background-color: -incorrect-color;
 }
 
-.keyboard-tile-lightgrey:pressed {
-	-fx-scale-x: 1;
-	-fx-scale-y: 1;
+.green-tile, .winning-green-tile {
+    -fx-background-color: -correct-color;
 }
 
-.keyboard-tile-darkgrey:pressed {
-	-fx-scale-x: 1;
-	-fx-scale-y: 1;
-}
-
-.keyboard-tile-green:pressed {
-	-fx-scale-x: 1;
-	-fx-scale-y: 1;
-}
-
-.keyboard-tile-yellow:pressed {
-	-fx-scale-x: 1;
-	-fx-scale-y: 1;
-}
-
-.lose-card {
-	-fx-background-radius: 10;
-	-fx-background-color: #b43a3a;
+.winning-green-tile {
+    -fx-background-insets: 1.4 0 1.4 0;
 }
 
 .good-job-text {
-	-fx-fill: -c-base;
-	-fx-font-family: ARIAL;
-	-fx-font-size: 40;
-	-fx-font-weight: bold;
+    -fx-fill: -c-base;
+    -fx-font-family: ARIAL;
+    -fx-font-size: 40;
+    -fx-font-weight: bold;
+}
+/* End Grid Tiles */
+
+/* =================================== Keyboard Elements =================================== */
+
+/* Keyboard Key */
+.lightgrey-key, .darkgrey-key, .yellow-key, .green-key, .yellowgreen-key {
+    -fx-background-insets: 3;
+    -fx-background-radius: 4;
 }
 
+.lightgrey-key:pressed, .darkgrey-key:pressed, .yellow-key:pressed, .green-key:pressed, .yellowgreen-key:pressed {
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+}
+
+.lightgrey-key {
+    -fx-background-color: -color-b;
+    -fx-background-insets: 2.5; /* Not sure why this is here, might remove later */
+}
+
+.darkgrey-key {
+    -fx-background-color: -color-a;
+}
+
+.yellow-key {
+    -fx-background-color: -incorrect-color;
+}
+
+.green-key {
+    -fx-background-color: -correct-color;
+}
+
+.yellowgreen-key {
+    -fx-background-color: linear-gradient(to bottom right, -correct-color 0%, -correct-color 50%, -incorrect-color 50%);
+}
+/* End Keyboard Key */
+
+/* =================================== Settings Elements =================================== */
+
+/* Settings Pane */
 .settings {
-	-fx-background-color: rgba(51, 51, 51, 0.8);
-	-fx-background-radius: 0 0 5 5;
+    -fx-background-color: rgba(51, 51, 51, 0.8);
+    -fx-background-radius: 0 0 5 5;
 }
+/* End Settings Pane */
 
+/* Settings Text */
 .settings-text {
-	-fx-fill: -c-base;
-	-fx-font-family: Futura;
+    -fx-fill: -c-base;
+    -fx-font-family: Futura;
 }
 
-.settings-text .settings-title {
-	-fx-font-family: ARIAL;
-	-fx-font-weight: bold;
+.settings-title {
+    -fx-fill: -c-base;
+    -fx-font-family: ARIAL;
+    -fx-font-weight: bold;
+}
+/* End Settings Text */
+
+/* List Elements */
+.settings-list-dark {
+    -fx-background-color: #3d3d3d;
 }
 
-.settings .list-dark {
-	-fx-background-color: #3d3d3d;
-}
-
-.settings .list-light {
-	-fx-background-color: #474747;
+.settings-list-light {
+    -fx-background-color: #474747;
 }
 
 .settings-info-buttons {
-	-fx-background-color: -color-c;
-	-fx-background-radius: 15;
+    -fx-background-color: -color-c;
+    -fx-background-radius: 15;
 }
 
 .settings-info-buttons:hover {
-	/*-fx-border-color: -c-base;*/
-	/*-fx-border-width: 2;*/
-	/*-fx-border-insets: -2;*/
-	/*-fx-border-radius: 15;*/
-	-fx-background-color: -correct-color;
+    -fx-background-color: -correct-color;
 }
+/* End List Elements */
 
+/* Info Box */
+.settings-info-box {
+    -fx-background-color: rgba(43, 43, 43, 0.8);
+    -fx-background-radius: 10;
+}
+/* End Info Box */
+
+/* =================================== Component Elements =================================== */
+
+/* Settings Toggle */
 .settings-toggle-off {
-	-fx-background-color: #757575;
-	-fx-background-radius: 10;
+    -fx-background-color: #757575;
+    -fx-background-radius: 10;
 }
 
 .settings-toggle-on {
-	-fx-background-color: -correct-color;
-	-fx-background-radius: 10;
+    -fx-background-color: -correct-color;
+    -fx-background-radius: 10;
 }
 
 .settings-toggle-handle {
-	-fx-background-color: -c-base;
-	-fx-background-radius: 8;
+    -fx-background-color: -c-base;
+    -fx-background-radius: 8;
 }
+/* End Settings Toggle */
 
-.settings-info-box {
-	-fx-background-color: rgba(43, 43, 43, 0.8);
-	-fx-background-radius: 10;
+/* Lose Card */
+.lose-card {
+    -fx-background-radius: 10;
+    -fx-background-color: #b43a3a;
 }
+/* End Lose Card */

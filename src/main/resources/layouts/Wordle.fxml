@@ -42,7 +42,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="title-tiles">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="wordle-title-tiles">
                      <children>
                         <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="-86.0" layoutY="-61.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="7.5" AnchorPane.topAnchor="7.5">
                            <image>
@@ -51,7 +51,7 @@
                         </ImageView>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="title-tiles" GridPane.columnIndex="1">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="wordle-title-tiles" GridPane.columnIndex="1">
                      <children>
                         <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="-86.0" layoutY="-61.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="7.5" AnchorPane.topAnchor="7.5">
                            <image>
@@ -60,7 +60,7 @@
                         </ImageView>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="title-tiles" GridPane.columnIndex="2">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="wordle-title-tiles" GridPane.columnIndex="2">
                      <children>
                         <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="-86.0" layoutY="-61.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="7.5" AnchorPane.topAnchor="7.5">
                            <image>
@@ -69,7 +69,7 @@
                         </ImageView>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="title-tiles" GridPane.columnIndex="3">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="wordle-title-tiles" GridPane.columnIndex="3">
                      <children>
                         <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="-86.0" layoutY="-61.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="7.5" AnchorPane.topAnchor="7.5">
                            <image>
@@ -78,7 +78,7 @@
                         </ImageView>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="title-tiles" GridPane.columnIndex="4">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="wordle-title-tiles" GridPane.columnIndex="4">
                      <children>
                         <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="-86.0" layoutY="-61.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="7.5" AnchorPane.topAnchor="7.5">
                            <image>
@@ -87,7 +87,7 @@
                         </ImageView>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="title-tiles" GridPane.columnIndex="5">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="wordle-title-tiles" GridPane.columnIndex="5">
                      <children>
                         <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="-86.0" layoutY="-61.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="7.5" AnchorPane.topAnchor="7.5">
                            <image>

@@ -4,7 +4,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<fx:root onMouseClicked="#onPress" onMouseEntered="#onMouseEnter" onMouseExited="#onMouseExit" prefHeight="200.0" prefWidth="200.0" styleClass="keyboard-tile-lightgrey" type="AnchorPane" xmlns="http://javafx.com/javafx/13" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root onMouseClicked="#onPress" onMouseEntered="#onMouseEnter" onMouseExited="#onMouseExit" prefHeight="200.0" prefWidth="200.0" styleClass="lightgrey-key" type="AnchorPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="letterImage" fitHeight="20.0" fitWidth="20.0" layoutX="-82.0" layoutY="-55.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="7.5" AnchorPane.topAnchor="10.0" />
    </children>

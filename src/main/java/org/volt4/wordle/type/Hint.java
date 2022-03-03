@@ -5,11 +5,11 @@ package org.volt4.wordle.type;
  */
 public enum Hint {
 
-    LIGHT_GREY("grey-cells", "keyboard-tile-darkgrey"), // Tile that has a letter that is not in the word.
-    DARK_GREY("empty-cells", "keyboard-tile-lightgrey"), // Tile that has a letter that may or may not be in the word.
-    YELLOW("yellow-cells", "keyboard-tile-yellow"), // Tile that has a letter that is in the word, just in the wrong position.
-    GREEN("green-cells", "keyboard-tile-green"), // Tile that contains a letter that is in the word, in the position.
-    YELLOW_GREEN("UNUSED", "keyboard-tile-yellowgreen"); // Key that hints at two letters, one correct, one incorrect.
+    LIGHT_GREY("grey-tile", "darkgrey-key"), // Tile that has a letter that is not in the word.
+    DARK_GREY("empty-tile", "lightgrey-key"), // Tile that has a letter that may or may not be in the word.
+    YELLOW("yellow-tile", "yellow-key"), // Tile that has a letter that is in the word, just in the wrong position.
+    GREEN("green-tile", "green-key"), // Tile that contains a letter that is in the word, in the position.
+    YELLOW_GREEN("UNUSED", "yellowgreen-key"); // Key that hints at two letters, one correct, one incorrect.
 
     // CSS Style class names.
     private String tileStyleClassName;

@@ -49,7 +49,7 @@ public class TilePopulate implements WordleAnimation {
         if (!atLargest && position >= 0.5) {
             tile.setLetter(letter);
             tile.getStyleClass().clear();
-            tile.getStyleClass().add("filled-cells");
+            tile.getStyleClass().add("filled-tile");
             atLargest = true;
         }
         double scale;
@@ -65,7 +65,7 @@ public class TilePopulate implements WordleAnimation {
     public void end() {
         tile.setLetter(letter);
         tile.getStyleClass().clear();
-        tile.getStyleClass().add("filled-cells");
+        tile.getStyleClass().add("filled-tile");
         tile.setScaleX(1);
         tile.setScaleY(1);
     }
