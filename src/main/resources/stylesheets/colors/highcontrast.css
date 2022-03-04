@@ -1,4 +1,13 @@
 * {
+    /* L0 */
     -correct-color: #F5793A;
     -incorrect-color: #85BFF9;
+
+    /* L1 */
+    -correct-color-l1: #ef7e42;
+    -incorrect-color-l1: #95c5fc;
+
+    /* L2 */
+    -correct-color-l2: #f1844a;
+    -incorrect-color-l2: #9fc5f3;
 }

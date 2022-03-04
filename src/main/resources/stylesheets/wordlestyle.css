@@ -162,8 +162,9 @@
 
 .settings-title {
     -fx-fill: -c-base;
-    -fx-font-family: ARIAL;
+    -fx-font-family: Verdana;
     -fx-font-weight: bold;
+    -fx-font-size: 40;
 }
 /* End Settings Text */
 
@@ -207,9 +208,21 @@
     -fx-background-color: -correct-color;
     -fx-background-radius: 5;
 }
+.daily-wordle-button-play:hover {
+    -fx-background-color: -correct-color-l1;
+}
+.daily-wordle-button-play:pressed {
+    -fx-background-color: -correct-color-l2;
+}
 .daily-wordle-button-view {
     -fx-background-color: -incorrect-color;
     -fx-background-radius: 5;
+}
+.daily-wordle-button-view:hover {
+    -fx-background-color: -incorrect-color-l1;
+}
+.daily-wordle-button-view:pressed {
+    -fx-background-color: -incorrect-color-l2;
 }
 .daily-wordle-button-text {
     -fx-font-family: ARIAL;
@@ -239,7 +252,55 @@
 }
 
 .bottom-info-text:hover {
-    -fx-font-style: underline;
+    -fx-fill: -correct-color;
+}
+
+/* =================================== Daily Wordle History Elements =================================== */
+
+.settings-title {
+    -fx-fill: -c-base;
+    -fx-font-family: Verdana;
+    -fx-font-weight: bold;
+    -fx-font-size: 17.5;
+}
+
+.scroll-pane {
+    -fx-background-color: #474747;
+    -fx-background-radius: 10;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #68686b;
+    -fx-background-radius: 5em;
+}
+.scroll-bar:horizontal .thumb:hover,
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #7c7c80;
+}
+.scroll-bar:horizontal .thumb:pressed,
+.scroll-bar:vertical .thumb:pressed {
+    -fx-background-color: #a2a2a4;
 }
 
 /* =================================== Component Elements =================================== */
