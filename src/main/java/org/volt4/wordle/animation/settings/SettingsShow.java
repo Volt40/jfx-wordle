@@ -1,7 +1,7 @@
 package org.volt4.wordle.animation.settings;
 
 import org.volt4.wordle.animation.WordleAnimation;
-import org.volt4.wordle.controller.Settings;
+import org.volt4.wordle.controller.config.SettingsScreen;
 
 /**
  * Animates the settings getting revealed.
@@ -11,14 +11,14 @@ public class SettingsShow implements WordleAnimation {
     // Duration of this animation.
     public static final long ANIMATION_DURATION = 200;
 
-    // Settings to animate.
-    private Settings settings;
+    // SettingsScreen to animate.
+    private SettingsScreen settings;
 
     /**
-     * Creates the animation on the given Settings.
-     * @param settings Settings to animate.
+     * Creates the animation on the given SettingsScreen.
+     * @param settings SettingsScreen to animate.
      */
-    public SettingsShow(Settings settings) {
+    public SettingsShow(SettingsScreen settings) {
         this.settings = settings;
     }
 

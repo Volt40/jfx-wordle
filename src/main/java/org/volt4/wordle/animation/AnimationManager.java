@@ -9,6 +9,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.util.Duration;
 import org.volt4.wordle.animation.tile.*;
+import org.volt4.wordle.controller.config.SettingsScreen;
 import org.volt4.wordle.type.Letter;
 import org.volt4.wordle.type.Hint;
 import org.volt4.wordle.animation.keyboard.key.*;
@@ -24,7 +25,6 @@ import org.volt4.wordle.animation.tile.row.RowShake;
 import org.volt4.wordle.animation.settings.SettingsHide;
 import org.volt4.wordle.animation.settings.SettingsIconSpin;
 import org.volt4.wordle.animation.settings.SettingsShow;
-import org.volt4.wordle.controller.*;
 import org.volt4.wordle.controller.component.LoseCard;
 import org.volt4.wordle.controller.keyboard.Keyboard;
 import org.volt4.wordle.controller.keyboard.KeyboardKey;
@@ -63,12 +63,12 @@ public final class AnimationManager {
      * - Bounce Row (RowBounce)
      * - Double Flip Row (RowDoubleFlip)
      * - Spin Reset Icon (ResetIconSpin)
-     * - Spin Settings Icon (SettingsIconSpin)
+     * - Spin SettingsScreen Icon (SettingsIconSpin)
      * - Show Lose Card (LoseCardShow)
      *     (String) correct word.
      * - Hide Lose Card (LoseCardHide)
-     * - Show Settings (SettingsShow)
-     * - Hide Settings (SettingsHide)
+     * - Show SettingsScreen (SettingsShow)
+     * - Hide SettingsScreen (SettingsHide)
      *
      */
 
@@ -167,7 +167,7 @@ public final class AnimationManager {
      * Inits the settings animations.
      * @param settings
      */
-    public static void initSettingsAnimations(Settings settings, ImageView icon) {
+    public static void initSettingsAnimations(SettingsScreen settings, ImageView icon) {
         settingsShowAnimation = new AnimationController<>(new SettingsShow(settings));
         settingsHideAnimation = new AnimationController<>(new SettingsHide(settings));
         settingsIconSpinAnimation = new AnimationController<>(new SettingsIconSpin(icon));
@@ -409,7 +409,7 @@ public final class AnimationManager {
          * Plays the animation.
          */
         public void play() {
-            if (Settings.DisableAnimations) {
+            if (SettingsScreen.DisableAnimations) {
                 animation.start();
                 animation.end();
             } else {
@@ -424,7 +424,7 @@ public final class AnimationManager {
          * @param delay Delay before the animation plays.
          */
         public void playLater(long delay) {
-            if (Settings.DisableAnimations)
+            if (SettingsScreen.DisableAnimations)
                 play();
             else
                 Platform.runLater(new Timeline(new KeyFrame(Duration.millis(delay), e -> play()))::play);

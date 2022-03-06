@@ -149,16 +149,16 @@
 }
 /* End Keyboard Key */
 
-/* =================================== Settings Elements =================================== */
+/* =================================== SettingsScreen Elements =================================== */
 
-/* Settings Pane */
+/* SettingsScreen Pane */
 .settings {
     -fx-background-color: rgba(51, 51, 51, 0.8);
     -fx-background-radius: 0 0 5 5;
 }
-/* End Settings Pane */
+/* End SettingsScreen Pane */
 
-/* Settings Text */
+/* SettingsScreen Text */
 .settings-text {
     -fx-fill: -c-base;
     -fx-font-family: Futura;
@@ -170,7 +170,7 @@
     -fx-font-family: Verdana;
     -fx-font-weight: bold;
 }
-/* End Settings Text */
+/* End SettingsScreen Text */
 
 /* List Elements */
 .settings-list-dark {
@@ -309,7 +309,7 @@
 
 /* =================================== Component Elements =================================== */
 
-/* Settings Toggle */
+/* SettingsScreen Toggle */
 .settings-toggle-off {
     -fx-background-color: #757575;
     -fx-background-radius: 10;
@@ -324,7 +324,7 @@
     -fx-background-color: -c-base;
     -fx-background-radius: 8;
 }
-/* End Settings Toggle */
+/* End SettingsScreen Toggle */
 
 /* Lose Card */
 .lose-card {

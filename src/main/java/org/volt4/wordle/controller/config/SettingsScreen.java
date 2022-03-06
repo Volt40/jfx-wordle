@@ -1,4 +1,4 @@
-package org.volt4.wordle.controller;
+package org.volt4.wordle.controller.config;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,11 +12,11 @@ import org.volt4.wordle.controller.component.SettingsToggle;
 import java.io.IOException;
 
 /**
- * Settings window.
+ * SettingsScreen window.
  */
-public class Settings extends AnchorPane {
+public class SettingsScreen extends AnchorPane {
 
-    // Settings panes.
+    // SettingsScreen panes.
     @FXML private AnchorPane darkModePane;
     @FXML private AnchorPane hardModePane;
     @FXML private AnchorPane highContrastModePane;
@@ -33,7 +33,7 @@ public class Settings extends AnchorPane {
     @FXML private AnchorPane helpfulKeyboardInfo;
     @FXML private AnchorPane linguistModeInfo;
 
-    // Settings
+    // SettingsScreen
     public static boolean DarkMode;
     public static boolean HardMode;
     public static boolean HighContrastMode;
@@ -45,7 +45,7 @@ public class Settings extends AnchorPane {
     /**
      * Creates the settings window.
      */
-    public Settings() {
+    public SettingsScreen() {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("layouts/Settings.fxml"));
         loader.setRoot(this);
         loader.setController(this);

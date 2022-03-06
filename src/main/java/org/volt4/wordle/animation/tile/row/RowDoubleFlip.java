@@ -13,7 +13,7 @@ public class RowDoubleFlip implements WordleAnimation {
     // Duration of this animation.
     public static final long ANIMATION_DURATION = 1300;
 
-    // Settings
+    // SettingsScreen
     private static final double FLIP_TIME = 0.35;
 
     // Used for animation.

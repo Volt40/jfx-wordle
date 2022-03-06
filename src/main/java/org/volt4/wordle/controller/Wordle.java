@@ -13,6 +13,7 @@ import org.volt4.wordle.animation.tile.TileFlip;
 import org.volt4.wordle.animation.tile.row.RowBounce;
 import org.volt4.wordle.animation.tile.row.RowReveal;
 import org.volt4.wordle.controller.component.LoseCard;
+import org.volt4.wordle.controller.config.SettingsScreen;
 import org.volt4.wordle.controller.keyboard.Keyboard;
 import org.volt4.wordle.controller.wordgrid.WordGrid;
 import org.volt4.wordle.type.Hint;
@@ -95,7 +96,7 @@ public class Wordle extends AnchorPane {
         LoseCard loseCard = new LoseCard();
         AnimationManager.initLoseCardAnimations(loseCard);
         // Create settings window.
-        Settings settings = new Settings();
+        SettingsScreen settings = new SettingsScreen();
         settings.setLayoutY(30);
         settings.setLayoutX(350);
         AnimationManager.initSettingsAnimations(settings, settingsImage);
@@ -123,7 +124,7 @@ public class Wordle extends AnchorPane {
         currentRow = 0;
         selectedColumn = 0;
         chooseNewAnswer();
-        if (Settings.HelpfulKeyboard)
+        if (SettingsScreen.HelpfulKeyboard)
             keyboard.setAllKeysDisabled(false);
     }
 
@@ -316,7 +317,7 @@ public class Wordle extends AnchorPane {
      * If the helpful keyboard is active, this will refresh it.
      */
     public void refreshHelpfulKeyboard() {
-        if (Settings.HelpfulKeyboard)
+        if (SettingsScreen.HelpfulKeyboard)
             keyboard.updateHelpfulKeyboard(wordgrid.getWord(currentRow), selectedColumn == -1 ? N_COLUMNS - 1 : selectedColumn);
     }
 

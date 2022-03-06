@@ -3,7 +3,6 @@ package org.volt4.wordle.controller.wordgrid;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Rectangle;
 import org.volt4.wordle.animation.AnimationManager;
-import org.volt4.wordle.controller.Settings;
 import org.volt4.wordle.type.Letter;
 import org.volt4.wordle.type.Hint;
 
@@ -139,9 +138,9 @@ public class WordGrid extends GridPane {
 //            return;
 //        AnimationManager.playTilePopulateAnimation(currentRow, currentColumn, letter);
 //        currentColumn++;
-//        if (Settings.HelpfulKeyboard && currentColumn != 5)
+//        if (SettingsScreen.HelpfulKeyboard && currentColumn != 5)
 //            WordleApplication.getWordle().getKeyboard().updateSmartKeyboard(buildWord(), currentColumn);
-//        else if (Settings.HelpfulKeyboard && currentColumn == 5)
+//        else if (SettingsScreen.HelpfulKeyboard && currentColumn == 5)
 //            WordleApplication.getWordle().getKeyboard().setAllKeysDisabled(true);
 //    }
 //
@@ -155,7 +154,7 @@ public class WordGrid extends GridPane {
 //        if (currentColumn > 0)
 //            currentColumn--;
 //        tiles[currentRow][currentColumn].setLetter(Letter.EMPTY);
-//        if (Settings.HelpfulKeyboard)
+//        if (SettingsScreen.HelpfulKeyboard)
 //            WordleApplication.getWordle().getKeyboard().updateSmartKeyboard(buildWord(), currentColumn);
 //    }
 //
@@ -213,7 +212,7 @@ public class WordGrid extends GridPane {
 //            hasLost = true;
 //            AnimationManager.playLoseCardShowAnimation(answer, RowReveal.ANIMATION_DURATION + TileFlip.ANIMATION_DURATION);
 //        }
-//        if (Settings.HelpfulKeyboard)
+//        if (SettingsScreen.HelpfulKeyboard)
 //            WordleApplication.getWordle().getKeyboard().setAllKeysDisabled(false);
 //        return word.equals(answer);
 //    }

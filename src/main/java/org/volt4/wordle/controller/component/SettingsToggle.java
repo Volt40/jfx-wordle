@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import org.volt4.wordle.controller.Settings;
+import org.volt4.wordle.controller.config.SettingsScreen;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -28,7 +28,7 @@ public class SettingsToggle extends AnchorPane {
     private SwitchAnimation on, off;
 
     /**
-     * Creates the Settings toggle with the default state.
+     * Creates the SettingsScreen toggle with the default state.
      * @param state State to set.
      */
     public SettingsToggle(boolean state, StateHandler handler) {
@@ -117,7 +117,7 @@ public class SettingsToggle extends AnchorPane {
          * Runs the animation.
          */
         public void start() {
-            if (Settings.DisableAnimations)
+            if (SettingsScreen.DisableAnimations)
                 handle.setLayoutX(end);
             else {
                 startTime = -1;

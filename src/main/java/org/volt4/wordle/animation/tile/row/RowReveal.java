@@ -1,8 +1,6 @@
 package org.volt4.wordle.animation.tile.row;
 
-import org.volt4.wordle.WordleApplication;
-import org.volt4.wordle.controller.Settings;
-import org.volt4.wordle.controller.wordgrid.WordGridTile;
+import org.volt4.wordle.controller.config.SettingsScreen;
 import org.volt4.wordle.type.Hint;
 import org.volt4.wordle.animation.AnimationManager;
 import org.volt4.wordle.type.Letter;
@@ -80,7 +78,7 @@ public class RowReveal implements WordleAnimation {
 
     @Override
     public void end() {
-        if (Settings.DisableAnimations) {
+        if (SettingsScreen.DisableAnimations) {
             for (int i = 0; i < colors.length; i++) {
                 AnimationManager.playTileFlipAnimation(row, i, colors[i], false);
                 AnimationManager.playKeyFlipAnimation(letters[i].ID(), keyHints[i]);

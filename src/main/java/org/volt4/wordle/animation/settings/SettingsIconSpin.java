@@ -8,7 +8,7 @@ import org.volt4.wordle.animation.WordleAnimation;
  */
 public class SettingsIconSpin implements WordleAnimation {
 
-    // Settings.
+    // SettingsScreen.
     public static double DEGREES_PER_FRAME = 2.5;
 
     // Icon to animate.
