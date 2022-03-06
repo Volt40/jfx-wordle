@@ -19,9 +19,6 @@ public class WordGridTile extends AnchorPane {
     @FXML
     private ImageView letterImage;
 
-    @FXML
-    private ImageView lockIcon;
-
     /**
      * Constructs and loads a WordGridTile.
      */
@@ -56,14 +53,6 @@ public class WordGridTile extends AnchorPane {
             getStyleClass().add("empty-tile");
         else
             getStyleClass().add("filled-tile");
-    }
-
-    /**
-     * Returns the lock icon.
-     * @return The lock icon.
-     */
-    public ImageView getLockIcon() {
-        return lockIcon;
     }
 
     /**

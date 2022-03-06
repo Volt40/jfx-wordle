@@ -86,8 +86,6 @@ public class RowReveal implements WordleAnimation {
                 AnimationManager.playKeyFlipAnimation(letters[i].ID(), keyHints[i]);
             }
         }
-        if (Settings.HardMode)
-            WordleApplication.getWordle().showLockedTiles();
     }
 
     @Override

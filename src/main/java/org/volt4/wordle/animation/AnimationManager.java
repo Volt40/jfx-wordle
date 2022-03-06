@@ -48,8 +48,6 @@ public final class AnimationManager {
      *     - (boolean) if this should flip to an empty tile.
      * - Populate Tile (TilePopulate)
      *     - (Letter) letter to populate to.
-     * - Lock Tile (TileLock)
-     * - Unlock Tile (TileUnlock)
      * - Grow Key (KeyGrow)
      * - Shrink Key (KeyShrink)
      * - Flip Key (KeyFlip)
@@ -80,8 +78,6 @@ public final class AnimationManager {
     private static AnimationController<TileBounce>[][] tileBounceAnimations;
     private static AnimationController<TileFlip>[][] tileFlipAnimations;
     private static AnimationController<TilePopulate>[][] tilePopulateAnimations;
-    private static AnimationController<TileLock>[][] tileLockAnimations;
-    private static AnimationController<TileUnlock>[][] tileUnlockAnimations;
     private static AnimationController<KeyGrow>[] keyGrowAnimations;
     private static AnimationController<KeyShrink>[] keyShrinkAnimations;
     private static AnimationController<KeyFlip>[] keyFlipAnimations;
@@ -114,8 +110,6 @@ public final class AnimationManager {
         tileBounceAnimations = new AnimationController[tiles.length][tiles[0].length];
         tileFlipAnimations = new AnimationController[tiles.length][tiles[0].length];
         tilePopulateAnimations = new AnimationController[tiles.length][tiles[0].length];
-        tileLockAnimations = new AnimationController[tiles.length][tiles[0].length];
-        tileUnlockAnimations = new AnimationController[tiles.length][tiles[0].length];
         rowRevealAnimations = new AnimationController[tiles.length];
         rowShakeAnimations = new AnimationController[tiles.length];
         rowBounceAnimations = new AnimationController[tiles.length];
@@ -129,8 +123,6 @@ public final class AnimationManager {
                 tileBounceAnimations[i][j] = new AnimationController<>(new TileBounce(tiles[i][j]));
                 tileFlipAnimations[i][j] = new AnimationController<>(new TileFlip(tiles[i][j]));
                 tilePopulateAnimations[i][j] = new AnimationController<>(new TilePopulate(tiles[i][j]));
-                tileLockAnimations[i][j] = new AnimationController<>(new TileLock(tiles[i][j].getLockIcon()));
-                tileUnlockAnimations[i][j] = new AnimationController<>(new TileUnlock(tiles[i][j].getLockIcon()));
             }
         }
     }
@@ -238,24 +230,6 @@ public final class AnimationManager {
     public static void playKeyFlipAnimation(int id, Hint color) {
         keyFlipAnimations[id].getType().setColorToFlip(color);
         keyFlipAnimations[id].play();
-    }
-
-    /**
-     * Plays the tile lock animation at the given row and column.
-     * @param row Row to lock.
-     * @param column Column to lock.
-     */
-    public static void playTileLockAnimation(int row, int column) {
-        tileLockAnimations[row][column].play();
-    }
-
-    /**
-     * Plays the tile unlock animation at the given row and column.
-     * @param row Row to lock.
-     * @param column Column to lock.
-     */
-    public static void playTileUnlockAnimation(int row, int column) {
-        tileUnlockAnimations[row][column].play();
     }
 
     /**

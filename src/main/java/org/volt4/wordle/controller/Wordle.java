@@ -304,10 +304,6 @@ public class Wordle extends AnchorPane {
             AnimationManager.playLoseCardShowAnimation(this.answer, RowReveal.ANIMATION_DURATION + TileFlip.ANIMATION_DURATION);
             hasLost = true;
         }
-        // If in hard mode, lock the relevant tiles.
-        for (int i = 0; i < tileHints.length; i++)
-            if (tileHints[i] == Hint.GREEN)
-                wordgrid.lockTile(currentRow, i);
         // Clear the row selections.
         wordgrid.clearRowSelection(currentRow);
         // Increment the current row.
@@ -329,13 +325,6 @@ public class Wordle extends AnchorPane {
      */
     public void clearHelpfulKeyboard() {
         keyboard.setAllKeysDisabled(false);
-    }
-
-    /**
-     * Shows all the locked tiles. Used in hard mode.
-     */
-    public void showLockedTiles() {
-        wordgrid.updateLockedTiles();
     }
 
     /**

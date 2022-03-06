@@ -102,6 +102,8 @@
 
 .winning-green-tile {
     -fx-background-insets: 1.4 0 1.4 0;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
 }
 
 .good-job-text {
@@ -163,10 +165,10 @@
 }
 
 .settings-title {
+    -fx-font-size: 40;
     -fx-fill: -c-base;
     -fx-font-family: Verdana;
     -fx-font-weight: bold;
-    -fx-font-size: 40;
 }
 /* End Settings Text */
 
