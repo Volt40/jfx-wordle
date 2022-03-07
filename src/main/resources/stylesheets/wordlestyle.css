@@ -208,6 +208,11 @@
     -fx-font-family: Futura;
     -fx-font-size: 10;
 }
+.daily-wordle-info-text-inactive {
+    -fx-fill: -correct-color;
+    -fx-font-family: Futura;
+    -fx-font-size: 10;
+}
 .daily-wordle-button-play {
     -fx-background-color: -correct-color;
     -fx-background-radius: 5;

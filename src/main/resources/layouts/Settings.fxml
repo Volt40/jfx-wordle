@@ -202,19 +202,19 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="daily-wordle-info-text-active" text="New Word Available in: " AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="45.0">
+            <Text fx:id="dailyWordleStatus" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="daily-wordle-info-text-active" text="New Word Available in: " AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="40.0">
                <font>
                   <Font size="15.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="daily-wordle-info-text-active" text="4hr 20m" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="160.0">
+            <Text fx:id="countdown" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="daily-wordle-info-text-active" text="4hr 20m 50s" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="155.0">
                <font>
                   <Font size="15.0" />
                </font>
             </Text>
-            <AnchorPane layoutX="125.0" layoutY="-86.0" prefHeight="200.0" prefWidth="50.0" styleClass="daily-wordle-button-view" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="5.0">
+            <AnchorPane fx:id="dailyWordleButton" layoutX="125.0" layoutY="-86.0" prefHeight="200.0" prefWidth="50.0" styleClass="daily-wordle-button-view" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="5.0">
                <children>
-                  <Text layoutX="-21.0" layoutY="16.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="daily-wordle-button-text" text="VIEW" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="2.0">
+                  <Text fx:id="dailyWordleButtonText" layoutX="-21.0" layoutY="16.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="daily-wordle-button-text" text="VIEW" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="2.0">
                      <font>
                         <Font size="15.0" />
                      </font>

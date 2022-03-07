@@ -1,5 +1,6 @@
 package org.volt4.wordle;
 
+import org.volt4.wordle.controller.config.Settings;
 import org.volt4.wordle.type.Letter;
 
 import java.io.BufferedReader;
@@ -22,6 +23,9 @@ public final class WordLists {
 
     // All words that can be guesses.
     private static HashMap<String, String> guesses;
+
+    // Map dates to their words. The first character of the word indicates whether that word has been solved (t/f).
+    private static HashMap<String, String> dailyWords;
 
     /**
      * Loads the wordlists. Only needs to be called once.
@@ -47,6 +51,32 @@ public final class WordLists {
                 guesses.put(word, word);
         guessesReader.close();
         coreAnswers = answers;
+        dailyWords = new HashMap<>();
+        // Load the info from the daily word.
+        BufferedReader dailyReader = new BufferedReader(new FileReader(WordLists.class.getClassLoader().getResource("wordlists/dailywords.txt").getPath()));
+        String line;
+        while((line = dailyReader.readLine()) != null) {
+            String[] parts = line.split(" ");
+            String dailyWord = parts[0];
+            String date = parts[1] + " " + parts[2] + " " + parts[3];
+            dailyWords.put(date, "f " + dailyWord);
+        }
+        // Check to see which words have been solved.
+        // WARN: The settings must be loaded before this segment runs.
+        for (String complex : Settings.DailyWordleHistory) {
+            String[] parts = complex.split(":");
+            String date = parts[1] + " " + parts[2] + " " + parts[3];
+            dailyWords.put(date, "t " + dailyWords.get(date).split(" ")[1]);
+        }
+    }
+
+    /**
+     * Returns the daily word, or "SOLVED" if the word has already been solved.
+     * @param date Today's date.
+     * @return The daily word, or "SOLVED" if the word has already been solved.
+     */
+    public static String getDailyWord(String date) {
+        return dailyWords.get(date).split(" ")[0].equals("t") ? "SOLVED" : dailyWords.get(date).split(" ")[1];
     }
 
     /**
