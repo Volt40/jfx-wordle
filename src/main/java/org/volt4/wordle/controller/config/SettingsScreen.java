@@ -178,7 +178,6 @@ public class SettingsScreen extends AnchorPane {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
         String time = formatter.format(date);
-        System.out.println(time);
         String day = "" + Integer.parseInt(time.split(" ")[0].split("/")[0]);
         String month = monthMap.get("" + Integer.parseInt(time.split(" ")[0].split("/")[1]));
         String year = "" + Integer.parseInt(time.split(" ")[0].split("/")[2]);
