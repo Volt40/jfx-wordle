@@ -102,14 +102,14 @@ public class Wordle extends AnchorPane {
         settings.setLayoutY(30);
         settings.setLayoutX(350);
         DailyWordleScreen historyScreen = new DailyWordleScreen();
-        historyScreen.setLayoutY(30);
         historyScreen.setLayoutX(350);
         AnimationManager.initSettingsAnimations(settings, settingsImage, historyScreen);
         // Set constraints.
         wordgrid.setLayoutY(30);
         keyboard.setLayoutY(450);
         // Add children.
-        getChildren().addAll(wordgrid, keyboard, loseCard, settings, historyScreen);
+        settings.getChildren().add(historyScreen);
+        getChildren().addAll(wordgrid, keyboard, loseCard, settings);
         // Choose first answer.
         answer = WordLists.pickRandomAnswer();
     }
@@ -417,6 +417,7 @@ public class Wordle extends AnchorPane {
     void onSettings(MouseEvent event) {
         settingsVisible = !settingsVisible;
         if (settingsVisible) {
+            AnimationManager.playHistoryHideAnimation();
             AnimationManager.playSettingsShowAnimation();
             AnimationManager.playSpinSettingsIconAnimation();
         } else {
