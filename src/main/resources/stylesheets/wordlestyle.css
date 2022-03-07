@@ -114,6 +114,19 @@
 }
 /* End Grid Tiles */
 
+/* Give Up Button */
+.give-up-button {
+    -fx-background-color: #b43a3a;
+    -fx-background-radius: 12;
+}
+.give-up-button:hover {
+    -fx-background-color: #cb4a4a;
+}
+.give-up-button:pressed {
+    -fx-background-color: #d35d5d;
+}
+/* End Give Up Button */
+
 /* =================================== Keyboard Elements =================================== */
 
 /* Keyboard Key */

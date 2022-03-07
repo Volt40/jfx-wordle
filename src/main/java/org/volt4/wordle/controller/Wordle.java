@@ -39,6 +39,9 @@ public class Wordle extends AnchorPane {
     @FXML
     private ImageView settingsImage;
 
+    @FXML
+    private AnchorPane giveUpButton, settingsButton, keyboardButton, resetButton;
+
     // WordGrid the game is played on.
     private WordGrid wordgrid;
 
@@ -89,6 +92,7 @@ public class Wordle extends AnchorPane {
         settingsVisible = false;
         AnimationManager.initKeyboardAnimations();
         AnimationManager.initResetAnimations(resetImage);
+        AnimationManager.initGiveUpButtonAnimations(settingsButton, resetButton, keyboardButton, giveUpButton);
         // Setup offsets.
         offset = new double[] {0, 0};
         // Construct keyboard and grid.
@@ -374,6 +378,11 @@ public class Wordle extends AnchorPane {
             if (wordgrid != null)
                 wordgrid.setSelected(currentRow, column);
         }
+    }
+
+    @FXML
+    void onGiveUp(MouseEvent event) {
+        AnimationManager.playGiveUpButtonHideAnimation();
     }
 
     @FXML

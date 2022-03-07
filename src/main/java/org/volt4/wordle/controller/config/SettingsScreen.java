@@ -210,6 +210,13 @@ public class SettingsScreen extends AnchorPane {
         }
     }
 
+    @FXML
+    void onPlayView(MouseEvent event) {
+        AnimationManager.playSettingsHideAnimation();
+        AnimationManager.stopSpinSettingsIconAnimation();
+        AnimationManager.playGiveUpButtonRevealAnimation();
+    }
+
     // Info handlers.
     @FXML void offDisableAnimationsInfo(MouseEvent event) { disableAnimationsInfo.setVisible(false); }
     @FXML void offDarkModeInfo(MouseEvent event) { darkModeInfo.setVisible(false); }

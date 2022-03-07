@@ -5,10 +5,11 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.util.Duration;
-import org.volt4.wordle.animation.settings.SettingsScreenShow;
+import org.volt4.wordle.animation.settings.*;
 import org.volt4.wordle.animation.tile.*;
 import org.volt4.wordle.controller.component.DailyWordleEntry;
 import org.volt4.wordle.controller.config.DailyWordleScreen;
@@ -21,13 +22,10 @@ import org.volt4.wordle.animation.keyboard.KeyboardHide;
 import org.volt4.wordle.animation.keyboard.KeyboardShow;
 import org.volt4.wordle.animation.losecard.LoseCardHide;
 import org.volt4.wordle.animation.losecard.LoseCardShow;
-import org.volt4.wordle.animation.settings.ResetIconSpin;
 import org.volt4.wordle.animation.tile.row.RowBounce;
 import org.volt4.wordle.animation.tile.row.RowDoubleFlip;
 import org.volt4.wordle.animation.tile.row.RowReveal;
 import org.volt4.wordle.animation.tile.row.RowShake;
-import org.volt4.wordle.animation.settings.SettingsScreenHide;
-import org.volt4.wordle.animation.settings.SettingsIconSpin;
 import org.volt4.wordle.controller.component.LoseCard;
 import org.volt4.wordle.controller.keyboard.Keyboard;
 import org.volt4.wordle.controller.keyboard.KeyboardKey;
@@ -72,6 +70,8 @@ public final class AnimationManager {
      * - Hide Lose Card (LoseCardHide)
      * - Show Settings Screen (SettingsScreenShow)
      * - Hide Settings Screen (SettingsScreenHide)
+     * - Reveal Give Up Button (GiveUpButtonReveal)
+     * - Hide Give Up Button (GiveUpButtonHide)
      *
      */
 
@@ -101,6 +101,8 @@ public final class AnimationManager {
     private static AnimationController<SettingsScreenHide> settingsHideAnimation;
     private static AnimationController<SettingsScreenShow> historyShowAnimation;
     private static AnimationController<SettingsScreenHide> historyHideAnimation;
+    private static AnimationController<GiveUpButtonReveal> giveUpButtonRevealAnimation;
+    private static AnimationController<GiveUpButtonHide> giveUpButtonHideAnimation;
 
     /**
      * Hides the default constructor as this class should not be instantiated.
@@ -195,6 +197,14 @@ public final class AnimationManager {
     public static void initLoseCardAnimations(LoseCard loseCard) {
         loseCardShowAnimation = new AnimationController<>(new LoseCardShow(loseCard));
         loseCardHideAnimation = new AnimationController<>(new LoseCardHide(loseCard));
+    }
+
+    /**
+     * Inits all give up button animations.
+     */
+    public static void initGiveUpButtonAnimations(AnchorPane settingsButton, AnchorPane resetButton, AnchorPane keyboardButton, AnchorPane giveUpButton) {
+        giveUpButtonRevealAnimation = new AnimationController<>(new GiveUpButtonReveal(settingsButton, resetButton, keyboardButton, giveUpButton));
+        giveUpButtonHideAnimation = new AnimationController<>(new GiveUpButtonHide(settingsButton, resetButton, keyboardButton, giveUpButton));
     }
 
     /**
@@ -396,6 +406,20 @@ public final class AnimationManager {
      */
     public static void stopSpinSettingsIconAnimation() {
         settingsIconSpinAnimation.stop();
+    }
+
+    /**
+     * Plays the reveal animation for the give up button.
+     */
+    public static void playGiveUpButtonRevealAnimation() {
+        giveUpButtonRevealAnimation.play();
+    }
+
+    /**
+     * Plays the reveal animation for the give up button.
+     */
+    public static void playGiveUpButtonHideAnimation() {
+        giveUpButtonHideAnimation.play();
     }
 
     /**
