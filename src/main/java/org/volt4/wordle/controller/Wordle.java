@@ -322,7 +322,7 @@ public class Wordle extends AnchorPane {
      * If the helpful keyboard is active, this will refresh it.
      */
     public void refreshHelpfulKeyboard() {
-        if (Settings.HelpfulKeyboard)
+        if (Settings.HelpfulKeyboard && wordgrid != null)
             keyboard.updateHelpfulKeyboard(wordgrid.getWord(currentRow), selectedColumn == -1 ? N_COLUMNS - 1 : selectedColumn);
     }
 

@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<fx:root prefHeight="25.0" prefWidth="270.0" style="-fx-background-color: #3d3d3d; -fx-background-radius: 10;" type="AnchorPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="270.0" style="-fx-background-color: #3d3d3d; -fx-background-radius: 10;" type="AnchorPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane fx:id="backgroundPane1" layoutX="-58.0" layoutY="-85.0" prefHeight="200.0" prefWidth="60.0" style="-fx-background-color: #68686b; -fx-background-radius: 10 0 0 10;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="0.0">
          <children>

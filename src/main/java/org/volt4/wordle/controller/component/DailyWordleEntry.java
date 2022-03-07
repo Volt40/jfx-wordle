@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -60,6 +61,8 @@ public class DailyWordleEntry extends AnchorPane {
         this.medalCompletion.setImage(new Image(completionMedal ? "icons/medal.png" : "icons/emptymedal.png")); // Set the completion medal icon.
         this.medalHardMode.setImage(new Image(hardModeMedal ? "icons/redmedal.png" : "icons/emptymedal.png")); // Set the hard mode medal.
         this.viewPreview = buildViewPreview(colorComplex); // Build the preview.
+        getChildren().add(viewPreview);
+        viewPreview.toFront();
     }
 
     /**
@@ -68,8 +71,32 @@ public class DailyWordleEntry extends AnchorPane {
      * @return An AnchorPane that contains the preview. Is not visible by default.
      */
     private AnchorPane buildViewPreview(String colorComplex) {
-        // TODO: this.
-        return null;
+        String[] rows = colorComplex.split(",");
+        GridPane grid = new GridPane();
+        for (int i = 0; i < rows.length; i++)
+            for (int j = 0; j < rows[i].length(); j++) {
+                AnchorPane square = new AnchorPane();
+                square.setPrefWidth(15);
+                square.setPrefHeight(15);
+                if (rows[i].charAt(j) == 'g')
+                    square.setStyle("-fx-background-color: -correct-color; -fx-background-insets: 1; -fx-background-radius: 2");
+                else if (rows[i].charAt(j) == 'y')
+                    square.setStyle("-fx-background-color: -incorrect-color; -fx-background-insets: 1; -fx-background-radius: 2");
+                else
+                    square.setStyle("-fx-background-color: #565758; -fx-background-insets: 1; -fx-background-radius: 2");
+                grid.add(square, j, i);
+            }
+        AnchorPane pane = new AnchorPane();
+        pane.setLayoutY(30);
+        pane.setLayoutX(73);
+        pane.setPrefWidth((rows[0].length() * 15) + 10);
+        pane.setPrefHeight((rows.length * 15) + 10);
+        pane.setStyle("-fx-background-color: #272728; -fx-background-radius: 8;");
+        grid.setLayoutY(5);
+        grid.setLayoutX(5);
+        pane.getChildren().add(grid);
+        pane.setVisible(false);
+        return pane;
     }
 
     @FXML

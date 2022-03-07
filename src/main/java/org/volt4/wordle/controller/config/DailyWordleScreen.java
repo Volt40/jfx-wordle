@@ -37,6 +37,7 @@ public class DailyWordleScreen extends AnchorPane {
             DailyWordleEntry entry = buildEntry(complex);
             entry.setLayoutY(currentLayoutY);
             scrollPaneRoot.getChildren().add(entry);
+            entry.toBack();
             currentLayoutY += entry.getPrefHeight() + 2;
         }
     }
