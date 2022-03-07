@@ -91,7 +91,7 @@ public class DailyWordleEntry extends AnchorPane {
         pane.setLayoutX(73);
         pane.setPrefWidth((rows[0].length() * 15) + 10);
         pane.setPrefHeight((rows.length * 15) + 10);
-        pane.setStyle("-fx-background-color: #272728; -fx-background-radius: 8;");
+        pane.setStyle("-fx-background-color: #343434; -fx-background-radius: 8;");
         grid.setLayoutY(5);
         grid.setLayoutX(5);
         pane.getChildren().add(grid);

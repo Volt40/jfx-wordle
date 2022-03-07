@@ -140,54 +140,54 @@
             </AnchorPane>
          </children>
       </GridPane>
-      <AnchorPane fx:id="darkModeInfo" layoutX="40.0" layoutY="213.0" prefHeight="60.0" prefWidth="225.0" styleClass="settingsScreen-info-box" visible="false" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="140.0">
+      <AnchorPane fx:id="darkModeInfo" layoutX="40.0" layoutY="213.0" prefHeight="60.0" prefWidth="225.0" styleClass="settings-info-box" visible="false" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="140.0">
          <children>
-            <Text layoutX="88.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settingsScreen-text" text="Darker, more pleasant &#10;theme.  Easier on the eyes." textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="6.0">
+            <Text layoutX="88.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Darker, more pleasant &#10;theme.  Easier on the eyes." textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="6.0">
                <font>
                   <Font size="17.0" />
                </font>
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="hardModeInfo" layoutX="29.0" layoutY="239.0" prefHeight="60.0" prefWidth="230.0" styleClass="settingsScreen-info-box" visible="false" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="170.0">
+      <AnchorPane fx:id="hardModeInfo" layoutX="29.0" layoutY="239.0" prefHeight="60.0" prefWidth="230.0" styleClass="settings-info-box" visible="false" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="170.0">
          <children>
-            <Text layoutX="88.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settingsScreen-text" text="Any revealed hints must be &#10;used in subsequent guesses" textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="6.0">
+            <Text layoutX="88.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Any revealed hints must be &#10;used in subsequent guesses" textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="6.0">
                <font>
                   <Font size="17.0" />
                </font>
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="highContrastModeInfo" prefHeight="60.0" prefWidth="160.0" styleClass="settingsScreen-info-box" visible="false" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="200.0">
+      <AnchorPane fx:id="highContrastModeInfo" prefHeight="60.0" prefWidth="160.0" styleClass="settings-info-box" visible="false" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="200.0">
          <children>
-            <Text layoutX="88.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settingsScreen-text" text="Improved contrast &#10;for better vision" textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="6.0">
+            <Text layoutX="88.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Improved contrast &#10;for better vision" textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="6.0">
                <font>
                   <Font size="17.0" />
                </font>
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="disableAnimationsInfo" prefHeight="60.0" prefWidth="157.0" styleClass="settingsScreen-info-box" visible="false" AnchorPane.leftAnchor="103.0" AnchorPane.topAnchor="230.0">
+      <AnchorPane fx:id="disableAnimationsInfo" prefHeight="60.0" prefWidth="157.0" styleClass="settings-info-box" visible="false" AnchorPane.leftAnchor="103.0" AnchorPane.topAnchor="230.0">
          <children>
-            <Text layoutX="88.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settingsScreen-text" text="Disables all game&#10;animations." textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="6.0">
+            <Text layoutX="88.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Disables all game&#10;animations." textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="6.0">
                <font>
                   <Font size="17.0" />
                </font>
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="helpfulKeyboardInfo" prefHeight="60.0" prefWidth="235.0" styleClass="settingsScreen-info-box" visible="false" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="260.0">
+      <AnchorPane fx:id="helpfulKeyboardInfo" prefHeight="60.0" prefWidth="235.0" styleClass="settings-info-box" visible="false" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="260.0">
          <children>
-            <Text layoutX="88.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settingsScreen-text" text="The keyboard automatically&#10;disables unusable letters." textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="6.0">
+            <Text layoutX="88.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="The keyboard automatically&#10;disables unusable letters." textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="6.0">
                <font>
                   <Font size="17.0" />
                </font>
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="linguistModeInfo" prefHeight="80.0" prefWidth="200.0" styleClass="settingsScreen-info-box" visible="false" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="290.0">
+      <AnchorPane fx:id="linguistModeInfo" prefHeight="80.0" prefWidth="200.0" styleClass="settings-info-box" visible="false" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="290.0">
          <children>
-            <Text layoutX="88.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settingsScreen-text" text="Any valid guess is&#10;now a possible answer.&#10;(Requires reset)" textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="6.0">
+            <Text layoutX="88.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-text" text="Any valid guess is&#10;now a possible answer.&#10;(Requires reset)" textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="6.0">
                <font>
                   <Font size="17.0" />
                </font>
