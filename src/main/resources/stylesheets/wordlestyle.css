@@ -307,6 +307,23 @@
     -fx-background-color: #a2a2a4;
 }
 
+.done-button {
+    -fx-background-color: #474747;
+    -fx-background-radius: 15;
+}
+.done-button:hover {
+    -fx-background-color: #737373;
+}
+.done-button:pressed {
+    -fx-background-color: #797979;
+}
+.done-button-text {
+    -fx-fill: -c-base;
+    -fx-font-family: Verdana;
+    -fx-font-weight: bold;
+    -fx-font-size: 14;
+}
+
 /* =================================== Component Elements =================================== */
 
 /* SettingsScreen Toggle */

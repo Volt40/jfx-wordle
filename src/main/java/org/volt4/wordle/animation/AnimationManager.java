@@ -8,7 +8,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.util.Duration;
+import org.volt4.wordle.animation.settings.SettingsScreenShow;
 import org.volt4.wordle.animation.tile.*;
+import org.volt4.wordle.controller.component.DailyWordleEntry;
+import org.volt4.wordle.controller.config.DailyWordleScreen;
+import org.volt4.wordle.controller.config.Settings;
 import org.volt4.wordle.controller.config.SettingsScreen;
 import org.volt4.wordle.type.Letter;
 import org.volt4.wordle.type.Hint;
@@ -22,9 +26,8 @@ import org.volt4.wordle.animation.tile.row.RowBounce;
 import org.volt4.wordle.animation.tile.row.RowDoubleFlip;
 import org.volt4.wordle.animation.tile.row.RowReveal;
 import org.volt4.wordle.animation.tile.row.RowShake;
-import org.volt4.wordle.animation.settings.SettingsHide;
+import org.volt4.wordle.animation.settings.SettingsScreenHide;
 import org.volt4.wordle.animation.settings.SettingsIconSpin;
-import org.volt4.wordle.animation.settings.SettingsShow;
 import org.volt4.wordle.controller.component.LoseCard;
 import org.volt4.wordle.controller.keyboard.Keyboard;
 import org.volt4.wordle.controller.keyboard.KeyboardKey;
@@ -63,12 +66,12 @@ public final class AnimationManager {
      * - Bounce Row (RowBounce)
      * - Double Flip Row (RowDoubleFlip)
      * - Spin Reset Icon (ResetIconSpin)
-     * - Spin SettingsScreen Icon (SettingsIconSpin)
+     * - Spin Settings Icon (SettingsIconSpin)
      * - Show Lose Card (LoseCardShow)
      *     (String) correct word.
      * - Hide Lose Card (LoseCardHide)
-     * - Show SettingsScreen (SettingsShow)
-     * - Hide SettingsScreen (SettingsHide)
+     * - Show Settings Screen (SettingsScreenShow)
+     * - Hide Settings Screen (SettingsScreenHide)
      *
      */
 
@@ -94,8 +97,10 @@ public final class AnimationManager {
     private static AnimationController<SettingsIconSpin> settingsIconSpinAnimation;
     private static AnimationController<LoseCardShow> loseCardShowAnimation;
     private static AnimationController<LoseCardHide> loseCardHideAnimation;
-    private static AnimationController<SettingsShow> settingsShowAnimation;
-    private static AnimationController<SettingsHide> settingsHideAnimation;
+    private static AnimationController<SettingsScreenShow> settingsShowAnimation;
+    private static AnimationController<SettingsScreenHide> settingsHideAnimation;
+    private static AnimationController<SettingsScreenShow> historyShowAnimation;
+    private static AnimationController<SettingsScreenHide> historyHideAnimation;
 
     /**
      * Hides the default constructor as this class should not be instantiated.
@@ -167,10 +172,12 @@ public final class AnimationManager {
      * Inits the settings animations.
      * @param settings
      */
-    public static void initSettingsAnimations(SettingsScreen settings, ImageView icon) {
-        settingsShowAnimation = new AnimationController<>(new SettingsShow(settings));
-        settingsHideAnimation = new AnimationController<>(new SettingsHide(settings));
+    public static void initSettingsAnimations(SettingsScreen settings, ImageView icon, DailyWordleScreen historyScreen) {
+        settingsShowAnimation = new AnimationController<>(new SettingsScreenShow(settings));
+        settingsHideAnimation = new AnimationController<>(new SettingsScreenHide(settings));
         settingsIconSpinAnimation = new AnimationController<>(new SettingsIconSpin(icon));
+        historyShowAnimation = new AnimationController<>(new SettingsScreenShow(historyScreen));
+        historyHideAnimation = new AnimationController<>(new SettingsScreenHide(historyScreen));
     }
 
     /**
@@ -364,6 +371,20 @@ public final class AnimationManager {
     }
 
     /**
+     * Plays the settings show animation.
+     */
+    public static void playHistoryShowAnimation() {
+        historyShowAnimation.play();
+    }
+
+    /**
+     * Plays the settings hide animation.
+     */
+    public static void playHistoryHideAnimation() {
+        historyHideAnimation.play();
+    }
+
+    /**
      * Plays the spin settings animation.
      */
     public static void playSpinSettingsIconAnimation() {
@@ -409,7 +430,7 @@ public final class AnimationManager {
          * Plays the animation.
          */
         public void play() {
-            if (SettingsScreen.DisableAnimations) {
+            if (Settings.DisableAnimations) {
                 animation.start();
                 animation.end();
             } else {
@@ -424,7 +445,7 @@ public final class AnimationManager {
          * @param delay Delay before the animation plays.
          */
         public void playLater(long delay) {
-            if (SettingsScreen.DisableAnimations)
+            if (Settings.DisableAnimations)
                 play();
             else
                 Platform.runLater(new Timeline(new KeyFrame(Duration.millis(delay), e -> play()))::play);

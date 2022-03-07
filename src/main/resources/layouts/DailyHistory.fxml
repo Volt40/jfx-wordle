@@ -1,85 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClicked" prefHeight="420.0" prefWidth="350.0" styleClass="settings" type="AnchorPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClicked" prefHeight="420.0" prefWidth="350.0" style="-fx-background-color: rgba(42, 42, 42, 0.8);" type="AnchorPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text layoutX="117.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="settings-title" text="DAILY WORDLE HISTORY" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="15.0">
          <font>
             <Font name="Kohinoor Telugu" size="25.0" />
          </font>
       </Text>
-      <ScrollPane hbarPolicy="NEVER" layoutX="67.0" layoutY="64.0" prefHeight="200.0" prefWidth="200.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="50.0">
+      <ScrollPane hbarPolicy="NEVER" layoutX="67.0" layoutY="64.0" prefHeight="200.0" prefWidth="200.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="50.0">
          <content>
-            <AnchorPane prefWidth="270.0">
-               <children>
-                  <AnchorPane layoutY="60.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #3d3d3d; -fx-background-radius: 10;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                     <children>
-                        <AnchorPane layoutX="-58.0" layoutY="-85.0" prefHeight="200.0" prefWidth="60.0" style="-fx-background-color: #68686b; -fx-background-radius: 10 0 0 10;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <Text fill="WHITE" layoutX="6.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IRATE" AnchorPane.leftAnchor="44.5" AnchorPane.topAnchor="3.0">
-                                 <font>
-                                    <Font name="PT Mono Bold" size="17.5" />
-                                 </font>
-                              </Text>
-                              <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="-28.0" layoutY="-62.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="3.0">
-                                 <image>
-                                    <Image url="@../icons/medal.png" />
-                                 </image>
-                              </ImageView>
-                              <AnchorPane prefHeight="200.0" prefWidth="21.0" style="-fx-background-color: #474747; -fx-background-radius: 5;" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="2.0">
-                                 <children>
-                                    <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="1.5" AnchorPane.topAnchor="1.5">
-                                       <image>
-                                          <Image url="@../icons/view.png" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                              </AnchorPane>
-                              <ImageView fitHeight="19.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="3.0">
-                                 <image>
-                                    <Image url="@../icons/redmedal.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="-13.0" layoutY="-87.0" prefHeight="200.0" prefWidth="25.0" style="-fx-background-color: #575759;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="115.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="17" AnchorPane.leftAnchor="3.0" AnchorPane.topAnchor="4.0">
-                                 <font>
-                                    <Font name="Verdana Bold" size="13.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="11.0" layoutY="-87.0" prefHeight="200.0" prefWidth="75.0" style="-fx-background-color: #68686b;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <Text fill="WHITE" layoutX="10.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="November" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="5.5">
-                                 <font>
-                                    <Font name="Verdana Bold" size="11.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="83.0" layoutY="-87.0" prefHeight="200.0" prefWidth="40.0" style="-fx-background-color: #575759; -fx-background-radius: 0 10 10 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="2022" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="5.5">
-                                 <font>
-                                    <Font name="Verdana Bold" size="11.5" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </AnchorPane>
-               </children>
-            </AnchorPane>
+            <AnchorPane fx:id="scrollPaneRoot" prefWidth="270.0" />
          </content>
       </ScrollPane>
+      <AnchorPane layoutX="75.0" layoutY="284.0" onMouseClicked="#onDone" prefHeight="30.0" prefWidth="120.0" styleClass="done-button" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="115.0">
+         <children>
+            <Text layoutX="48.0" layoutY="19.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="done-button-text" text="DONE" AnchorPane.leftAnchor="38.5" AnchorPane.topAnchor="6.0" />
+         </children>
+      </AnchorPane>
    </children>
 </fx:root>

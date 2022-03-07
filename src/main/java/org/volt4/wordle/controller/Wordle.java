@@ -13,6 +13,8 @@ import org.volt4.wordle.animation.tile.TileFlip;
 import org.volt4.wordle.animation.tile.row.RowBounce;
 import org.volt4.wordle.animation.tile.row.RowReveal;
 import org.volt4.wordle.controller.component.LoseCard;
+import org.volt4.wordle.controller.config.DailyWordleScreen;
+import org.volt4.wordle.controller.config.Settings;
 import org.volt4.wordle.controller.config.SettingsScreen;
 import org.volt4.wordle.controller.keyboard.Keyboard;
 import org.volt4.wordle.controller.wordgrid.WordGrid;
@@ -99,12 +101,15 @@ public class Wordle extends AnchorPane {
         SettingsScreen settings = new SettingsScreen();
         settings.setLayoutY(30);
         settings.setLayoutX(350);
-        AnimationManager.initSettingsAnimations(settings, settingsImage);
+        DailyWordleScreen historyScreen = new DailyWordleScreen();
+        historyScreen.setLayoutY(30);
+        historyScreen.setLayoutX(350);
+        AnimationManager.initSettingsAnimations(settings, settingsImage, historyScreen);
         // Set constraints.
         wordgrid.setLayoutY(30);
         keyboard.setLayoutY(450);
         // Add children.
-        getChildren().addAll(wordgrid, keyboard, loseCard, settings);
+        getChildren().addAll(wordgrid, keyboard, loseCard, settings, historyScreen);
         // Choose first answer.
         answer = WordLists.pickRandomAnswer();
     }
@@ -124,7 +129,7 @@ public class Wordle extends AnchorPane {
         currentRow = 0;
         selectedColumn = 0;
         chooseNewAnswer();
-        if (SettingsScreen.HelpfulKeyboard)
+        if (Settings.HelpfulKeyboard)
             keyboard.setAllKeysDisabled(false);
     }
 
@@ -317,7 +322,7 @@ public class Wordle extends AnchorPane {
      * If the helpful keyboard is active, this will refresh it.
      */
     public void refreshHelpfulKeyboard() {
-        if (SettingsScreen.HelpfulKeyboard)
+        if (Settings.HelpfulKeyboard)
             keyboard.updateHelpfulKeyboard(wordgrid.getWord(currentRow), selectedColumn == -1 ? N_COLUMNS - 1 : selectedColumn);
     }
 

@@ -1,24 +1,25 @@
 package org.volt4.wordle.animation.settings;
 
+import javafx.scene.layout.AnchorPane;
 import org.volt4.wordle.animation.WordleAnimation;
 import org.volt4.wordle.controller.config.SettingsScreen;
 
 /**
  * Animates the settings window getting hidden.
  */
-public class SettingsHide implements WordleAnimation {
+public class SettingsScreenHide implements WordleAnimation {
 
     // Duration of this animation.
     public static final long ANIMATION_DURATION = 200;
 
     // SettingsScreen this animates.
-    private SettingsScreen settings;
+    private AnchorPane settings;
 
     /**
      * Creates the animation to animate the given settings.
      * @param settings SettingsScreen to animate.
      */
-    public SettingsHide(SettingsScreen settings) {
+    public SettingsScreenHide(AnchorPane settings) {
         this.settings = settings;
     }
 

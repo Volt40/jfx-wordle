@@ -44,7 +44,7 @@ public class DailyWordleEntry extends AnchorPane {
      */
     public DailyWordleEntry(String word, String colorComplex, String letterComplex, boolean completionMedal, boolean hardModeMedal, String day, String month, String year, boolean lightEntry) {
         // Load the FXML file.
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("layouts/components/DailyWordEntry.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("layouts/components/DailyWordleEntry.fxml"));
         loader.setRoot(this);
         loader.setController(this);
         try {

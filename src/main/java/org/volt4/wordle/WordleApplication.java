@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.volt4.wordle.animation.AnimationManager;
 import org.volt4.wordle.controller.Wordle;
+import org.volt4.wordle.controller.config.Settings;
 import org.volt4.wordle.type.Letter;
 import org.volt4.wordle.type.WordleTheme;
 
@@ -28,6 +29,7 @@ public class WordleApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        Settings.importSettings();
         WordLists.load();
         scene = new Scene(new AnchorPane()); // Workaround, might remove later.
         scene.getStylesheets().add("stylesheets/wordlestyle.css");

@@ -6,6 +6,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.volt4.wordle.WordLists;
 import org.volt4.wordle.WordleApplication;
+import org.volt4.wordle.animation.AnimationManager;
 import org.volt4.wordle.type.WordleTheme;
 import org.volt4.wordle.controller.component.SettingsToggle;
 
@@ -33,14 +34,6 @@ public class SettingsScreen extends AnchorPane {
     @FXML private AnchorPane helpfulKeyboardInfo;
     @FXML private AnchorPane linguistModeInfo;
 
-    // SettingsScreen
-    public static boolean DarkMode;
-    public static boolean HardMode;
-    public static boolean HighContrastMode;
-    public static boolean DisableAnimations;
-    public static boolean HelpfulKeyboard;
-    public static boolean linguistMode;
-
 
     /**
      * Creates the settings window.
@@ -55,12 +48,12 @@ public class SettingsScreen extends AnchorPane {
             e.printStackTrace();
         }
         // Add toggle switches.
-        darkModePane.getChildren().add(new SettingsToggle(true, state -> setDarkMode(state)));
-        hardModePane.getChildren().add(new SettingsToggle(false, state -> setHardMode(state)));
-        highContrastModePane.getChildren().add(new SettingsToggle(false, state -> setHighContrastMode(state)));
-        disableAnimationsPane.getChildren().add(new SettingsToggle(false, state -> setDisableAnimations(state)));
-        helpfulKeyboardPane.getChildren().add(new SettingsToggle(false, state -> setHelpfulKeyboard(state)));
-        linguistModePane.getChildren().add(new SettingsToggle(false, state -> setLinguistMode(state)));
+        darkModePane.getChildren().add(new SettingsToggle(Settings.DarkMode, state -> setDarkMode(state)));
+        hardModePane.getChildren().add(new SettingsToggle(Settings.HardMode, state -> setHardMode(state)));
+        highContrastModePane.getChildren().add(new SettingsToggle(Settings.HighContrastMode, state -> setHighContrastMode(state)));
+        disableAnimationsPane.getChildren().add(new SettingsToggle(Settings.DisableAnimations, state -> setDisableAnimations(state)));
+        helpfulKeyboardPane.getChildren().add(new SettingsToggle(Settings.HelpfulKeyboard, state -> setHelpfulKeyboard(state)));
+        linguistModePane.getChildren().add(new SettingsToggle(Settings.LinguistMode, state -> setLinguistMode(state)));
     }
 
     /**
@@ -69,7 +62,8 @@ public class SettingsScreen extends AnchorPane {
      */
     private void setDarkMode(boolean state) {
         WordleApplication.initTheme(state ? WordleTheme.DARK : WordleTheme.LIGHT);
-        DarkMode = state;
+        Settings.DarkMode = state;
+        Settings.saveSettings();
     }
 
     /**
@@ -77,7 +71,8 @@ public class SettingsScreen extends AnchorPane {
      * @param state Attribute to set.
      */
     private void setHardMode(boolean state) {
-        HardMode = state;
+        Settings.HardMode = state;
+        Settings.saveSettings();
     }
 
     /**
@@ -86,7 +81,8 @@ public class SettingsScreen extends AnchorPane {
      */
     private void setHighContrastMode(boolean state) {
         WordleApplication.initTheme(state ? WordleTheme.HIGH_CONTRAST : WordleTheme.LOW_CONTRAST);
-        HighContrastMode = state;
+        Settings.HighContrastMode = state;
+        Settings.saveSettings();
     }
 
     /**
@@ -94,7 +90,8 @@ public class SettingsScreen extends AnchorPane {
      * @param state Attribute to set.
      */
     private void setDisableAnimations(boolean state) {
-        DisableAnimations = state;
+        Settings.DisableAnimations = state;
+        Settings.saveSettings();
     }
 
     /**
@@ -102,12 +99,13 @@ public class SettingsScreen extends AnchorPane {
      * @param state Attribute to set.
      */
     private void setHelpfulKeyboard(boolean state) {
-        HelpfulKeyboard = state;
+        Settings.HelpfulKeyboard = state;
         if (WordleApplication.getWordle() != null)
             if (!state)
                 WordleApplication.getWordle().clearHelpfulKeyboard();
             else
                 WordleApplication.getWordle().refreshHelpfulKeyboard();
+        Settings.saveSettings();
     }
 
     /**
@@ -115,11 +113,12 @@ public class SettingsScreen extends AnchorPane {
      * @param state Attribute to set.
      */
     private void setLinguistMode(boolean state) {
-        linguistMode = state;
-        if (linguistMode)
+        Settings.LinguistMode = state;
+        if (Settings.LinguistMode)
             WordLists.enableLinguistMode();
         else
             WordLists.disableLinguistMode();
+        Settings.saveSettings();
     }
 
     // Info handlers.
@@ -138,5 +137,9 @@ public class SettingsScreen extends AnchorPane {
 
     // Prevent things in the background from getting clicked.
     @FXML void onClicked(MouseEvent event) { event.consume(); }
+
+    @FXML void onHistory(MouseEvent event) {
+        AnimationManager.playHistoryShowAnimation();
+    }
 
 }
