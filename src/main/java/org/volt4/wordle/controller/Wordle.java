@@ -419,7 +419,7 @@ public class Wordle extends AnchorPane {
         AnimationManager.playGiveUpButtonHideAnimation();
         // Build entry.
         String[] dateParts = date.split(" ");
-        String entry = answer + ":" + dateParts[0] + ":" + dateParts[1] + ":" + dateParts[2] + (gaveUp ? ":false" : ":true") + (Settings.HardMode ? ":false:" : ":true:") + wordgrid.getComplex();
+        String entry = answer + ":" + dateParts[0] + ":" + dateParts[1] + ":" + dateParts[2] + (gaveUp ? ":false" : ":true") + (Settings.HardMode ? ":true:" : ":false:") + wordgrid.getComplex();
         Settings.DailyWordleHistory.add(0, entry);
         System.out.println(entry);
         Settings.saveSettings();
