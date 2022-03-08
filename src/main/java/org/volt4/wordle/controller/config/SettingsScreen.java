@@ -58,6 +58,9 @@ public class SettingsScreen extends AnchorPane {
     @FXML
     private Text dailyWordleButtonText;
 
+    // Today's wordle answer.
+    private String dailyWordleAnswer;
+
     /**
      * Creates the settings window.
      */
@@ -207,14 +210,33 @@ public class SettingsScreen extends AnchorPane {
             dailyWordleStatus.setText("New Word Available!");
             dailyWordleStatus.getStyleClass().clear();
             dailyWordleStatus.getStyleClass().add("daily-wordle-info-text-inactive");
+            dailyWordleAnswer = dailyWord;
         }
     }
 
     @FXML
     void onPlayView(MouseEvent event) {
-        AnimationManager.playSettingsHideAnimation();
-        AnimationManager.stopSpinSettingsIconAnimation();
-        AnimationManager.playGiveUpButtonRevealAnimation();
+        if (!countdown.isVisible()) { // Fun little hack.
+            // On Play.
+            AnimationManager.playSettingsHideAnimation();
+            WordleApplication.getWordle().settingsVisible = false; // Yes I know this is not good OOP practice.
+            AnimationManager.stopSpinSettingsIconAnimation();
+            AnimationManager.playGiveUpButtonRevealAnimation();
+            if (Settings.HelpfulKeyboard)
+                setHelpfulKeyboard(false); // Prevent cheating.
+            // Get the date.
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            Date date = new Date();
+            String time = formatter.format(date);
+            String day = "" + Integer.parseInt(time.split(" ")[0].split("/")[0]);
+            String month = monthMap.get("" + Integer.parseInt(time.split(" ")[0].split("/")[1]));
+            String year = "" + Integer.parseInt(time.split(" ")[0].split("/")[2]);
+            String dateKey = day + " " + month + " " + year;
+            WordleApplication.getWordle().initDailyWordle(dailyWordleAnswer, dateKey);
+        } else {
+            // On View
+
+        }
     }
 
     // Info handlers.

@@ -1,16 +1,20 @@
 package org.volt4.wordle.controller;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 import org.volt4.wordle.*;
 import org.volt4.wordle.animation.AnimationManager;
 import org.volt4.wordle.animation.tile.TileBounce;
 import org.volt4.wordle.animation.tile.TileFlip;
 import org.volt4.wordle.animation.tile.row.RowBounce;
+import org.volt4.wordle.animation.tile.row.RowDoubleFlip;
 import org.volt4.wordle.animation.tile.row.RowReveal;
 import org.volt4.wordle.controller.component.LoseCard;
 import org.volt4.wordle.controller.config.DailyWordleScreen;
@@ -50,7 +54,7 @@ public class Wordle extends AnchorPane {
 
     // Used for animation.
     private boolean keyboardHidden;
-    private boolean settingsVisible;
+    public boolean settingsVisible;
 
     // Used for drag & drop.
     private double[] offset;
@@ -67,6 +71,10 @@ public class Wordle extends AnchorPane {
     // Hard mode variables.
     private boolean[] lockedColumns;
     private Map<Letter, Integer> requiredLetters;
+
+    // Is this a daily wordle game?
+    private boolean isDailyWordle;
+    private String date;
 
     /**
      * Constructs a Wordle game.
@@ -87,6 +95,7 @@ public class Wordle extends AnchorPane {
         hasLost = false;
         lockedColumns = new boolean[N_COLUMNS];
         requiredLetters = new HashMap<>();
+        isDailyWordle = false;
         // Setup animations.
         keyboardHidden = true;
         settingsVisible = false;
@@ -320,6 +329,12 @@ public class Wordle extends AnchorPane {
         currentRow++;
         // Select the first column of the next row.
         selectColumn(0);
+        // Daily wordle stuffs.
+        if (isDailyWordle && hasLost)
+            onDailyWordleConclusion(true);
+        else if (isDailyWordle && hasWon)
+            Platform.runLater(new Timeline(new KeyFrame(Duration.millis(RowReveal.ANIMATION_DURATION + TileFlip.ANIMATION_DURATION + RowBounce.ANIMATION_DURATION + TileBounce.ANIMATION_DURATION + RowDoubleFlip.ANIMATION_DURATION), (e) -> onDailyWordleConclusion(false)))::play);
+
     }
 
     /**
@@ -328,6 +343,17 @@ public class Wordle extends AnchorPane {
     public void refreshHelpfulKeyboard() {
         if (Settings.HelpfulKeyboard && wordgrid != null)
             keyboard.updateHelpfulKeyboard(wordgrid.getWord(currentRow), selectedColumn == -1 ? N_COLUMNS - 1 : selectedColumn);
+    }
+
+    /**
+     * Inits the daily wordle game.
+     * @param word Today's answer.
+     */
+    public void initDailyWordle(String word, String date) {
+        reset();
+        answer = word;
+        isDailyWordle = true;
+        this.date = date;
     }
 
     /**
@@ -362,7 +388,6 @@ public class Wordle extends AnchorPane {
      */
     private void chooseNewAnswer() {
         answer = WordLists.pickRandomAnswer();
-        // TODO: Linguist mode check.
     }
 
     @FXML
@@ -382,7 +407,25 @@ public class Wordle extends AnchorPane {
 
     @FXML
     void onGiveUp(MouseEvent event) {
+        onDailyWordleConclusion(true);
+        hasLost = true;
+    }
+
+    /**
+     * Runs when the daily wordle was completed.
+     * @param gaveUp True if the game was gave up.
+     */
+    private void onDailyWordleConclusion(boolean gaveUp) {
         AnimationManager.playGiveUpButtonHideAnimation();
+        // Build entry.
+        String[] dateParts = date.split(" ");
+        String entry = answer + ":" + dateParts[0] + ":" + dateParts[1] + ":" + dateParts[2] + (gaveUp ? ":false" : ":true") + (Settings.HardMode ? ":false:" : ":true:") + wordgrid.getComplex();
+        Settings.DailyWordleHistory.add(0, entry);
+        System.out.println(entry);
+        Settings.saveSettings();
+        WordLists.refreshDaily();
+        DailyWordleScreen.getInstance().refresh();
+        isDailyWordle = false;
     }
 
     @FXML

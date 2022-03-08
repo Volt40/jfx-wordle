@@ -56,7 +56,9 @@ public class DailyWordleEntry extends AnchorPane {
         // Set fields according to arguments.
         this.word.setText(word.toUpperCase()); // Set the word of the entry (and make sure it is in upper case).
         this.day.setText(day); // Set the day.
+        centerText(backgroundPane2, this.day);
         this.month.setText(month.substring(0, 1).toUpperCase() + month.substring(1).toLowerCase()); // Set the month (With the first letter capital).
+        centerText(backgroundPane3, this.month);
         this.year.setText(year); // Set the year.
         this.medalCompletion.setImage(new Image(completionMedal ? "icons/medal.png" : "icons/emptymedal.png")); // Set the completion medal icon.
         this.medalHardMode.setImage(new Image(hardModeMedal ? "icons/redmedal.png" : "icons/emptymedal.png")); // Set the hard mode medal.
@@ -112,6 +114,17 @@ public class DailyWordleEntry extends AnchorPane {
     @FXML
     void onView(MouseEvent event) {
         // TODO: this.
+    }
+
+    /**
+     * Centers the given text.
+     * @param parent Parent of the text.
+     * @param child Text to center.
+     */
+    private void centerText(AnchorPane parent, Text child) {
+        double parentWidth = parent.getPrefWidth();
+        double childWidth = child.getLayoutBounds().getWidth();
+        AnchorPane.setLeftAnchor(child, (parentWidth / 2) - (childWidth / 2));
     }
 
 }

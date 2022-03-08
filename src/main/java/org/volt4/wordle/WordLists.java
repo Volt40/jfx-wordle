@@ -52,22 +52,31 @@ public final class WordLists {
         guessesReader.close();
         coreAnswers = answers;
         dailyWords = new HashMap<>();
-        // Load the info from the daily word.
-        BufferedReader dailyReader = new BufferedReader(new FileReader(WordLists.class.getClassLoader().getResource("wordlists/dailywords.txt").getPath()));
-        String line;
-        while((line = dailyReader.readLine()) != null) {
-            String[] parts = line.split(" ");
-            String dailyWord = parts[0];
-            String date = parts[1] + " " + parts[2] + " " + parts[3];
-            dailyWords.put(date, "f " + dailyWord);
-        }
-        // Check to see which words have been solved.
-        // WARN: The settings must be loaded before this segment runs.
-        for (String complex : Settings.DailyWordleHistory) {
-            String[] parts = complex.split(":");
-            String date = parts[1] + " " + parts[2] + " " + parts[3];
-            dailyWords.put(date, "t " + dailyWords.get(date).split(" ")[1]);
-        }
+        refreshDaily();
+    }
+
+    /**
+     * Refreshes the daily wordlist.
+     */
+    public static void refreshDaily() {
+        try {
+            // Load the info from the daily word.
+            BufferedReader dailyReader = new BufferedReader(new FileReader(WordLists.class.getClassLoader().getResource("wordlists/dailywords.txt").getPath()));
+            String line;
+            while ((line = dailyReader.readLine()) != null) {
+                String[] parts = line.split(" ");
+                String dailyWord = parts[0];
+                String date = parts[1] + " " + parts[2] + " " + parts[3];
+                dailyWords.put(date, "f " + dailyWord);
+            }
+            // Check to see which words have been solved.
+            // WARN: The settings must be loaded before this segment runs.
+            for (String complex : Settings.DailyWordleHistory) {
+                String[] parts = complex.split(":");
+                String date = parts[1] + " " + parts[2] + " " + parts[3];
+                dailyWords.put(date, "t " + dailyWords.get(date).split(" ")[1]);
+            }
+        } catch (IOException e) {e.printStackTrace();}
     }
 
     /**

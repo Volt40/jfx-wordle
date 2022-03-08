@@ -14,6 +14,17 @@ import java.io.IOException;
  */
 public class DailyWordleScreen extends AnchorPane {
 
+    // Singleton for this object.
+    private static DailyWordleScreen singleton;
+
+    /**
+     * Returns the singleton for this object.
+     * @return The singleton for this object.
+     */
+    public static DailyWordleScreen getInstance() {
+        return singleton;
+    }
+
     // Root of the scroll pane. Entries are added here.
     @FXML private AnchorPane scrollPaneRoot;
 
@@ -24,6 +35,7 @@ public class DailyWordleScreen extends AnchorPane {
      * Builds the DailyWordleScreen.
      */
     public DailyWordleScreen() {
+        singleton = this;
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("layouts/DailyHistory.fxml"));
         loader.setRoot(this);
         loader.setController(this);
@@ -33,6 +45,16 @@ public class DailyWordleScreen extends AnchorPane {
             e.printStackTrace();
         }
         currentLayoutY = 0;
+        refresh();
+    }
+
+    /**
+     * Refreshes the list.
+     */
+    public void refresh() {
+        // TODO: this NEEDS to be optimized.
+        currentLayoutY = 0;
+        scrollPaneRoot.getChildren().clear();
         for (String complex : Settings.DailyWordleHistory) {
             DailyWordleEntry entry = buildEntry(complex);
             entry.setLayoutY(currentLayoutY);

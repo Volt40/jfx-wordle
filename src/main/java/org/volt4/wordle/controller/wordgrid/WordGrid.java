@@ -120,6 +120,24 @@ public class WordGrid extends GridPane {
         return word;
     }
 
+    /**
+     * Returns the String complex of the word grid.
+     * @return The String complex of the word grid.
+     */
+    public String getComplex() {
+        String complexColor = "";
+        String complexLetter = "";
+        for (int i = 0; i < N_ROWS && tiles[i][0].getLetter() != Letter.EMPTY; i++) {
+            for (int j = 0; j < N_COLUMNS; j++) {
+                complexColor += tiles[i][j].getStyleClass().get(0).equals(Hint.GREEN.getTileStyleClassName()) ? "g" : tiles[i][j].getStyleClass().get(0).equals(Hint.YELLOW.getTileStyleClassName()) ? "y" : "-";
+                complexLetter += tiles[i][j].getLetter().getLetter();
+            }
+            complexColor += ",";
+            complexLetter += ",";
+        }
+        return complexColor.substring(0, complexColor.length() - 1) + ":" + complexLetter.substring(0, complexLetter.length() - 1);
+    }
+
     /*
      * ====================== DEPRECATED SECTION ======================
      * This will be kept commented out for now for future reference.
