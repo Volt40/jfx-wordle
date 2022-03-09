@@ -39,9 +39,12 @@ public class KeyFlip implements WordleAnimation {
         // TODO Fix this if statement.
         if (colorToFlip == this.colorToFlip || colorToFlip == Hint.YELLOW && this.colorToFlip == Hint.GREEN || this.colorToFlip == Hint.YELLOW_GREEN && colorToFlip != Hint.GREEN) {
             dontFlip = true;
-            return;
+        } else
+            this.colorToFlip = colorToFlip;
+        if (colorToFlip != this.colorToFlip && colorToFlip == Hint.DARK_GREY) {
+            dontFlip = false;
+            this.colorToFlip = colorToFlip;
         }
-        this.colorToFlip = colorToFlip;
     }
 
     @Override
