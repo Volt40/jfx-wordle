@@ -61,7 +61,7 @@ public final class WordLists {
     public static void refreshDaily() {
         try {
             // Load the info from the daily word.
-            BufferedReader dailyReader = new BufferedReader(new FileReader(WordLists.class.getClassLoader().getResource("wordlists/dailywords.txt").getPath()));
+            BufferedReader dailyReader = new BufferedReader(new FileReader(WordLists.class.getClassLoader().getResource("wordlists/nytdailywords.txt").getPath()));
             String line;
             while ((line = dailyReader.readLine()) != null) {
                 String[] parts = line.split(" ");
