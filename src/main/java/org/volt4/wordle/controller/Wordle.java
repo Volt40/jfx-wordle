@@ -202,8 +202,36 @@ public class Wordle extends AnchorPane {
         // Get the word from the grid.
         String word = wordgrid.getWord(currentRow);
         // Check to make sure it is valid.
-        // TODO: Hard mode implementation.
-        if (!WordLists.guessIsValid(word)) {
+        boolean isValidGuess = true;
+        if (!WordLists.guessIsValid(word))
+            isValidGuess = false;
+        // Hard mode implementation.
+        if (Settings.HardMode) {
+            // Check green hints.
+            for (int i = 0; i < N_COLUMNS; i++)
+                for (int j = 0; j < currentRow; j++)
+                    // If there is a green hint above the tile but the letters don't match.
+                    if (wordgrid.getHint(j, i) == Hint.GREEN && wordgrid.getLetter(currentRow, i) != wordgrid.getLetter(j, i))
+                        isValidGuess = false;
+//            // Check yellow hints. TODO: finish this.
+//            // Create list.
+//            Map<Letter, Integer>[] buckets = new HashMap[currentRow - 1];
+//            for (int i = 0; i < currentRow; i++) {
+//                buckets[i] = new HashMap<>(); // Create the bucket.
+//                for (int j = 0; j < N_COLUMNS; j++)
+//                    if (wordgrid.getHint(i, j) == Hint.YELLOW)
+//                        if (buckets[i].containsKey(wordgrid.getLetter(i, j)))
+//                            buckets[i].put(wordgrid.getLetter(i, j), buckets[i].get(wordgrid.getLetter(i, j)) + 1);
+//                        else
+//                            buckets[i].put(wordgrid.getLetter(i, j), 1);
+//            }
+//            // The buckets are now populated.
+//            List<Letter> requiredLetters = new ArrayList<>();
+//            for (int i = 0; i < currentRow; i++) {
+//                Map.Entry<Letter, Integer>[] set = (Map.Entry<Letter, Integer>[]) buckets[i].entrySet().toArray();
+//            }
+        }
+        if (!isValidGuess) {
             AnimationManager.playRowShakeAnimation(currentRow);
             return;
         }
@@ -289,7 +317,6 @@ public class Wordle extends AnchorPane {
             letterOccurrencesAnswer.put(letter, letterOccurrencesAnswer.get(letter) - 1);
         } // End for each letter loop.
         // Both hint collections should now be populated correctly.
-        // TODO: Fix hard mode logic here.
         // Count the amount of hints for each letter.
         Map<Letter, Integer> letterHints = new HashMap<>();
         for (int i = 0; i < tileHints.length; i++)

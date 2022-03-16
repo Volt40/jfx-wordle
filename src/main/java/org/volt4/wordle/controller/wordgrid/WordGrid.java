@@ -44,6 +44,25 @@ public class WordGrid extends GridPane {
     }
 
     /**
+     * Returns the hint of the tile.
+     * @param row Row of the tile to get the hint of.
+     * @param column Column of the tile to get the hint of.
+     * @return the hint of the tile.
+     */
+    public Hint getHint(int row, int column) {
+        Hint hint = Hint.DARK_GREY;
+        switch(tiles[row][column].getStyleClass().get(0)) {
+            case "green-tile":
+                hint = Hint.GREEN;
+                break;
+            case "yellow-tile":
+                hint = Hint.YELLOW;
+                break;
+        }
+        return hint;
+    }
+
+    /**
      * Resets the grid.
      */
     public void reset() {
