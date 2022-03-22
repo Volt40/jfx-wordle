@@ -31,6 +31,9 @@ public class DailyWordleEntry extends AnchorPane {
     // This is shown when the view button is hovered over. It shows the colors from the guesses that day.
     private AnchorPane viewPreview;
 
+    // Complex representing this entry.
+    private String colorComplex;
+
     /**
      * Builds the entry with the given parameters.
      * @param word Word of the entry.
@@ -62,9 +65,7 @@ public class DailyWordleEntry extends AnchorPane {
         this.year.setText(year); // Set the year.
         this.medalCompletion.setImage(new Image(completionMedal ? "icons/medal.png" : "icons/emptymedal.png")); // Set the completion medal icon.
         this.medalHardMode.setImage(new Image(hardModeMedal ? "icons/redmedal.png" : "icons/emptymedal.png")); // Set the hard mode medal.
-        this.viewPreview = buildViewPreview(colorComplex); // Build the preview.
-        getChildren().add(viewPreview);
-        viewPreview.toFront();
+        this.colorComplex = colorComplex; // Set the complex.
     }
 
     /**
@@ -108,6 +109,11 @@ public class DailyWordleEntry extends AnchorPane {
 
     @FXML
     void onHoverViewButton(MouseEvent event) {
+        if (viewPreview == null) {
+            viewPreview = buildViewPreview(colorComplex);
+            getChildren().add(viewPreview);
+            viewPreview.toFront();
+        }
         viewPreview.setVisible(true); // Show the preview.
     }
 

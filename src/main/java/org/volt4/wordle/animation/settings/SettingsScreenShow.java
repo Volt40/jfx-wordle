@@ -1,5 +1,6 @@
 package org.volt4.wordle.animation.settings;
 
+import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import org.volt4.wordle.animation.WordleAnimation;
 import org.volt4.wordle.controller.config.SettingsScreen;
@@ -25,7 +26,7 @@ public class SettingsScreenShow implements WordleAnimation {
 
     @Override
     public void start() {
-        settings.toFront();
+
     }
 
     @Override

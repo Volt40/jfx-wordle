@@ -229,6 +229,8 @@ public class Wordle extends AnchorPane {
 //            List<Letter> requiredLetters = new ArrayList<>();
 //            for (int i = 0; i < currentRow; i++) {
 //                Map.Entry<Letter, Integer>[] set = (Map.Entry<Letter, Integer>[]) buckets[i].entrySet().toArray();
+//                for (Map.Entry<Letter, Integer> letter : set)
+//                    ;
 //            }
         }
         if (!isValidGuess) {
